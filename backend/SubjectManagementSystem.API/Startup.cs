@@ -11,6 +11,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using System.Data.Common;
+using Npgsql;
+using SubjectManagementSystem.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace SubjectManagementSystem.API
 {
@@ -23,10 +27,18 @@ namespace SubjectManagementSystem.API
 
         public IConfiguration Configuration { get; }
 
+        public DbConnection DbConnection => new NpgsqlConnection(Configuration.GetConnectionString("App"));
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseNpgsql(
+                    DbConnection,
+                    assembly => assembly.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName));
+            });
 
             // Register the Swagger Generator service. This service is responsible for genrating Swagger Documents.
             // Note: Add this service at the end after AddMvc() or AddMvcCore().

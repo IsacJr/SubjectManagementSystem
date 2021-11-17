@@ -3,9 +3,14 @@
   <ItemGroup>
     <ProjectReference Include="..\SubjectManagementSystem.Domain\SubjectManagementSystem.Domain.csproj" />
     <ProjectReference Include="..\SubjectManagementSystem.Service\SubjectManagementSystem.Service.csproj" />
+    <ProjectReference Include="..\SubjectManagementSystem.Repository\SubjectManagementSystem.Repository.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.21">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
