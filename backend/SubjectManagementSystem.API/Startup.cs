@@ -45,15 +45,8 @@ namespace SubjectManagementSystem.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { 
-                    Title = "Zomato API", 
+                    Title = "Subject Management API", 
                     Version = "v1",
-                    Description ="Description for the API goes here.",
-                    Contact = new OpenApiContact
-                    {
-                        Name = "Ankush Jain",
-                        Email = string.Empty,
-                        Url = new Uri("https://coderjony.com/"),
-                    },
                 });
             });
         }
@@ -66,6 +59,18 @@ namespace SubjectManagementSystem.API
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
@@ -73,21 +78,10 @@ namespace SubjectManagementSystem.API
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Zomato API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Subject Management API V1");
 
                 // To serve SwaggerUI at application's root page, set the RoutePrefix property to an empty string.
                 c.RoutePrefix = string.Empty;
-            });
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
             });
         }
     }
