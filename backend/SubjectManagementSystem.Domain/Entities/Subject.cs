@@ -6,7 +6,7 @@ namespace SubjectManagementSystem.Domain
         public string Code { get; set; }
         public string Syllabus { get; set; }
         // public string Level { get; set; }
-        // public Area Area { get; set; }
+        public Field Field { get; set; }
 
     }
 }
