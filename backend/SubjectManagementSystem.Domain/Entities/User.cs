@@ -15,6 +15,8 @@ namespace SubjectManagementSystem.Domain
         public virtual Institution Institution { get; set; }
         public virtual List<UserField> Field { get; set; }
         public string ProfilePicture { get; set; }
+        public int idTeam { get; set; }
+        public virtual Team Team { get; set; }
         
 
         //foreign keys from another tables

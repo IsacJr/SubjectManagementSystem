@@ -14,6 +14,7 @@ namespace SubjectManagementSystem.Repository
 
             builder.Property(x => x.Code).HasColumnName("code");
             builder.Property(x => x.Solution).HasColumnName("solution");
+            builder.Property(x => x.IdMentor).HasColumnName("id_mentor");
 
             //foreign keys from another tables
             builder.HasOne(x => x.ProblemChallenge).WithOne(x => x.Team).HasForeignKey<ProblemChallenge>(x => x.IdTeam);

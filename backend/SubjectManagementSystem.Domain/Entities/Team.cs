@@ -5,8 +5,8 @@ namespace SubjectManagementSystem.Domain
     public class Team : BaseEntity
     {
         public string Code { get; set; }
-        public List<User> Members { get; set; }
-        public List<User> Mentors { get; set; }
+        public int IdMentor { get; set; }
+        public virtual User Mentor { get; set; }
         public string Solution { get; set; }
 
         
