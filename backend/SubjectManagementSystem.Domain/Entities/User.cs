@@ -13,7 +13,7 @@ namespace SubjectManagementSystem.Domain
         public StateEnum State { get; set; }
         public int IdInstitution { get; set; }
         public virtual Institution Institution { get; set; }
-        public List<Field> Field { get; set; }
+        public virtual List<UserField> Field { get; set; }
         public string ProfilePicture { get; set; }
         
 
