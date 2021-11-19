@@ -11,10 +11,15 @@ namespace SubjectManagementSystem.Domain
         public DateTime? Birthday { get; set; }
         public string City { get; set; }
         public StateEnum State { get; set; }
-        public Institution Institution { get; set; }
+        public int IdInstitution { get; set; }
+        public virtual Institution Institution { get; set; }
         public List<Field> Field { get; set; }
-
         public string ProfilePicture { get; set; }
+        
+
+        //foreign keys from another tables
+        public virtual Classroom Classroom { get; set; }
+        public virtual Challenge Challenge { get; set; }
 
     }
 }

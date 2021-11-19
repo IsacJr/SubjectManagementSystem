@@ -12,5 +12,10 @@ namespace SubjectManagementSystem.Domain
         public string Street { get; set; }
         public string City { get; set; }
         public StateEnum State { get; set; }
+
+
+        //foreign key from another tables
+        public virtual User User { get; set; }
+        public virtual Challenge Challenge { get; set; }
     }
 }
