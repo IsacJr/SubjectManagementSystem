@@ -16,8 +16,12 @@ namespace SubjectManagementSystem.Repository
             builder.Property(x => x.Code).HasColumnName("code");
             builder.Property(x => x.Syllabus).HasColumnName("syllabus");
 
+            
+            builder.Property(x => x.IdField).HasColumnName("id_field");
+            builder.HasOne(x => x.Field).WithMany().HasForeignKey(x => x.IdField);
+
             //foreign keys relations from another tables
-            builder.HasOne(x => x.Classroom).WithOne(x => x.Subject).HasForeignKey<Classroom>(x => x.IdSubject);
+            // builder.HasOne(x => x.Classroom).WithOne(x => x.Subject).HasForeignKey<Classroom>(x => x.IdSubject);
             
         }
     }

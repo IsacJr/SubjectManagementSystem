@@ -18,6 +18,8 @@ namespace SubjectManagementSystem.Domain
         public string ClassPlan { get; set; }
         public int IdSubject { get; set; }
         public virtual Subject Subject { get; set; }
+        public int IdChallenge { get; set; }
+        public virtual Challenge Challenge { get; set; }
 
     }
 }

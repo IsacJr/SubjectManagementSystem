@@ -8,5 +8,9 @@ namespace SubjectManagementSystem.Domain
         public List<User> Members { get; set; }
         public List<User> Mentors { get; set; }
         public string Solution { get; set; }
+
+        
+        //foreign key from another table
+        public virtual ProblemChallenge ProblemChallenge { get; set; }
     }
 }

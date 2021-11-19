@@ -24,7 +24,11 @@ namespace SubjectManagementSystem.Repository
             builder.Property(x => x.ClassPlan).HasColumnName("class_plan");
 
             builder.Property(x => x.IdProfessor).HasColumnName("id_professor");
+            builder.HasOne(x => x.Professor).WithMany().HasForeignKey(x => x.IdProfessor);
             builder.Property(x => x.IdSubject).HasColumnName("id_subject");
+            builder.HasOne(x => x.Subject).WithMany().HasForeignKey(x => x.IdSubject);
+            builder.Property(x => x.IdChallenge).HasColumnName("id_challenge");
+            builder.HasOne(x => x.Challenge).WithMany().HasForeignKey(x => x.IdChallenge);
 
             
         }

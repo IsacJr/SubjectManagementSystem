@@ -17,5 +17,7 @@ namespace SubjectManagementSystem.Domain
         public List<string> Reports { get; set; }
         public int IdInCharge { get; set; }
         public virtual User InCharge { get; set; }
+        public int IdCreator { get; set; }
+        public virtual User Creator { get; set; }
     }
 }

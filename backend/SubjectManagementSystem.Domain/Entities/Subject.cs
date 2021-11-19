@@ -11,7 +11,7 @@ namespace SubjectManagementSystem.Domain
 
         
         //foreign keys from another tables
-        public virtual Classroom Classroom { get; set; }
+        // public virtual Classroom Classroom { get; set; }
 
     }
 }

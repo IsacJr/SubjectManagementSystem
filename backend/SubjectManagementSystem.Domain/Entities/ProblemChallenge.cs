@@ -6,7 +6,10 @@ namespace SubjectManagementSystem.Domain
     {
         public string Code { get; set; }
         public string Detail { get; set; }
-        // public List<Team> Team { get; set; }
+        public int IdChallenge { get; set; }
+        public virtual Challenge Challenge { get; set; }
+        public int IdTeam { get; set; }
+        public virtual Team Team { get; set; }
         public List<User> Specialist { get; set; }
 
     }

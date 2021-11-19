@@ -6,7 +6,7 @@ namespace SubjectManagementSystem.Domain
         
         
         //foreign keys from another tables
-        public virtual Subject Subject { get; set; }
-        public virtual Challenge Challenge { get; set; }
+        // public virtual Subject Subject { get; set; }
+        // public virtual Challenge Challenge { get; set; }
     }
 }

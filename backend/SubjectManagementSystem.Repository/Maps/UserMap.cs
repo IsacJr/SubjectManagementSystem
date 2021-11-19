@@ -20,7 +20,7 @@ namespace SubjectManagementSystem.Repository
             builder.Property(x => x.ProfilePicture).HasColumnName("name");
 
             //foreign keys relations from another tables
-            builder.HasOne(x => x.Classroom).WithOne(x => x.Professor).HasForeignKey<Classroom>(x => x.IdProfessor);
+            // builder.HasOne(x => x.Classroom).WithOne(x => x.Professor).HasForeignKey<Classroom>(x => x.IdProfessor);
             builder.HasOne(x => x.Challenge).WithOne(x => x.InCharge).HasForeignKey<Challenge>(x => x.IdInCharge);
             
         }
