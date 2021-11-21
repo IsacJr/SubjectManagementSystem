@@ -17,7 +17,9 @@ namespace SubjectManagementSystem.Repository
             builder.Property(x => x.EmployerIdentificationNumber).HasColumnName("employer_identification_number");
             builder.Property(x => x.ZipCode).HasColumnName("zip_code");
             builder.Property(x => x.Street).HasColumnName("street");
+            builder.Property(x => x.City).HasColumnName("city");
             builder.Property(x => x.State).HasColumnName("state");
+            builder.Property(x => x.IdField).HasColumnName("id_field");
 
 
             //foreign keys from another table

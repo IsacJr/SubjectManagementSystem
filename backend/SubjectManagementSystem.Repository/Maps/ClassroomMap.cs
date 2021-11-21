@@ -18,8 +18,8 @@ namespace SubjectManagementSystem.Repository
             builder.Property(x => x.EndDate).HasColumnName("end_date");
             builder.Property(x => x.Schedule).HasColumnName("schedule");
             builder.Property(x => x.Room).HasColumnName("room");
-            builder.Property(x => x.Professor).HasColumnName("professor");
             builder.Property(x => x.Year).HasColumnName("year");
+            builder.Property(x => x.Semester).HasColumnName("semester");
             builder.Property(x => x.Spot).HasColumnName("spot");
             builder.Property(x => x.ClassPlan).HasColumnName("class_plan");
 
@@ -27,8 +27,6 @@ namespace SubjectManagementSystem.Repository
             builder.HasOne(x => x.Professor).WithMany().HasForeignKey(x => x.IdProfessor);
             builder.Property(x => x.IdSubject).HasColumnName("id_subject");
             builder.HasOne(x => x.Subject).WithMany().HasForeignKey(x => x.IdSubject);
-            builder.Property(x => x.IdChallenge).HasColumnName("id_challenge");
-            builder.HasOne(x => x.Challenge).WithMany().HasForeignKey(x => x.IdChallenge);
 
             
         }

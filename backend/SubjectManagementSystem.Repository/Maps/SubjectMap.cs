@@ -15,6 +15,7 @@ namespace SubjectManagementSystem.Repository
             builder.Property(x => x.Name).HasColumnName("name");
             builder.Property(x => x.Code).HasColumnName("code");
             builder.Property(x => x.Syllabus).HasColumnName("syllabus");
+            builder.Property(x => x.Level).HasColumnName("level");
 
             
             builder.Property(x => x.IdField).HasColumnName("id_field");

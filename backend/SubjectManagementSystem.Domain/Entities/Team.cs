@@ -8,6 +8,7 @@ namespace SubjectManagementSystem.Domain
         public int IdMentor { get; set; }
         public virtual User Mentor { get; set; }
         public string Solution { get; set; }
+        public virtual List<UserTeam> Members { get; set; }
 
         
         //foreign key from another table

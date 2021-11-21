@@ -13,7 +13,7 @@ namespace SubjectManagementSystem.Repository
             base.Configure(builder);
 
             builder.Property(x => x.IdUser).HasColumnName("id_user");
-            builder.HasOne(x => x.User).WithMany(x => x.Field).HasForeignKey(x => x.IdUser);
+            builder.HasOne(x => x.User).WithMany(x => x.Fields).HasForeignKey(x => x.IdUser);
             builder.Property(x => x.IdField).HasColumnName("id_field");
             builder.HasOne(x => x.Field).WithMany().HasForeignKey(x => x.IdField);
             

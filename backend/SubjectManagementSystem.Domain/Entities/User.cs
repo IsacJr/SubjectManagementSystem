@@ -13,15 +13,14 @@ namespace SubjectManagementSystem.Domain
         public StateEnum State { get; set; }
         public int IdInstitution { get; set; }
         public virtual Institution Institution { get; set; }
-        public virtual List<UserField> Field { get; set; }
+        public virtual List<UserField> Fields { get; set; }
         public string ProfilePicture { get; set; }
-        public int idTeam { get; set; }
-        public virtual Team Team { get; set; }
+        
         
 
         //foreign keys from another tables
-        // public virtual Classroom Classroom { get; set; }
         public virtual Challenge Challenge { get; set; }
+        public virtual Team Team { get; set; }
 
     }
 }

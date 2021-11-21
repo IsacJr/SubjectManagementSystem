@@ -10,7 +10,6 @@ namespace SubjectManagementSystem.Domain
         public virtual Challenge Challenge { get; set; }
         public int IdTeam { get; set; }
         public virtual Team Team { get; set; }
-        // public List<User> Specialist { get; set; }
 
     }
 }
