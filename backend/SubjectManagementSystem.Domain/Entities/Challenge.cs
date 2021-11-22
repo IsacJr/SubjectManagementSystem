@@ -12,11 +12,8 @@ namespace SubjectManagementSystem.Domain
         public int IdField { get; set; }
         public virtual Field Field { get; set; }
         public string Description { get; set; }
-        // ps: observe how to reproduce on databse
-        public List<string> Material { get; set; }
+        public string Material { get; set; }
         public StatusEnum Status { get; set; }
-        // ps: observe how to reproduce on databse
-        public List<string> Reports { get; set; }
         public int IdInCharge { get; set; }
         public virtual User InCharge { get; set; }
         public int IdCreator { get; set; }
