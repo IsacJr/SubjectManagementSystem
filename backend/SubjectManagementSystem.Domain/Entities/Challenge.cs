@@ -20,5 +20,9 @@ namespace SubjectManagementSystem.Domain
         public virtual User Creator { get; set; }
         public int IdClassroom { get; set; }
         public virtual Classroom Classroom { get; set; }
+
+
+        //foreign keys from another tables
+        public virtual Contract Contract { get; set; }
     }
 }

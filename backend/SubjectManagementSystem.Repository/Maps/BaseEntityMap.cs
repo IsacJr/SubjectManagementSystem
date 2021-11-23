@@ -22,8 +22,6 @@ namespace SubjectManagementSystem.Repository
 
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasColumnName("id").ValueGeneratedOnAdd();
-
-            builder.Property(x => x.CreatedOn).HasColumnName("created_on").IsRequired();
         }
     }
 }

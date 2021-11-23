@@ -19,7 +19,7 @@ namespace SubjectManagementSystem.Domain
         public int IdSubject { get; set; }
         public virtual Subject Subject { get; set; }
 
-        
+        //foreign keys from others tables
         public virtual Challenge Challenge { get; set; }
 
     }

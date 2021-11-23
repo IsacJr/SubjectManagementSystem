@@ -33,7 +33,7 @@ namespace SubjectManagementSystem.Repository
 
 
             //foreign keys from another tables
-            
+            builder.HasOne(x => x.Contract).WithOne(x => x.Challenge).HasForeignKey<Contract>(x => x.IdChallenge);
             
         }
     }
