@@ -11,7 +11,7 @@ namespace SubjectManagementSystem.Repository
         public ApplicationDbContext CreateDbContext(string[] args)
         {
             var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            var fileName = Directory.GetCurrentDirectory() + $"/../CpmPedidos.API/appsettings.{environmentName}.json";
+            var fileName = Directory.GetCurrentDirectory() + $"/../SubjectManagementSystem.API/appsettings.{environmentName}.json";
 
             var configuration = new ConfigurationBuilder().AddJsonFile(fileName).Build();
             var connectionString = configuration.GetConnectionString("App");
