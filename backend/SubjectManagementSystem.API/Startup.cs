@@ -32,13 +32,14 @@ namespace SubjectManagementSystem.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseNpgsql(
                     DbConnection,
                     assembly => assembly.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName));
             });
+            services.AddControllers();
 
             // Register the Swagger Generator service. This service is responsible for genrating Swagger Documents.
             // Note: Add this service at the end after AddMvc() or AddMvcCore().
