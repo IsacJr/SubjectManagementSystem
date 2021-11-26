@@ -14,11 +14,11 @@ namespace SubjectManagementSystem.Domain
         public string Description { get; set; }
         public string Material { get; set; }
         public StatusEnum Status { get; set; }
-        public int IdInCharge { get; set; }
+        public int? IdInCharge { get; set; }
         public virtual User InCharge { get; set; }
         public int IdCreator { get; set; }
         public virtual User Creator { get; set; }
-        public int IdClassroom { get; set; }
+        public int? IdClassroom { get; set; }
         public virtual Classroom Classroom { get; set; }
 
 

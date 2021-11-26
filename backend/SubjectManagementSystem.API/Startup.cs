@@ -15,6 +15,7 @@ using System.Data.Common;
 using Npgsql;
 using SubjectManagementSystem.Repository;
 using Microsoft.EntityFrameworkCore;
+using SubjectManagementSystem.Service;
 
 namespace SubjectManagementSystem.API
 {
@@ -32,7 +33,19 @@ namespace SubjectManagementSystem.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+            // Services configuration
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IChallengeService, ChallengeService>();
+            services.AddScoped<IClassroomService, ClassroomService>();
+            services.AddScoped<IInstitutionService, InstitutionService>();
+            services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<ITeamService, TeamService>();
+            
+            // Repository configuration
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            
+            // Database configuration
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseNpgsql(

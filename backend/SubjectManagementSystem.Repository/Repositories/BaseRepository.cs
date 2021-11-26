@@ -6,7 +6,7 @@ using SubjectManagementSystem.Domain;
 
 namespace SubjectManagementSystem.Repository
 {
-    public abstract class BaseRepository <T> : IBaseRepository <T> where T : BaseEntity
+    public class BaseRepository <T> : IBaseRepository <T> where T : BaseEntity
     {
         protected const int PageSize = 10;
         protected readonly ApplicationDbContext dbContext;

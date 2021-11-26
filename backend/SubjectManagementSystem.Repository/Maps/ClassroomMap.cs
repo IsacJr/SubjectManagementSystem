@@ -20,7 +20,7 @@ namespace SubjectManagementSystem.Repository
             builder.Property(x => x.Room).HasColumnName("room");
             builder.Property(x => x.Year).HasColumnName("year");
             builder.Property(x => x.Semester).HasColumnName("semester");
-            builder.Property(x => x.Spot).HasColumnName("spot");
+            builder.Property(x => x.SpotAvailable).HasColumnName("spot");
             builder.Property(x => x.ClassPlan).HasColumnName("class_plan");
 
             builder.Property(x => x.IdProfessor).HasColumnName("id_professor");

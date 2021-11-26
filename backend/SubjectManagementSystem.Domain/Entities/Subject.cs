@@ -6,7 +6,7 @@ namespace SubjectManagementSystem.Domain
         public string Code { get; set; }
         public string Syllabus { get; set; }
         public EducationLevelEnum Level { get; set; }
-        public int IdField { get; set; }
+        public int? IdField { get; set; }
         public virtual Field Field { get; set; }
 
     }
