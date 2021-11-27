@@ -11,5 +11,8 @@ namespace SubjectManagementSystem.Domain
         public int? IdTeam { get; set; }
         public virtual Team Team { get; set; }
 
+
+        // foreign keys from another tables
+        public virtual Solution Solution { get; set; }
     }
 }
