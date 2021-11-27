@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChallengeComponent } from './challenge/challenge.component';
-import { InstitutionComponent } from './institution/institution.component';
-import { ClassroomComponent } from './classroom/classroom.component';
-import { TeamComponent } from './team/team.component';
+import { ChallengeComponent } from './containers/challenge/challenge.component';
+import { InstitutionComponent } from './containers/institution/institution.component';
+import { ClassroomComponent } from './containers/classroom/classroom.component';
+import { TeamComponent } from './containers/team/team.component';
 
 
 

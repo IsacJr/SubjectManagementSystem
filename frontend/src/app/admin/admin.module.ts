@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserComponent } from './user/user.component';
-import { SubjectComponent } from './subject/subject.component';
-
-
+import { UserComponent } from './containers/user/user.component';
+import { SubjectComponent } from './containers/subject/subject.component';
 
 @NgModule({
   declarations: [
