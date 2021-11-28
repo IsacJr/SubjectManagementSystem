@@ -6,15 +6,15 @@ import { UserNewComponent } from './user-new/user-new.component';
 export const UserRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'admin/user',
+        redirectTo: 'list',
         pathMatch: 'full'
     },
     {
-        path: 'admin/user',
+        path: 'list',
         component: UserListComponent
     },
     {
-        path: 'admin/new',
+        path: 'new',
         component: UserNewComponent
     }
 ];
