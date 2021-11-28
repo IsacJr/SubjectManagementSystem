@@ -4,6 +4,9 @@ import { ChallengeComponent } from './containers/challenge/challenge.component';
 import { InstitutionComponent } from './containers/institution/institution.component';
 import { ClassroomComponent } from './containers/classroom/classroom.component';
 import { TeamComponent } from './containers/team/team.component';
+import { NewChallengeComponent } from './containers/new-challenge/new-challenge.component';
+import { ChallengeAPI } from './api/challenge.api';
+import { ChallengeFacade } from './challenge.facade';
 
 
 
@@ -12,10 +15,15 @@ import { TeamComponent } from './containers/team/team.component';
     ChallengeComponent,
     InstitutionComponent,
     ClassroomComponent,
-    TeamComponent
+    TeamComponent,
+    NewChallengeComponent
   ],
   imports: [
     CommonModule
+  ],
+  providers: [
+    ChallengeAPI,
+    ChallengeFacade
   ]
 })
-export class ManagementModule { }
+export class ChallengeModule { }

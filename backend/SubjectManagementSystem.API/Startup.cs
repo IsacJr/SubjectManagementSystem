@@ -45,6 +45,14 @@ namespace SubjectManagementSystem.API
             // Repository configuration
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
+
             // Database configuration
             services.AddDbContext<ApplicationDbContext>(options =>
             {
@@ -72,6 +80,8 @@ namespace SubjectManagementSystem.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
 

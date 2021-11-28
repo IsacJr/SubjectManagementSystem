@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ManagementRoutes } from './management/management-routing.module';
+import { AdminRoutes } from './modules/admin/admin-routing.module';
+import { ChallengeRoutes } from './modules/challenge/challenge-routing.module';
+
 
 const routes: Routes = [
   {
@@ -8,7 +10,12 @@ const routes: Routes = [
     redirectTo: 'challenge',
     pathMatch: 'full'
   },
-  ...ManagementRoutes
+  {
+    path: 'admin',
+    redirectTo: 'admin'
+  },
+  ...ChallengeRoutes,
+  ...AdminRoutes
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChallengeFacade } from '../../challenge.facade';
 
 @Component({
   selector: 'app-challenge',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChallengeComponent implements OnInit {
 
-  constructor() { }
+  challengeList: any;
+
+  constructor(private challengeFacade: ChallengeFacade) { }
 
   ngOnInit(): void {
+    this.challengeFacade.getAll().subscribe(challenges => {
+      this.challengeList = challenges;
+    });
   }
 
 }
