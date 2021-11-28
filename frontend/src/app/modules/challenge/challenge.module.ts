@@ -7,6 +7,8 @@ import { TeamComponent } from './containers/team/team.component';
 import { NewChallengeComponent } from './containers/new-challenge/new-challenge.component';
 import { ChallengeAPI } from './api/challenge.api';
 import { ChallengeFacade } from './challenge.facade';
+import { RouterModule } from '@angular/router';
+import { ChallengeRoutes } from './challenge-routing.module';
 
 
 
@@ -19,7 +21,8 @@ import { ChallengeFacade } from './challenge.facade';
     NewChallengeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(ChallengeRoutes)
   ],
   providers: [
     ChallengeAPI,

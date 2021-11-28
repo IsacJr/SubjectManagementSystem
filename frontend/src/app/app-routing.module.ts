@@ -14,7 +14,10 @@ const routes: Routes = [
     path: 'admin',
     redirectTo: 'admin'
   },
-  ...ChallengeRoutes,
+  {
+    path: 'challenge',
+    loadChildren: () => import('./modules/challenge/challenge.module').then(m => m.ChallengeModule)
+  },
   ...AdminRoutes
 ];
 

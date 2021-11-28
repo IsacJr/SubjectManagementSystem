@@ -5,20 +5,20 @@ import { NewChallengeComponent } from './containers/new-challenge/new-challenge.
 export const ChallengeRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'challenge/list',
+        redirectTo: 'list',
         pathMatch: 'full'
     },
     {
         path: 'challenge',
-        redirectTo: 'challenge/list',
+        redirectTo: 'list',
         pathMatch: 'full'
     },
     {
-        path: 'challenge/list',
+        path: 'list',
         component: ChallengeComponent
     },
     {
-        path: 'challenge/new',
+        path: 'new',
         component: NewChallengeComponent
     }
 ];
