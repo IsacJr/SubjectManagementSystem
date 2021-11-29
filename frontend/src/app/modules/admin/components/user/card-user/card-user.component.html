@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ user.name }}</h5>
+        <div class="card-content">
+            <div>{{ user | json }}</div>
+        </div>
+        <div class="card-action-buttons">
+            <div class="card-button-item">
+                <button type="button" class="btn btn-outline-success" (click)="onVisualize()">Visualizar</button>
+            </div>
+            <div class="card-button-item">
+                <button type="button" class="btn btn-outline-secondary" (click)="onEdit()">Editar</button>
+            </div>
+            <div class="card-button-item">
+                <button type="button" class="btn btn-outline-danger" (click)="onDelete()">Apagar</button>
+            </div>
+        </div>
+      
+    </div>
+  </div>

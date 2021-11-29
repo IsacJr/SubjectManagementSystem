@@ -1,10 +1,40 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
-// html {
-//     font-size: 62.5%;
-// }
+body {
+    background-color: gray;
+}
 
-// body {
-//     margin: 0;
-//     font-size: 1.6rem;
-// }
+/*
+** Customization Page List
+*/
+
+.title-container {
+    margin-bottom: 30px;
+    h2 {
+        margin: 0px;
+    }
+}
+
+.actions-button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.filter-button-container {
+    display: flex;
+
+    .filter-button-item {
+        margin-left: 20px;
+    }
+}
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*
+** Customization Page Form
+*/

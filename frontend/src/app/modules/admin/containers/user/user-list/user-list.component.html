@@ -1,1 +1,25 @@
-<p>user works!</p>
+<div class="title-container">
+    <h2>{{ PAGE_TITLE_LABEL }}</h2>
+</div>
+
+<div class="actions-button-container">
+    <div class="new-container">
+        <a class="btn btn-outline-primary" [routerLink]="['/admin/user/new']">{{ NEW_ENTITY_BUTTON_LABEL }}</a>
+    </div>
+    <div class="filter-button-container">
+        <div class="filter-button-item">
+        </div>
+    </div>
+</div>
+
+<div class="body-container">
+    <div class="card-list">
+        <div class="card-wraper" *ngFor="let user of userList">
+            <app-card-user [user]="user" (visualizeEvent)="handleVisualize($event)">
+
+            </app-card-user>
+        </div>
+    </div>
+    <div class="card-pagination">
+    </div>
+</div>

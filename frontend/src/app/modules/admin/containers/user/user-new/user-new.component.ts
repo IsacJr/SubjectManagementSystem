@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserNewComponent implements OnInit {
 
+  readonly PAGE_TITLE_LABEL = "Novo Usuário";
+  
   constructor() { }
 
   ngOnInit(): void {
