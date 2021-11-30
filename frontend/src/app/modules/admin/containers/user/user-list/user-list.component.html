@@ -16,7 +16,6 @@
     <div class="card-list">
         <div class="card-wraper" *ngFor="let user of userList">
             <app-card-user [user]="user" (visualizeEvent)="handleVisualize($event)">
-
             </app-card-user>
         </div>
     </div>
