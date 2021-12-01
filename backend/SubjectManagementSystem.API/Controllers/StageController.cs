@@ -23,33 +23,33 @@ namespace SubjectManagementSystem.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Stage> GetAll()
+        public async Task<IEnumerable<Stage>> GetAll()
         {
-            return _stageService.GetAll();
+            return await _stageService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public Stage Get(int id)
+        public async Task<Stage> Get(int id)
         {
-            return _stageService.GetOne(id);
+            return await _stageService.GetOne(id);
         }
 
         [HttpPost]
-        public Stage Create(Stage stage)
+        public async Task<Stage> Create(Stage stage)
         {
-            return _stageService.Insert(stage);
+            return await _stageService.Insert(stage);
         }
 
         [HttpPut]
-        public Stage Update(Stage stage)
+        public async Task<Stage> Update(Stage stage)
         {
-            return _stageService.Update(stage);
+            return await _stageService.Update(stage);
         }
 
         [HttpDelete("{id}")]
-        public Stage Delete(int id)
+        public async Task<Stage> Delete(int id)
         {
-            return _stageService.Delete(id);
+            return await _stageService.Delete(id);
         }
     }
 }

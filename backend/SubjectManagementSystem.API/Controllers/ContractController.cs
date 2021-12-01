@@ -23,33 +23,33 @@ namespace SubjectManagementSystem.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Contract> GetAll()
+        public async Task<IEnumerable<Contract>> GetAll()
         {
-            return _contractService.GetAll();
+            return await _contractService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public Contract Get(int id)
+        public async Task<Contract> Get(int id)
         {
-            return _contractService.GetOne(id);
+            return await _contractService.GetOne(id);
         }
 
         [HttpPost]
-        public Contract Create(Contract contract)
+        public async Task<Contract> Create(Contract contract)
         {
-            return _contractService.Insert(contract);
+            return await _contractService.Insert(contract);
         }
 
         [HttpPut]
-        public Contract Update(Contract contract)
+        public async Task<Contract> Update(Contract contract)
         {
-            return _contractService.Update(contract);
+            return await _contractService.Update(contract);
         }
 
         [HttpDelete("{id}")]
-        public Contract Delete(int id)
+        public async Task<Contract> Delete(int id)
         {
-            return _contractService.Delete(id);
+            return await _contractService.Delete(id);
         }
     }
 }

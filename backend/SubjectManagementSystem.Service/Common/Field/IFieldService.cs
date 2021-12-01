@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 
 namespace SubjectManagementSystem.Service
 {
     public interface IFieldService
     {
-        Field GetOne(int id);
-        IEnumerable<Field> GetAll();
-        Field Insert(Field contract);
-        Field Update(Field contract);  
-        Field Delete(int id); 
+        Task<Field> GetOne(int id);
+        Task<IEnumerable<Field>> GetAll();
+        Task<Field> Insert(Field contract);
+        Task<Field> Update(Field contract);  
+        Task<Field> Delete(int id); 
     }
 }

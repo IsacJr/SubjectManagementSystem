@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 
 namespace SubjectManagementSystem.Service
 {
     public interface IReportService
     {
-        Report GetOne(int id);
-        IEnumerable<Report> GetAll();
-        Report Insert(Report report);
-        Report Update(Report report);  
-        Report Delete(int id); 
+        Task<Report> GetOne(int id);
+        Task<IEnumerable<Report>> GetAll();
+        Task<Report> Insert(Report report);
+        Task<Report> Update(Report report);  
+        Task<Report> Delete(int id); 
     }
 }

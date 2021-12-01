@@ -23,33 +23,33 @@ namespace SubjectManagementSystem.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Institution> GetAll()
+        public async Task<IEnumerable<Institution>> GetAll()
         {
-            return _institutionService.GetAll();
+            return await _institutionService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public Institution Get(int id)
+        public async Task<Institution> Get(int id)
         {
-            return _institutionService.GetOne(id);
+            return await _institutionService.GetOne(id);
         }
 
         [HttpPost]
-        public Institution Create(Institution institution)
+        public async Task<Institution> Create(Institution institution)
         {
-            return _institutionService.Insert(institution);
+            return await _institutionService.Insert(institution);
         }
 
         [HttpPut]
-        public Institution Update(Institution institution)
+        public async Task<Institution> Update(Institution institution)
         {
-            return _institutionService.Update(institution);
+            return await _institutionService.Update(institution);
         }
 
         [HttpDelete("{id}")]
-        public Institution Delete(int id)
+        public async Task<Institution> Delete(int id)
         {
-            return _institutionService.Delete(id);
+            return await _institutionService.Delete(id);
         }
     }
 }

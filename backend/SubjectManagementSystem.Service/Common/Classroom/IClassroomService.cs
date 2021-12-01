@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 
 namespace SubjectManagementSystem.Service
 {
     public interface IClassroomService
     {
-        Classroom getOne(int id);
-        IEnumerable<Classroom> getAll();
-        Classroom Insert(Classroom classroom);
-        Classroom Update(Classroom classroom);  
-        Classroom Delete(int id); 
+        Task<Classroom> getOne(int id);
+        Task<IEnumerable<Classroom>> getAll();
+        Task<Classroom> Insert(Classroom classroom);
+        Task<Classroom> Update(Classroom classroom);  
+        Task<Classroom> Delete(int id); 
     }
 }

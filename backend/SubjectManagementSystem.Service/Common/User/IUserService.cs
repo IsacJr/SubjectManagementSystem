@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 
 namespace SubjectManagementSystem.Service
 {
     public interface IUserService
     {
-        User GetOne(int id);
-        IEnumerable<User> GetAll();
-        User Insert(User user);
-        User Update(User user);  
-        User Delete(int id); 
+        Task<User> GetOne(int id);
+        Task<IEnumerable<User>> GetAll();
+        Task<User> Insert(User user);
+        Task<User> Update(User user);  
+        Task<User> Delete(int id); 
     }
 }

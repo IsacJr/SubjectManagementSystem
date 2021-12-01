@@ -23,33 +23,33 @@ namespace SubjectManagementSystem.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Field> GetAll()
+        public async Task<IEnumerable<Field>> GetAll()
         {
-            return _fieldService.GetAll();
+            return await _fieldService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public Field Get(int id)
+        public async Task<Field> Get(int id)
         {
-            return _fieldService.GetOne(id);
+            return await _fieldService.GetOne(id);
         }
 
         [HttpPost]
-        public Field Create(Field field)
+        public async Task<Field> Create(Field field)
         {
-            return _fieldService.Insert(field);
+            return await _fieldService.Insert(field);
         }
 
         [HttpPut]
-        public Field Update(Field field)
+        public async Task<Field> Update(Field field)
         {
-            return _fieldService.Update(field);
+            return await _fieldService.Update(field);
         }
 
         [HttpDelete("{id}")]
-        public Field Delete(int id)
+        public async Task<Field> Delete(int id)
         {
-            return _fieldService.Delete(id);
+            return await _fieldService.Delete(id);
         }
     }
 }

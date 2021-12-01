@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 using SubjectManagementSystem.Repository;
 
@@ -12,32 +13,32 @@ namespace SubjectManagementSystem.Service
             this.reportRepository = reportRepository;
         }
 
-        public IEnumerable<Report> GetAll()
+        public async Task<IEnumerable<Report>> GetAll()
         {
-            return reportRepository.GetAll();
+            return await reportRepository.GetAll();
         }
 
-        public Report GetOne(int id)
+        public async Task<Report> GetOne(int id)
         {
-            return reportRepository.Get(id);
+            return await reportRepository.Get(id);
         }
 
-        public Report Insert(Report report)
+        public async Task<Report> Insert(Report report)
         {
             report.Author = null;
             report.Challenge = null;
             
-            return reportRepository.Insert(report);
+            return await reportRepository.Insert(report);
         }
 
-        public Report Update(Report report)
+        public async Task<Report> Update(Report report)
         {
-            return reportRepository.Update(report);
+            return await reportRepository.Update(report);
         }
 
-        public Report Delete(int id)
+        public async Task<Report> Delete(int id)
         {
-            return reportRepository.Delete(id);
+            return await reportRepository.Delete(id);
         }
     }
 }

@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 
 namespace SubjectManagementSystem.Service
 {
     public interface ISolutionService
     {
-        Solution GetOne(int id);
-        IEnumerable<Solution> GetAll();
-        Solution Insert(Solution solution);
-        Solution Update(Solution solution);  
-        Solution Delete(int id); 
+        Task<Solution> GetOne(int id);
+        Task<IEnumerable<Solution>> GetAll();
+        Task<Solution> Insert(Solution solution);
+        Task<Solution> Update(Solution solution);  
+        Task<Solution> Delete(int id); 
     }
 }

@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 
 namespace SubjectManagementSystem.Service
 {
     public interface ITeamService
     {
-        Team getOne(int id);
-        IEnumerable<Team> getAll();
-        Team Insert(Team team);
-        Team Update(Team team);  
-        Team Delete(int id); 
+        Task<Team> getOne(int id);
+        Task<IEnumerable<Team>> getAll();
+        Task<Team> Insert(Team team);
+        Task<Team> Update(Team team);  
+        Task<Team> Delete(int id); 
     }
 }

@@ -23,33 +23,33 @@ namespace SubjectManagementSystem.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Challenge> GetAll()
+        public async Task<IEnumerable<Challenge>> GetAll()
         {
-            return _challengeService.getAll();
+            return await _challengeService.getAll();
         }
 
         [HttpGet("{id}")]
-        public Challenge Get(int id)
+        public async Task<Challenge> Get(int id)
         {
-            return _challengeService.getOne(id);
+            return await _challengeService.getOne(id);
         }
 
         [HttpPost]
-        public Challenge Create(Challenge challenge)
+        public async Task<Challenge> Create(Challenge challenge)
         {
-            return _challengeService.Insert(challenge);
+            return await _challengeService.Insert(challenge);
         }
 
         [HttpPut]
-        public Challenge Update(Challenge challenge)
+        public async Task<Challenge> Update(Challenge challenge)
         {
-            return _challengeService.Update(challenge);
+            return await _challengeService.Update(challenge);
         }
 
         [HttpDelete("{id}")]
-        public Challenge Delete(int id)
+        public async Task<Challenge> Delete(int id)
         {
-            return _challengeService.Delete(id);
+            return await _challengeService.Delete(id);
         }
     }
 }

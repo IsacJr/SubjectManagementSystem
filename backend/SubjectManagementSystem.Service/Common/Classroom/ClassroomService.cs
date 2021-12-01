@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 using SubjectManagementSystem.Repository;
 
@@ -12,33 +13,33 @@ namespace SubjectManagementSystem.Service
             this.classroomRepository = classroomRepository;
         }
 
-        public IEnumerable<Classroom> getAll()
+        public async Task<IEnumerable<Classroom>> getAll()
         {
-            return classroomRepository.GetAll();
+            return await classroomRepository.GetAll();
         }
 
-        public Classroom getOne(int id)
+        public async Task<Classroom> getOne(int id)
         {
-            return classroomRepository.Get(id);
+            return await classroomRepository.Get(id);
         }
 
-        public Classroom Insert(Classroom classroom)
+        public async Task<Classroom> Insert(Classroom classroom)
         {
             classroom.Professor = null;
             classroom.Subject = null;
             classroom.Challenge = null;
             
-            return classroomRepository.Insert(classroom);
+            return await classroomRepository.Insert(classroom);
         }
 
-        public Classroom Update(Classroom classroom)
+        public async Task<Classroom> Update(Classroom classroom)
         {
-            return classroomRepository.Update(classroom);
+            return await classroomRepository.Update(classroom);
         }
 
-        public Classroom Delete(int id)
+        public async Task<Classroom> Delete(int id)
         {
-            return classroomRepository.Delete(id);
+            return await classroomRepository.Delete(id);
         }
     }
 }

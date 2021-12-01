@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SubjectManagementSystem.Domain;
 
@@ -17,37 +18,37 @@ namespace SubjectManagementSystem.Repository
             this.entities = dbContext.Set<T>();
         }
 
-        public T Delete(int id)
+        public async Task<T> Delete(int id)
         {
-            T entity = entities.SingleOrDefault(s => s.Id == id);
+            T entity = await entities.SingleOrDefaultAsync(s => s.Id == id);
             entities.Remove(entity);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
             return entity;
         }
 
-        public T Get(int id)
+        public async Task<T> Get(int id)
         {
-            return entities.SingleOrDefault(s => s.Id == id);
+            return await entities.SingleOrDefaultAsync(s => s.Id == id);
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
-            return entities.AsEnumerable();
+            return await entities.ToListAsync();
         }
 
-        public T Insert(T entity)
+        public async Task<T> Insert(T entity)
         {
             if (entity == null) throw new ArgumentNullException("entity");
 
-            entities.Add(entity);
-            dbContext.SaveChanges();
+            await entities.AddAsync(entity);
+            await dbContext.SaveChangesAsync();
             return entity;
         }
 
-        public T Update(T entity)
+        public async Task<T> Update(T entity)
         {
             if (entity == null) throw new ArgumentNullException("entity");
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
             return entity;
         }
     }

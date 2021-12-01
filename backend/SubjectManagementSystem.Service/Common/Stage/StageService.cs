@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 using SubjectManagementSystem.Repository;
 
@@ -12,31 +13,31 @@ namespace SubjectManagementSystem.Service
             this.stageRepository = stageRepository;
         }
 
-        public IEnumerable<Stage> GetAll()
+        public async Task<IEnumerable<Stage>> GetAll()
         {
-            return stageRepository.GetAll();
+            return await stageRepository.GetAll();
         }
 
-        public Stage GetOne(int id)
+        public async Task<Stage> GetOne(int id)
         {
-            return stageRepository.Get(id);
+            return await stageRepository.Get(id);
         }
 
-        public Stage Insert(Stage stage)
+        public async Task<Stage> Insert(Stage stage)
         {
             stage.Solution = null;
             
-            return stageRepository.Insert(stage);
+            return await stageRepository.Insert(stage);
         }
 
-        public Stage Update(Stage stage)
+        public async Task<Stage> Update(Stage stage)
         {
-            return stageRepository.Update(stage);
+            return await stageRepository.Update(stage);
         }
 
-        public Stage Delete(int id)
+        public async Task<Stage> Delete(int id)
         {
-            return stageRepository.Delete(id);
+            return await stageRepository.Delete(id);
         }
     }
 }

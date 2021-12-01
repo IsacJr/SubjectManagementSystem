@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 
 namespace SubjectManagementSystem.Repository
 {
     public interface IBaseRepository <T> where T : BaseEntity
     {
-        T Get(int id);
-        IEnumerable<T> GetAll();
-        T Insert(T entity);
-        T Update(T entity);  
-        T Delete(int id); 
+        Task<T> Get(int id);
+        Task<IEnumerable<T>> GetAll();
+        Task<T> Insert(T entity);
+        Task<T> Update(T entity);  
+        Task<T> Delete(int id); 
     }
 }

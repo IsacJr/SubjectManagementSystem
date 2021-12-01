@@ -23,33 +23,33 @@ namespace SubjectManagementSystem.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Report> GetAll()
+        public async Task<IEnumerable<Report>> GetAll()
         {
-            return _reportService.GetAll();
+            return await _reportService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public Report Get(int id)
+        public async Task<Report> Get(int id)
         {
-            return _reportService.GetOne(id);
+            return await _reportService.GetOne(id);
         }
 
         [HttpPost]
-        public Report Create(Report report)
+        public async Task<Report> Create(Report report)
         {
-            return _reportService.Insert(report);
+            return await _reportService.Insert(report);
         }
 
         [HttpPut]
-        public Report Update(Report report)
+        public async Task<Report> Update(Report report)
         {
-            return _reportService.Update(report);
+            return await _reportService.Update(report);
         }
 
         [HttpDelete("{id}")]
-        public Report Delete(int id)
+        public async Task<Report> Delete(int id)
         {
-            return _reportService.Delete(id);
+            return await _reportService.Delete(id);
         }
     }
 }

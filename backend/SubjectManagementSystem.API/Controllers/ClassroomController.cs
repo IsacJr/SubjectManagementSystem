@@ -23,33 +23,33 @@ namespace SubjectManagementSystem.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Classroom> GetAll()
+        public async Task<IEnumerable<Classroom>> GetAll()
         {
-            return _classroomService.getAll();
+            return await _classroomService.getAll();
         }
 
         [HttpGet("{id}")]
-        public Classroom Get(int id)
+        public async Task<Classroom> Get(int id)
         {
-            return _classroomService.getOne(id);
+            return await _classroomService.getOne(id);
         }
 
         [HttpPost]
-        public Classroom Create(Classroom classroom)
+        public async Task<Classroom> Create(Classroom classroom)
         {
-            return _classroomService.Insert(classroom);
+            return await _classroomService.Insert(classroom);
         }
 
         [HttpPut]
-        public Classroom Update(Classroom classroom)
+        public async Task<Classroom> Update(Classroom classroom)
         {
-            return _classroomService.Update(classroom);
+            return await _classroomService.Update(classroom);
         }
 
         [HttpDelete("{id}")]
-        public Classroom Delete(int id)
+        public async Task<Classroom> Delete(int id)
         {
-            return _classroomService.Delete(id);
+            return await _classroomService.Delete(id);
         }
     }
 }

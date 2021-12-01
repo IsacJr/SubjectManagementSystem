@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 
 namespace SubjectManagementSystem.Service
 {
     public interface IContractService
     {
-        Contract GetOne(int id);
-        IEnumerable<Contract> GetAll();
-        Contract Insert(Contract contract);
-        Contract Update(Contract contract);  
-        Contract Delete(int id); 
+        Task<Contract> GetOne(int id);
+        Task<IEnumerable<Contract>> GetAll();
+        Task<Contract> Insert(Contract contract);
+        Task<Contract> Update(Contract contract);  
+        Task<Contract> Delete(int id); 
     }
 }

@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 
 namespace SubjectManagementSystem.Service
 {
     public interface IInstitutionService
     {
-        Institution GetOne(int id);
-        IEnumerable<Institution> GetAll();
-        Institution Insert(Institution institution);
-        Institution Update(Institution institution);  
-        Institution Delete(int id); 
+        Task<Institution> GetOne(int id);
+        Task<IEnumerable<Institution>> GetAll();
+        Task<Institution> Insert(Institution institution);
+        Task<Institution> Update(Institution institution);  
+        Task<Institution> Delete(int id); 
     }
 }

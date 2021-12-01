@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 using SubjectManagementSystem.Repository;
 
@@ -12,32 +13,32 @@ namespace SubjectManagementSystem.Service
             this.contractRepository = contractRepository;
         }
 
-        public IEnumerable<Contract> GetAll()
+        public async Task<IEnumerable<Contract>> GetAll()
         {
-            return contractRepository.GetAll();
+            return await contractRepository.GetAll();
         }
 
-        public Contract GetOne(int id)
+        public async Task<Contract> GetOne(int id)
         {
-            return contractRepository.Get(id);
+            return await contractRepository.Get(id);
         }
 
-        public Contract Insert(Contract contract)
+        public async Task<Contract> Insert(Contract contract)
         {
             contract.Challenge = null;
             contract.Classroom = null;
             
-            return contractRepository.Insert(contract);
+            return await contractRepository.Insert(contract);
         }
 
-        public Contract Update(Contract contract)
+        public async Task<Contract> Update(Contract contract)
         {
-            return contractRepository.Update(contract);
+            return await contractRepository.Update(contract);
         }
 
-        public Contract Delete(int id)
+        public async Task<Contract> Delete(int id)
         {
-            return contractRepository.Delete(id);
+            return await contractRepository.Delete(id);
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 using SubjectManagementSystem.Repository;
 
@@ -12,34 +13,34 @@ namespace SubjectManagementSystem.Service
             this.userRepository = userRepository;
         }
 
-        public IEnumerable<User> GetAll()
+        public async Task<IEnumerable<User>> GetAll()
         {
-            return userRepository.GetAll();
+            return await userRepository.GetAll();
         }
 
-        public User GetOne(int id)
+        public async Task<User> GetOne(int id)
         {
-            return userRepository.Get(id);
+            return await userRepository.Get(id);
         }
 
-        public User Insert(User user)
+        public async Task<User> Insert(User user)
         {
             user.ChallengeCreator = null;
             user.ChallengeInCharge = null;
             user.Institution = null;
             user.Fields = null;
             
-            return userRepository.Insert(user);
+            return await userRepository.Insert(user);
         }
 
-        public User Update(User user)
+        public async Task<User> Update(User user)
         {
-            return userRepository.Update(user);
+            return await userRepository.Update(user);
         }
 
-        public User Delete(int id)
+        public async Task<User> Delete(int id)
         {
-            return userRepository.Delete(id);
+            return await userRepository.Delete(id);
         }
     }
 }

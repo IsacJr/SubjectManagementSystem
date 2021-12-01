@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 using SubjectManagementSystem.Repository;
 
@@ -12,31 +13,31 @@ namespace SubjectManagementSystem.Service
             this.fieldRepository = fieldRepository;
         }
 
-        public IEnumerable<Field> GetAll()
+        public Task<IEnumerable<Field>> GetAll()
         {
             return fieldRepository.GetAll();
         }
 
-        public Field GetOne(int id)
+        public async Task<Field> GetOne(int id)
         {
-            return fieldRepository.Get(id);
+            return await fieldRepository.Get(id);
         }
 
-        public Field Insert(Field field)
+        public async Task<Field> Insert(Field field)
         {
             field.Institution = null;
             
-            return fieldRepository.Insert(field);
+            return await fieldRepository.Insert(field);
         }
 
-        public Field Update(Field field)
+        public async Task<Field> Update(Field field)
         {
-            return fieldRepository.Update(field);
+            return await fieldRepository.Update(field);
         }
 
-        public Field Delete(int id)
+        public async Task<Field> Delete(int id)
         {
-            return fieldRepository.Delete(id);
+            return await fieldRepository.Delete(id);
         }
     }
 }

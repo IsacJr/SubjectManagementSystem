@@ -23,33 +23,33 @@ namespace SubjectManagementSystem.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Team> GetAll()
+        public async Task<IEnumerable<Team>> GetAll()
         {
-            return _teamService.getAll();
+            return await _teamService.getAll();
         }
 
         [HttpGet("{id}")]
-        public Team Get(int id)
+        public async Task<Team> Get(int id)
         {
-            return _teamService.getOne(id);
+            return await _teamService.getOne(id);
         }
 
         [HttpPost]
-        public Team Create(Team team)
+        public async Task<Team> Create(Team team)
         {
-            return _teamService.Insert(team);
+            return await _teamService.Insert(team);
         }
 
         [HttpPut]
-        public Team Update(Team team)
+        public async Task<Team> Update(Team team)
         {
-            return _teamService.Update(team);
+            return await _teamService.Update(team);
         }
 
         [HttpDelete("{id}")]
-        public Team Delete(int id)
+        public async Task<Team> Delete(int id)
         {
-            return _teamService.Delete(id);
+            return await _teamService.Delete(id);
         }
     }
 }

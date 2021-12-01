@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 
 namespace SubjectManagementSystem.Service
 {
     public interface IProblemChallengeService
     {
-        ProblemChallenge GetOne(int id);
-        IEnumerable<ProblemChallenge> GetAll();
-        ProblemChallenge Insert(ProblemChallenge problemChallenge);
-        ProblemChallenge Update(ProblemChallenge problemChallenge);  
-        ProblemChallenge Delete(int id); 
+        Task<ProblemChallenge> GetOne(int id);
+        Task<IEnumerable<ProblemChallenge>> GetAll();
+        Task<ProblemChallenge> Insert(ProblemChallenge problemChallenge);
+        Task<ProblemChallenge> Update(ProblemChallenge problemChallenge);  
+        Task<ProblemChallenge> Delete(int id); 
     }
 }

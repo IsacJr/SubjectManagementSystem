@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SubjectManagementSystem.Domain;
 using SubjectManagementSystem.Repository;
 
@@ -12,17 +13,17 @@ namespace SubjectManagementSystem.Service
             this.challengeRepository = challengeRepository;
         }
 
-        public IEnumerable<Challenge> getAll()
+        public async Task<IEnumerable<Challenge>> getAll()
         {
-            return challengeRepository.GetAll();
+            return await challengeRepository.GetAll();
         }
 
-        public Challenge getOne(int id)
+        public async Task<Challenge> getOne(int id)
         {
-            return challengeRepository.Get(id);
+            return await challengeRepository.Get(id);
         }
 
-        public Challenge Insert(Challenge challenge)
+        public async Task<Challenge> Insert(Challenge challenge)
         {
             challenge.Institution = null;
             challenge.Field = null;
@@ -31,17 +32,17 @@ namespace SubjectManagementSystem.Service
             challenge.Creator = null;
             challenge.Contract = null;
             
-            return challengeRepository.Insert(challenge);
+            return await challengeRepository.Insert(challenge);
         }
 
-        public Challenge Update(Challenge challenge)
+        public async Task<Challenge> Update(Challenge challenge)
         {
-            return challengeRepository.Update(challenge);
+            return await challengeRepository.Update(challenge);
         }
 
-        public Challenge Delete(int id)
+        public async Task<Challenge> Delete(int id)
         {
-            return challengeRepository.Delete(id);
+            return await challengeRepository.Delete(id);
         }
     }
 }
