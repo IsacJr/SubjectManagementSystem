@@ -5,8 +5,8 @@ namespace SubjectManagementSystem.Service
 {
     public interface IInstitutionService
     {
-        Institution getOne(int id);
-        IEnumerable<Institution> getAll();
+        Institution GetOne(int id);
+        IEnumerable<Institution> GetAll();
         Institution Insert(Institution institution);
         Institution Update(Institution institution);  
         Institution Delete(int id); 

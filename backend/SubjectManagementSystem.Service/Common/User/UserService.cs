@@ -6,8 +6,8 @@ namespace SubjectManagementSystem.Service
 {
     public class UserService : IUserService
     {
-        private readonly IBaseRepository<User> userRepository;
-        public UserService(IBaseRepository<User> userRepository)
+        private readonly IUserRepository userRepository;
+        public UserService(IUserRepository userRepository)
         {
             this.userRepository = userRepository;
         }

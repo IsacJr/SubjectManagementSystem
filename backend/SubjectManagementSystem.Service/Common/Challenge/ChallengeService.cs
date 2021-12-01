@@ -6,20 +6,20 @@ namespace SubjectManagementSystem.Service
 {
     public class ChallengeService : IChallengeService
     {
-        private readonly IBaseRepository<Challenge> userRepository;
-        public ChallengeService(IBaseRepository<Challenge> userRepository)
+        private readonly IChallengeRepository challengeRepository;
+        public ChallengeService(IChallengeRepository challengeRepository)
         {
-            this.userRepository = userRepository;
+            this.challengeRepository = challengeRepository;
         }
 
         public IEnumerable<Challenge> getAll()
         {
-            return userRepository.GetAll();
+            return challengeRepository.GetAll();
         }
 
         public Challenge getOne(int id)
         {
-            return userRepository.Get(id);
+            return challengeRepository.Get(id);
         }
 
         public Challenge Insert(Challenge challenge)
@@ -31,17 +31,17 @@ namespace SubjectManagementSystem.Service
             challenge.Creator = null;
             challenge.Contract = null;
             
-            return userRepository.Insert(challenge);
+            return challengeRepository.Insert(challenge);
         }
 
         public Challenge Update(Challenge challenge)
         {
-            return userRepository.Update(challenge);
+            return challengeRepository.Update(challenge);
         }
 
         public Challenge Delete(int id)
         {
-            return userRepository.Delete(id);
+            return challengeRepository.Delete(id);
         }
     }
 }

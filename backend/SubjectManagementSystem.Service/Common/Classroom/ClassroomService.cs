@@ -6,20 +6,20 @@ namespace SubjectManagementSystem.Service
 {
     public class ClassroomService : IClassroomService
     {
-        private readonly IBaseRepository<Classroom> userRepository;
-        public ClassroomService(IBaseRepository<Classroom> userRepository)
+        private readonly IClassroomRepository classroomRepository;
+        public ClassroomService(IClassroomRepository classroomRepository)
         {
-            this.userRepository = userRepository;
+            this.classroomRepository = classroomRepository;
         }
 
         public IEnumerable<Classroom> getAll()
         {
-            return userRepository.GetAll();
+            return classroomRepository.GetAll();
         }
 
         public Classroom getOne(int id)
         {
-            return userRepository.Get(id);
+            return classroomRepository.Get(id);
         }
 
         public Classroom Insert(Classroom classroom)
@@ -28,17 +28,17 @@ namespace SubjectManagementSystem.Service
             classroom.Subject = null;
             classroom.Challenge = null;
             
-            return userRepository.Insert(classroom);
+            return classroomRepository.Insert(classroom);
         }
 
         public Classroom Update(Classroom classroom)
         {
-            return userRepository.Update(classroom);
+            return classroomRepository.Update(classroom);
         }
 
         public Classroom Delete(int id)
         {
-            return userRepository.Delete(id);
+            return classroomRepository.Delete(id);
         }
     }
 }

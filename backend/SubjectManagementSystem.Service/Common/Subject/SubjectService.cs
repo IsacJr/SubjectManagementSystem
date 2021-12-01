@@ -6,10 +6,10 @@ namespace SubjectManagementSystem.Service
 {
     public class SubjectService : ISubjectService
     {
-        private readonly IBaseRepository<Subject> subjectRepository;
-        public SubjectService(IBaseRepository<Subject> userRepository)
+        private readonly ISubjectRepository subjectRepository;
+        public SubjectService(ISubjectRepository subjectRepository)
         {
-            this.subjectRepository = userRepository;
+            this.subjectRepository = subjectRepository;
         }
 
         public IEnumerable<Subject> getAll()

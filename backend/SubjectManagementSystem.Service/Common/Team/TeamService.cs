@@ -6,8 +6,8 @@ namespace SubjectManagementSystem.Service
 {
     public class TeamService : ITeamService
     {
-        private readonly IBaseRepository<Team> teamRepository;
-        public TeamService(IBaseRepository<Team> teamRepository)
+        private readonly ITeamRepository teamRepository;
+        public TeamService(ITeamRepository teamRepository)
         {
             this.teamRepository = teamRepository;
         }

@@ -6,18 +6,18 @@ namespace SubjectManagementSystem.Service
 {
     public class InstitutionService : IInstitutionService
     {
-        private readonly IBaseRepository<Institution> institutionRepository;
-        public InstitutionService(IBaseRepository<Institution> institutionRepository)
+        private readonly IInstitutionRepository institutionRepository;
+        public InstitutionService(IInstitutionRepository institutionRepository)
         {
             this.institutionRepository = institutionRepository;
         }
 
-        public IEnumerable<Institution> getAll()
+        public IEnumerable<Institution> GetAll()
         {
             return institutionRepository.GetAll();
         }
 
-        public Institution getOne(int id)
+        public Institution GetOne(int id)
         {
             return institutionRepository.Get(id);
         }

@@ -34,16 +34,24 @@ namespace SubjectManagementSystem.API
         public void ConfigureServices(IServiceCollection services)
         {
             
-            // Services configuration
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IChallengeService, ChallengeService>();
-            services.AddScoped<IClassroomService, ClassroomService>();
-            services.AddScoped<IInstitutionService, InstitutionService>();
-            services.AddScoped<ISubjectService, SubjectService>();
-            services.AddScoped<ITeamService, TeamService>();
-            
-            // Repository configuration
-            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            #region Repositories configuration
+            //services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IChallengeRepository, ChallengeRepository>();
+            services.AddTransient<IClassroomRepository, ClassroomRepository>();
+            services.AddTransient<IInstitutionRepository, InstitutionRepository>();
+            services.AddTransient<ISubjectRepository, SubjectRepository>();
+            services.AddTransient<ITeamRepository, TeamRepository>();
+            #endregion
+
+            #region Services configuration
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IChallengeService, ChallengeService>();
+            services.AddTransient<IClassroomService, ClassroomService>();
+            services.AddTransient<IInstitutionService, InstitutionService>();
+            services.AddTransient<ISubjectService, SubjectService>();
+            services.AddTransient<ITeamService, TeamService>();
+            #endregion
             
             services.AddCors(options =>
             {
@@ -83,7 +91,7 @@ namespace SubjectManagementSystem.API
 
             app.UseCors("CorsPolicy");
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
 

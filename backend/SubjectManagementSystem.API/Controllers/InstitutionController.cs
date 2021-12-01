@@ -25,13 +25,13 @@ namespace SubjectManagementSystem.API.Controllers
         [HttpGet]
         public IEnumerable<Institution> GetAll()
         {
-            return _institutionService.getAll();
+            return _institutionService.GetAll();
         }
 
         [HttpGet("{id}")]
         public Institution Get(int id)
         {
-            return _institutionService.getOne(id);
+            return _institutionService.GetOne(id);
         }
 
         [HttpPost]
