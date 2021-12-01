@@ -5,8 +5,8 @@ namespace SubjectManagementSystem.Service
 {
     public interface IUserService
     {
-        User getOne(int id);
-        IEnumerable<User> getAll();
+        User GetOne(int id);
+        IEnumerable<User> GetAll();
         User Insert(User user);
         User Update(User user);  
         User Delete(int id); 

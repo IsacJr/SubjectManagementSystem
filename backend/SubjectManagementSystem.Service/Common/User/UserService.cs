@@ -12,12 +12,12 @@ namespace SubjectManagementSystem.Service
             this.userRepository = userRepository;
         }
 
-        public IEnumerable<User> getAll()
+        public IEnumerable<User> GetAll()
         {
             return userRepository.GetAll();
         }
 
-        public User getOne(int id)
+        public User GetOne(int id)
         {
             return userRepository.Get(id);
         }

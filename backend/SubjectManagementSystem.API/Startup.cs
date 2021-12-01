@@ -36,21 +36,34 @@ namespace SubjectManagementSystem.API
             
             #region Repositories configuration
             //services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-            services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IChallengeRepository, ChallengeRepository>();
             services.AddTransient<IClassroomRepository, ClassroomRepository>();
+            services.AddTransient<IContractRepository, ContractRepository>();
+            services.AddTransient<IFieldRepository, FieldRepository>();
             services.AddTransient<IInstitutionRepository, InstitutionRepository>();
+            services.AddTransient<IProblemChallengeRepository, ProblemChallengeRepository>();
+            services.AddTransient<IReportRepository, ReportRepository>();
+            services.AddTransient<ISolutionRepository, SolutionRepository>();
+            services.AddTransient<IStageRepository, StageRepository>();
             services.AddTransient<ISubjectRepository, SubjectRepository>();
             services.AddTransient<ITeamRepository, TeamRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
             #endregion
 
             #region Services configuration
-            services.AddTransient<IUserService, UserService>();
+            
             services.AddTransient<IChallengeService, ChallengeService>();
             services.AddTransient<IClassroomService, ClassroomService>();
+            services.AddTransient<IContractService, ContractService>();
+            services.AddTransient<IFieldService, FieldService>();
             services.AddTransient<IInstitutionService, InstitutionService>();
+            services.AddTransient<IProblemChallengeService, ProblemChallengeService>();
+            services.AddTransient<IReportService, ReportService>();
+            services.AddTransient<ISolutionService, SolutionService>();
+            services.AddTransient<IStageService, StageService>();
             services.AddTransient<ISubjectService, SubjectService>();
             services.AddTransient<ITeamService, TeamService>();
+            services.AddTransient<IUserService, UserService>();
             #endregion
             
             services.AddCors(options =>
