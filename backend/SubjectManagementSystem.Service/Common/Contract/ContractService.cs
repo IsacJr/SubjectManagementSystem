@@ -12,12 +12,12 @@ namespace SubjectManagementSystem.Service
             this.contractRepository = contractRepository;
         }
 
-        public IEnumerable<Contract> getAll()
+        public IEnumerable<Contract> GetAll()
         {
             return contractRepository.GetAll();
         }
 
-        public Contract getOne(int id)
+        public Contract GetOne(int id)
         {
             return contractRepository.Get(id);
         }

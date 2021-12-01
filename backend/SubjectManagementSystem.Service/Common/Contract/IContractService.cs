@@ -5,8 +5,8 @@ namespace SubjectManagementSystem.Service
 {
     public interface IContractService
     {
-        Contract getOne(int id);
-        IEnumerable<Contract> getAll();
+        Contract GetOne(int id);
+        IEnumerable<Contract> GetAll();
         Contract Insert(Contract contract);
         Contract Update(Contract contract);  
         Contract Delete(int id); 
