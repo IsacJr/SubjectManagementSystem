@@ -10,7 +10,7 @@ export abstract class BaseApi<T> {
     constructor(protected http: HttpClient) { }
 
     public get baseUrl(): string {
-        return 'https://localhost:5001';
+        return 'http://localhost:5000/api';
     }
 
     protected get(url: string): Observable<any> {

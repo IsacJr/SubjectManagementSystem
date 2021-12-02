@@ -16,6 +16,7 @@ using Npgsql;
 using SubjectManagementSystem.Repository;
 using Microsoft.EntityFrameworkCore;
 using SubjectManagementSystem.Service;
+using Microsoft.AspNetCore.Http;
 
 namespace SubjectManagementSystem.API
 {
@@ -106,6 +107,7 @@ namespace SubjectManagementSystem.API
 
             // app.UseHttpsRedirection();
 
+            app.UsePathBase(new PathString("/api"));
             app.UseRouting();
 
 
