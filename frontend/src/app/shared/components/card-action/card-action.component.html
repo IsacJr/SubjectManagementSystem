@@ -1,19 +1,21 @@
 <div class="card">
     <div class="card-body">
+        <h5 class="card-title">
+            <ng-content select="[title]"></ng-content>
+        </h5>
         <div class="card-content">
-            <ng-content></ng-content>
+            <ng-content select="[content]"></ng-content>
         </div>
         <div class="card-action-buttons">
             <div class="card-button-item">
-                <button type="button" class="btn btn-outline-success">Visualizar</button>
+                <button type="button" class="btn btn-outline-success btn-sm" (click)="onVisualizeClick()">Visualizar</button>
             </div>
             <div class="card-button-item">
-                <button type="button" class="btn btn-outline-secondary">Editar</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" (click)="onEditClick()">Editar</button>
             </div>
             <div class="card-button-item">
-                <button type="button" class="btn btn-outline-danger">Apagar</button>
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="onDeleteClick()">Apagar</button>
             </div>
         </div>
-      
     </div>
   </div>

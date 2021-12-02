@@ -11,7 +11,7 @@ export class UserListComponent implements OnInit {
   readonly PAGE_TITLE_LABEL = "Lista de Usuários";
   readonly NEW_ENTITY_BUTTON_LABEL = "Novo Usuário"
 
-  userList = [];
+  userList: any[] = [];
 
   constructor(private userFacade: UserFacade) { }
 
@@ -19,8 +19,16 @@ export class UserListComponent implements OnInit {
     this.userFacade.getAll().subscribe(response => this.userList = response);
   }
 
-  handleVisualize(event: any) {
-    console.log(event);
+  handleVisualize() {
+    console.log('visualize event');
+  }
+
+  handleEdit() {
+    console.log('edit event');
+  }
+
+  handleDelete() {
+    console.log('delete event');
   }
 
 }
