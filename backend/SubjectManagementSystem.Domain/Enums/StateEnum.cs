@@ -1,7 +1,10 @@
+using System.ComponentModel;
+
 namespace SubjectManagementSystem.Domain
 {
     public enum StateEnum
     {
+        [Description("Acre")]
         AC,
         AL,
         AP,

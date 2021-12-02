@@ -51,5 +51,11 @@ namespace SubjectManagementSystem.API.Controllers
         {
             return await _userService.Delete(id);
         }
+
+        [HttpGet("StateEnum")]
+        public dynamic  GetState()
+        {
+            return EnumExtensions.GetValues<StateEnum>();
+        }
     }
 }
