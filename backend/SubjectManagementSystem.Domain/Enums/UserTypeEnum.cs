@@ -1,9 +1,16 @@
+using System.ComponentModel;
+
 namespace SubjectManagementSystem.Domain
 {
     public enum UserTypeEnum
     {
+        [Description("Professor")]
         Professor,
+        [Description("Parceiro")]
         BusinessPartner,
-        Student
+        [Description("Estudante")]
+        Student,
+        [Description("Admin")]
+        Admin
     }
 }

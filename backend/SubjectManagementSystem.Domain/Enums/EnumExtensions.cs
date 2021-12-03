@@ -7,13 +7,13 @@ using System.Reflection;
 namespace SubjectManagementSystem.Domain
 {    public static class EnumExtensions
     {
-        public static List<EnumValue> GetValues<T>()
+        public static List<EnumValueDto> GetValues<T>()
         {
-            List<EnumValue> values = new List<EnumValue>();
+            List<EnumValueDto> values = new List<EnumValueDto>();
             foreach (var itemType in Enum.GetValues(typeof(T)))
             {
                 //For each value of this enumeration, add a new EnumValue instance
-                values.Add(new EnumValue()
+                values.Add(new EnumValueDto()
                 {
                     Name = GetDescription((Enum)itemType),//Enum.GetName(typeof(T), itemType), 
                     Value = (int)itemType

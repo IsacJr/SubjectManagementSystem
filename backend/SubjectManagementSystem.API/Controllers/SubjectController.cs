@@ -51,5 +51,11 @@ namespace SubjectManagementSystem.API.Controllers
         {
             return await _subjectService.Delete(id);
         }
+
+        [HttpGet("GetAllEducationLevel")]
+        public dynamic  GetAllEducationLevel()
+        {
+            return EnumExtensions.GetValues<StateEnum>();
+        }
     }
 }

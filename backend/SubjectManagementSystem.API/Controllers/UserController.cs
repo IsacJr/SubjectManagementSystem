@@ -52,10 +52,10 @@ namespace SubjectManagementSystem.API.Controllers
             return await _userService.Delete(id);
         }
 
-        [HttpGet("StateEnum")]
-        public dynamic  GetState()
+        [HttpGet("GetAllUserType")]
+        public dynamic  GetAllUserType()
         {
-            return EnumExtensions.GetValues<StateEnum>();
+            return EnumExtensions.GetValues<UserTypeEnum>();
         }
     }
 }
