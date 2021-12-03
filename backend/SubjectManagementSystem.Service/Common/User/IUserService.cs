@@ -7,7 +7,7 @@ namespace SubjectManagementSystem.Service
     public interface IUserService
     {
         Task<User> GetOne(int id);
-        Task<IEnumerable<User>> GetAll();
+        Task<IEnumerable<User>> GetAll(FilterValue filter);
         Task<User> Insert(User user);
         Task<User> Update(User user);  
         Task<User> Delete(int id); 

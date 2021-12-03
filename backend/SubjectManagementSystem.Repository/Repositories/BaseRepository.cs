@@ -11,7 +11,7 @@ namespace SubjectManagementSystem.Repository
     {
         protected const int PageSize = 10;
         protected readonly ApplicationDbContext dbContext;
-        private DbSet<T> entities;
+        protected DbSet<T> entities;
         public BaseRepository(ApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;

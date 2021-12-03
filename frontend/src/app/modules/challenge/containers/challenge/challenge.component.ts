@@ -13,9 +13,7 @@ export class ChallengeComponent implements OnInit {
   constructor(private challengeFacade: ChallengeFacade) { }
 
   ngOnInit(): void {
-    this.challengeFacade.getAll().subscribe(challenges => {
-      this.challengeList = challenges;
-    });
+    
   }
 
 }
