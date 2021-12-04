@@ -23,9 +23,9 @@ namespace SubjectManagementSystem.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Challenge>> GetAll()
+        public async Task<IEnumerable<Challenge>> GetAll([FromQuery]FilterValue filter)
         {
-            return await _challengeService.getAll();
+            return await _challengeService.getAll(filter);
         }
 
         [HttpGet("{id}")]

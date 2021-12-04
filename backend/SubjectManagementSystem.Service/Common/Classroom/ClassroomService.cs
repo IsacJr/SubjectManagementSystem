@@ -13,9 +13,9 @@ namespace SubjectManagementSystem.Service
             this.classroomRepository = classroomRepository;
         }
 
-        public async Task<IEnumerable<Classroom>> getAll()
+        public async Task<IEnumerable<Classroom>> getAll(FilterValue filter)
         {
-            return await classroomRepository.GetAll();
+            return await classroomRepository.GetAll(filter);
         }
 
         public async Task<Classroom> getOne(int id)

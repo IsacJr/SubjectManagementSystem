@@ -7,7 +7,7 @@ namespace SubjectManagementSystem.Service
     public interface ITeamService
     {
         Task<Team> getOne(int id);
-        Task<IEnumerable<Team>> getAll();
+        Task<IEnumerable<Team>> getAll(FilterValue filter);
         Task<Team> Insert(Team team);
         Task<Team> Update(Team team);  
         Task<Team> Delete(int id); 

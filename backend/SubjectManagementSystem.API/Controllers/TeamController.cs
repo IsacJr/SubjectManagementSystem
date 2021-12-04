@@ -23,9 +23,9 @@ namespace SubjectManagementSystem.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Team>> GetAll()
+        public async Task<IEnumerable<Team>> GetAll([FromQuery]FilterValue filter)
         {
-            return await _teamService.getAll();
+            return await _teamService.getAll(filter);
         }
 
         [HttpGet("{id}")]

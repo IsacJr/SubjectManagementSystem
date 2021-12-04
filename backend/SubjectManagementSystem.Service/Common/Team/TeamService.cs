@@ -13,9 +13,9 @@ namespace SubjectManagementSystem.Service
             this.teamRepository = teamRepository;
         }
 
-        public async Task<IEnumerable<Team>> getAll()
+        public async Task<IEnumerable<Team>> getAll(FilterValue filter)
         {
-            return await teamRepository.GetAll();
+            return await teamRepository.GetAll(filter);
         }
 
         public async Task<Team> getOne(int id)

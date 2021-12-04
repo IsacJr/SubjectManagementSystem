@@ -13,9 +13,9 @@ namespace SubjectManagementSystem.Service
             this.challengeRepository = challengeRepository;
         }
 
-        public async Task<IEnumerable<Challenge>> getAll()
+        public async Task<IEnumerable<Challenge>> getAll(FilterValue filter)
         {
-            return await challengeRepository.GetAll();
+            return await challengeRepository.GetAll(filter);
         }
 
         public async Task<Challenge> getOne(int id)

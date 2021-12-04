@@ -7,7 +7,7 @@ namespace SubjectManagementSystem.Service
     public interface IClassroomService
     {
         Task<Classroom> getOne(int id);
-        Task<IEnumerable<Classroom>> getAll();
+        Task<IEnumerable<Classroom>> getAll(FilterValue filter);
         Task<Classroom> Insert(Classroom classroom);
         Task<Classroom> Update(Classroom classroom);  
         Task<Classroom> Delete(int id); 
