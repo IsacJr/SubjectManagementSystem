@@ -24,6 +24,7 @@ namespace SubjectManagementSystem.Repository
                     query = query.Where<User>(x => x.IdInstitution == filter.Institution);
                 }
             }
+            query = query.Include(x => x.Institution);
             
 
             return await query.ToListAsync();
