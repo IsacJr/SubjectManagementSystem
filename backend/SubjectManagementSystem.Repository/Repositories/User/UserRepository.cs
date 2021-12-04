@@ -19,7 +19,12 @@ namespace SubjectManagementSystem.Repository
                 {
                     query = query.Where<User>(x => (int?)x.Type == filter.UserType);
                 }
+                else if(filter.Institution != null)
+                {
+                    query = query.Where<User>(x => x.IdInstitution == filter.Institution);
+                }
             }
+            
 
             return await query.ToListAsync();
         }

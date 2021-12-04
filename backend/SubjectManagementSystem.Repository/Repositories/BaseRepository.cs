@@ -48,6 +48,7 @@ namespace SubjectManagementSystem.Repository
         public async Task<T> Update(T entity)
         {
             if (entity == null) throw new ArgumentNullException("entity");
+            dbContext.Update(entity);
             await dbContext.SaveChangesAsync();
             return entity;
         }
