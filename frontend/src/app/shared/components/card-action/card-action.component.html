@@ -8,13 +8,19 @@
         </div>
         <div class="card-action-buttons">
             <div class="card-button-item">
-                <button type="button" class="btn btn-outline-success btn-sm" (click)="onVisualizeClick()">Visualizar</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" (click)="onVisualizeClick()">
+                    <fa-icon [icon]="faEye"></fa-icon>
+                </button>
             </div>
             <div class="card-button-item">
-                <button type="button" class="btn btn-outline-secondary btn-sm" (click)="onEditClick()">Editar</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" (click)="onEditClick()">
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                </button>
             </div>
             <div class="card-button-item">
-                <button type="button" class="btn btn-outline-danger btn-sm" (click)="onDeleteClick()">Apagar</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" (click)="onDeleteClick()">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                </button>
             </div>
         </div>
     </div>

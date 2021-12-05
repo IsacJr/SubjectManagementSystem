@@ -5,6 +5,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CardActionComponent } from './components/card-action/card-action.component';
 import { RouterModule } from '@angular/router';
 import { FilterComponent } from './components/filter/filter.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -17,6 +18,7 @@ import { FilterComponent } from './components/filter/filter.component';
   ],
   imports: [
     CommonModule,
+    FontAwesomeModule,
     RouterModule
   ],
   exports: [
