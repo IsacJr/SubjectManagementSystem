@@ -19,9 +19,14 @@ namespace SubjectManagementSystem.Repository
                 {
                     query = query.Where<User>(x => (int?)x.Type == filter.UserType);
                 }
-                else if(filter.Institution != null)
+                if(filter.Institution != null)
                 {
                     query = query.Where<User>(x => x.IdInstitution == filter.Institution);
+                }
+                if(filter.Page != null)
+                {
+                    filter.Page = filter.Page <= 0 ? 1 : filter.Page;
+                    query = query.Skip((((int)filter.Page) - 1) * PageSize).Take(PageSize);
                 }
             }
             query = query.Include(x => x.Institution);

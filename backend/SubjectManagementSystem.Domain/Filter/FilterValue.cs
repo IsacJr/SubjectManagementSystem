@@ -8,6 +8,7 @@ namespace SubjectManagementSystem.Domain
         public int? Subject { get; set; }
         public int? Professor { get; set; }
         public int? UserType { get; set; }
+        public int? Page { get; set; }
         
     }
 }
