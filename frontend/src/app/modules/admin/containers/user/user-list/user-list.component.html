@@ -7,8 +7,7 @@
         <a class="btn btn-outline-primary" [routerLink]="['/admin/user/new']">{{ NEW_ENTITY_BUTTON_LABEL }}</a>
     </div>
     <div class="filter-button-container">
-        <div class="filter-button-item">
-        </div>
+        <app-filter-user [institutionInput]="institutionList"></app-filter-user>
     </div>
 </div>
 

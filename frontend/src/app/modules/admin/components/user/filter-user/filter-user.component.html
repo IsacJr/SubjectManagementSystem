@@ -1,0 +1,18 @@
+<form [formGroup]="userFilterForm">
+    <div class="filter-container">
+        <div class="filter-item">
+            <label class="form-label">Instituição</label>
+            <select class="form-select" aria-label="Tipo" formControlName="institution" (change)="changeInstitution($event)">
+                <option [value]="null" selected disabled>Selecione um item</option>
+                <option *ngFor="let institution of institutionInput" [value]="institution.id">{{ institution.name }}</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <label class="form-label">Tipo</label>
+            <select class="form-select" aria-label="Tipo" formControlName="type" (change)="changeType($event)">
+                <option [value]="null" selected disabled>Selecione um item</option>
+                <option *ngFor="let type of userTypeInput" [value]="type.value">{{ type.name }}</option>
+            </select>
+        </div>
+    </div>
+</form>

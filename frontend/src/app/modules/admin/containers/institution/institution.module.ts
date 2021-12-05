@@ -4,6 +4,8 @@ import { InstitutionListComponent } from './institution-list/institution-list.co
 import { InstitutionNewComponent } from './institution-new/institution-new.component';
 import { RouterModule } from '@angular/router';
 import { InstitutionRoutes } from './institution-routing.module';
+import { InstitutionFacade } from './institution.facade';
+import { InstitutionAPI } from './api/institution.api';
 
 
 
@@ -15,6 +17,10 @@ import { InstitutionRoutes } from './institution-routing.module';
   imports: [
     CommonModule,
     RouterModule.forChild(InstitutionRoutes)
+  ],
+  providers: [
+    InstitutionAPI,
+    InstitutionFacade
   ]
 })
 export class InstitutionModule { }

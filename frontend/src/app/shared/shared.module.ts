@@ -4,6 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CardActionComponent } from './components/card-action/card-action.component';
 import { RouterModule } from '@angular/router';
+import { FilterComponent } from './components/filter/filter.component';
 
 
 
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    CardActionComponent
+    CardActionComponent,
+    FilterComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { RouterModule } from '@angular/router';
   exports: [
     HeaderComponent,
     FooterComponent,
-    CardActionComponent
+    CardActionComponent,
+    FilterComponent
   ]
 })
 export class SharedModule { }

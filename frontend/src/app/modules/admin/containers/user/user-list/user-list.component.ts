@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserFacade } from '../challenge.facade';
+import { InstitutionFacade } from '../../institution/institution.facade';
+import { UserFacade } from '../user.facade';
 
 @Component({
   selector: 'app-user-list',
@@ -12,11 +13,17 @@ export class UserListComponent implements OnInit {
   readonly NEW_ENTITY_BUTTON_LABEL = "Novo Usuário"
 
   userList: any[] = [];
+  institutionList: any[] = [];
+  userType: any[] = [];
 
-  constructor(private userFacade: UserFacade) { }
+  constructor(
+    private userFacade: UserFacade,
+    private institutionFacade: InstitutionFacade
+  ) { }
 
   ngOnInit(): void {
     this.userFacade.getAll().subscribe(response => this.userList = response);
+    this.institutionFacade.getAll().subscribe(response => this.institutionList = response);
   }
 
   handleVisualize() {

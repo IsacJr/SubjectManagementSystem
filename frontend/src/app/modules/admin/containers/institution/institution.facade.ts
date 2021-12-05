@@ -1,29 +1,29 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { UserAPI } from "./api/user.api";
+import { InstitutionAPI } from "./api/institution.api";
 
 @Injectable()
-export class UserFacade {
+export class InstitutionFacade {
 
-    constructor(private challengeApi: UserAPI){ }
+    constructor(private institutionApi: InstitutionAPI){ }
 
     public getAll(): Observable<any> {
-        return this.challengeApi.getAllUsers();
+        return this.institutionApi.getAllInstitutions();
     }
 
     public getOne(id: number): Observable<any> {
-        return this.challengeApi.getOneUser(id);
+        return this.institutionApi.getOneInstitution(id);
     }
 
     public post(payload: any): Observable<any> {
-        return this.challengeApi.postUser(payload);
+        return this.institutionApi.postInstitution(payload);
     }
 
     public put(payload: any): Observable<any> {
-        return this.challengeApi.putUser(payload);
+        return this.institutionApi.putInstitution(payload);
     }
 
     public delete(id: number): Observable<any> {
-        return this.challengeApi.deleteUser(id);
+        return this.institutionApi.deleteInstitution(id);
     }
 }

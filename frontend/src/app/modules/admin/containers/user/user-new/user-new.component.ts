@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { UserFacade } from '../challenge.facade';
+import { UserFacade } from '../user.facade';
 
 @Component({
   selector: 'app-user-new',
@@ -27,11 +27,11 @@ export class UserNewComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private userFacade: UserFacade) {
     this.userForm = this.formBuilder.group({
       name: '',
-      type: '',
+      type: null,
       email: '',
       birthday: '',
       city: '',
-      state: ''
+      state: null
     })
   }
 
@@ -46,12 +46,10 @@ export class UserNewComponent implements OnInit {
 
   changeState(event: any) {
     this.userForm.get('state')?.setValue(+event.target.value);
-    console.log(event.target.value);
   }
 
   changeType(event: any) {
     this.userForm.get('type')?.setValue(+event.target.value);
-    console.log(event.target.value);
   }
 
 }
