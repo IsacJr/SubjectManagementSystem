@@ -14,16 +14,13 @@
 <div class="body-container">
     <div class="card-list">
         <div class="card-wraper" *ngFor="let user of userList">
-            <!-- <app-card-user [user]="user" (visualizeEvent)="handleVisualize($event)">
-            </app-card-user> -->
-
             <app-card-action
                 (visualizeEvent)="handleVisualize()"
                 (editEvent)="handleEdit()"
                 (deleteEvent)="handleDelete()"
             >
                 <div title>
-                    {{ user ? user.name : {} }}
+                    {{ user ? user.name : "" }}
                 </div>
                 <div content>
                     {{ user | json }}

@@ -6,6 +6,7 @@ import { CardActionComponent } from './components/card-action/card-action.compon
 import { RouterModule } from '@angular/router';
 import { FilterComponent } from './components/filter/filter.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DeleteDialogComponent } from './components/dialogs/delete-dialog/delete-dialog.component';
 
 
 
@@ -14,7 +15,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HeaderComponent,
     FooterComponent,
     CardActionComponent,
-    FilterComponent
+    FilterComponent,
+    DeleteDialogComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HeaderComponent,
     FooterComponent,
     CardActionComponent,
-    FilterComponent
+    FilterComponent,
+    DeleteDialogComponent
   ]
 })
 export class SharedModule { }

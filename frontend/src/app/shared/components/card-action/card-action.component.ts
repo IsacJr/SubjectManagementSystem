@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { faEye, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-card-action',
@@ -15,7 +16,9 @@ export class CardActionComponent implements OnInit {
   faEye = faEye;
   faEdit = faEdit;
   faTrash = faTrash;
-  
+
+  deleteClick = new Subject<void>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -30,7 +33,8 @@ export class CardActionComponent implements OnInit {
   }
 
   onDeleteClick() {
-    this.deleteEvent.emit({});
+    console.log('card-action: onDeleteClick');
+    this.deleteClick.next();
   }
 
 }
