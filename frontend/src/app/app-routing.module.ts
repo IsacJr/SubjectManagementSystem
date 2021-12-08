@@ -13,6 +13,18 @@ const routes: Routes = [
     loadChildren: () => import('./modules/challenge/challenge.module').then(m => m.ChallengeModule)
   },
   {
+    path: 'classroom',
+    loadChildren: () => import('./modules/classroom/classroom.module').then(m => m.ClassroomModule)
+  },
+  {
+    path: 'team',
+    loadChildren: () => import('./modules/team/team.module').then(m => m.TeamModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule)
+  },
+  {
     path: 'admin',
     loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
   }

@@ -1,23 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChallengeComponent } from './containers/challenge/challenge.component';
-import { InstitutionComponent } from './containers/institution/institution.component';
-import { ClassroomComponent } from './containers/classroom/classroom.component';
-import { TeamComponent } from './containers/team/team.component';
-import { NewChallengeComponent } from './containers/new-challenge/new-challenge.component';
-import { ChallengeAPI } from './api/challenge.api';
-import { ChallengeFacade } from './challenge.facade';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ChallengeAPI } from './api/challenge.api';
 import { ChallengeRoutes } from './challenge-routing.module';
-
+import { ChallengeFacade } from './challenge.facade';
+import { ChallengeComponent } from './containers/challenge/challenge-list/challenge.component';
+import { NewChallengeComponent } from './containers/challenge/new-challenge/new-challenge.component';
 
 
 @NgModule({
   declarations: [
     ChallengeComponent,
-    InstitutionComponent,
-    ClassroomComponent,
-    TeamComponent,
     NewChallengeComponent
   ],
   imports: [

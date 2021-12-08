@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ChallengeFacade } from '../../challenge.facade';
+import { ChallengeFacade } from '../../../challenge.facade';
+
 
 @Component({
   selector: 'app-challenge',

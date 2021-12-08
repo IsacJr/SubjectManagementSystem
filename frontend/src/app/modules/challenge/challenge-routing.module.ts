@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { ChallengeComponent } from './containers/challenge/challenge.component';
-import { NewChallengeComponent } from './containers/new-challenge/new-challenge.component';
+import { ChallengeComponent } from './containers/challenge/challenge-list/challenge.component';
+import { NewChallengeComponent } from './containers/challenge/new-challenge/new-challenge.component';
 
 export const ChallengeRoutes: Routes = [
     {

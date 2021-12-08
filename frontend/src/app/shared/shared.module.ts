@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { FilterComponent } from './components/filter/filter.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DeleteDialogComponent } from './components/dialogs/delete-dialog/delete-dialog.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 
@@ -16,7 +17,8 @@ import { DeleteDialogComponent } from './components/dialogs/delete-dialog/delete
     FooterComponent,
     CardActionComponent,
     FilterComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { DeleteDialogComponent } from './components/dialogs/delete-dialog/delete
     FooterComponent,
     CardActionComponent,
     FilterComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    PaginationComponent
   ]
 })
 export class SharedModule { }
