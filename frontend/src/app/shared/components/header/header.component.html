@@ -22,10 +22,10 @@
                 <a class="nav-link" href="#">Meu Perfil</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" #navbarDropdownMenuLink role="button" data-bs-toggle="dropdown" aria-expanded="false" (click)="trigger()">
                   Admin
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <ul #ulmenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <li><a class="dropdown-item" [routerLink]="['/admin/user']">Usuário</a></li>
                   <li><a class="dropdown-item" [routerLink]="['/admin/institution']">Instituição</a></li>
                 </ul>

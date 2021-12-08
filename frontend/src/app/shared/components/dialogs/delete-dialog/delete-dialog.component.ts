@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, EventEmitter, ViewChild, ElementRef, Output } from '@angular/core';
 import { Modal } from 'bootstrap';
 import { Observable, Subscriber, Subscription } from 'rxjs';
 
@@ -10,22 +10,21 @@ import { Observable, Subscriber, Subscription } from 'rxjs';
 })
 export class DeleteDialogComponent implements OnInit {
 
-  @Input() title? = '';
-  @Input() message? = '';
+  @Input() title? = 'Apagar';
+  @Input() message? = 'Tem certeza que deseja apagar?';
   @Input() handleDeleteEvent: Observable<any> | undefined;
+
+  @Output() modalResponse = new EventEmitter<boolean>();
 
   @ViewChild('deleteModal', {static:true}) private deleteModal: ElementRef | undefined;
   private subscription: Subscription | undefined;
   private myDeleteModal: Modal | undefined;
-  
 
   constructor() { }
 
   ngOnInit(): void {
     this.subscription = this.handleDeleteEvent?.subscribe(() => this.openModal());
     
-    // const element = document.querySelector('.delete-modal') as HTMLElement;
-    const element = document.getElementById('deleteModal') as HTMLElement;
     this.myDeleteModal = new Modal(this.deleteModal?.nativeElement, {
       keyboard: false
     });
@@ -35,9 +34,13 @@ export class DeleteDialogComponent implements OnInit {
   openModal() {
     this.myDeleteModal?.show();
   }
-  onCloseHandled() {
-    console.log('onclosehandled');
+  closeModal() {
     this.myDeleteModal?.hide();
+  }
+
+  actionModal() {
+    this.modalResponse.emit(true);
+    this.closeModal();
   }
 
   ngOnDestroy(): void {
