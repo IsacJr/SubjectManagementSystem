@@ -1,1 +1,25 @@
-<p>institution-list works!</p>
+<div class="title-container">
+    <h2>Lista de Instituições</h2>
+</div>
+<div class="actions-button-container">
+    <div class="new-container">
+        <a class="btn btn-outline-secondary" [routerLink]="['/admin/institution/new']">Nova Instituição</a>
+    </div>
+</div>
+<div class="body-container">
+    <div class="card-list">
+        <div class="card-wraper" *ngFor="let institution of institutionList">
+            <app-card-action
+            >
+                <div title>
+                    {{ institution ? institution.name : '-' }}
+                </div>
+                <div content>
+                    {{ institution | json }}
+                </div>
+            </app-card-action>
+        </div>
+    </div>
+    <div class="card-pagination">
+    </div>
+</div>

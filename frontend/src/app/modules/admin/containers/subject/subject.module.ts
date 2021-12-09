@@ -6,6 +6,7 @@ import { SubjectListComponent } from './subject-list/subject-list.component';
 import { SubjectNewComponent } from './subject-new/subject-new.component';
 import { SubjectAPI } from './api/subject.api';
 import { SubjectFacade } from './subject.facade';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -16,6 +17,7 @@ import { SubjectFacade } from './subject.facade';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild(SubjectRoutes)
   ],
   providers: [

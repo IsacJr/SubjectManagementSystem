@@ -14,6 +14,7 @@ namespace SubjectManagementSystem.Domain
         public string Description { get; set; }
         public string Material { get; set; }
         public StatusEnum Status { get; set; }
+        public virtual string StatusDescription { get { return Status.GetDescription(); } }
         public int? IdInCharge { get; set; }
         public virtual User InCharge { get; set; }
         public int IdCreator { get; set; }

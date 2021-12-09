@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { TeamComponent } from './team-list/team.component';
+import { TeamComponent } from './containers/team-list/team.component';
 
 
 export const TeamRoutes: Routes = [

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ProfileRoutes } from './profile-routing.module';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './containers/profile/profile.component';
 
 
 @NgModule({

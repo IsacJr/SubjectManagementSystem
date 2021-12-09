@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ClassroomComponent } from './classroom-list/classroom.component';
+import { ClassroomAPI } from './api/classroom.api';
 import { ClassroomRoutes } from './classroom-routing.module';
+import { ClassroomFacade } from './classroom.facade';
+import { ClassroomComponent } from './containers/classroom-list/classroom.component';
 
 
 @NgModule({
@@ -14,7 +16,8 @@ import { ClassroomRoutes } from './classroom-routing.module';
     RouterModule.forChild(ClassroomRoutes)
   ],
   providers: [
-    
+    ClassroomAPI,
+    ClassroomFacade
   ]
 })
 export class ClassroomModule { }

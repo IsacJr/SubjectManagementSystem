@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InstitutionFacade } from '../institution.facade';
 
 @Component({
   selector: 'app-institution-list',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstitutionListComponent implements OnInit {
 
-  constructor() { }
+  institutionList: any[] = [];
+
+  constructor(
+    private institutionFacade: InstitutionFacade
+  ) { }
 
   ngOnInit(): void {
+    this.institutionFacade.getAll().subscribe(response => this.institutionList = response);
   }
 
 }

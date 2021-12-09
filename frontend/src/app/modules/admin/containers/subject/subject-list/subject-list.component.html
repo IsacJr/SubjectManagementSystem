@@ -1,1 +1,25 @@
-<p>subject-list works!</p>
+<div class="title-container">
+    <h2>Lista de Disciplinas</h2>
+</div>
+<div class="actions-button-container">
+    <div class="new-container">
+        <a class="btn btn-outline-secondary" [routerLink]="['/admin/subject/new']">Nova Disciplina</a>
+    </div>
+</div>
+<div class="body-container">
+    <div class="card-list">
+        <div class="card-wraper" *ngFor="let subject of subjectList">
+            <app-card-action
+            >
+                <div title>
+                    {{ subject ? subject.name : '-' }}
+                </div>
+                <div content>
+                    {{ subject | json }}
+                </div>
+            </app-card-action>
+        </div>
+    </div>
+    <div class="card-pagination">
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
-import { ClassroomComponent } from './classroom-list/classroom.component';
+import { ClassroomComponent } from './containers/classroom-list/classroom.component';
+
 
 export const ClassroomRoutes: Routes = [
     {

@@ -11,6 +11,7 @@ namespace SubjectManagementSystem.Domain
         public string Street { get; set; }
         public string City { get; set; }
         public StateEnum State { get; set; }
+        public virtual string StateDescription { get { return State.GetDescription(); } }
         public int? IdField { get; set; }
         public virtual Field Field { get; set; }
 

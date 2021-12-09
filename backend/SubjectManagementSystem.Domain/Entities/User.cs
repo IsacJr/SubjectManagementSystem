@@ -7,10 +7,12 @@ namespace SubjectManagementSystem.Domain
     {
         public string Name { get; set; }
         public UserTypeEnum? Type { get; set; }
+        public virtual string TypeDescription { get { return Type.GetDescription(); } }
         public string Email { get; set; }
         public DateTime? Birthday { get; set; }
         public string City { get; set; }
         public StateEnum? State { get; set; }
+        public virtual string StateDescription { get { return State.GetDescription(); } }
         public int? IdInstitution { get; set; }
         public virtual Institution Institution { get; set; }
         public virtual List<UserField> Fields { get; set; }

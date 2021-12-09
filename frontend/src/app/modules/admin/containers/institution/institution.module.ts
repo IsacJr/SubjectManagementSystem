@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { InstitutionRoutes } from './institution-routing.module';
 import { InstitutionFacade } from './institution.facade';
 import { InstitutionAPI } from './api/institution.api';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -16,6 +17,7 @@ import { InstitutionAPI } from './api/institution.api';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild(InstitutionRoutes)
   ],
   providers: [

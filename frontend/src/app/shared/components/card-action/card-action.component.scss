@@ -5,9 +5,11 @@
 .card-body {
     display: flex;
     flex-direction: column;
+    margin: 10px;
 }
 
 .card-content {
+    margin-bottom: 15px;
     flex-grow: 1;
 }
 
