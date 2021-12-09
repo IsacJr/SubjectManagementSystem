@@ -15,7 +15,20 @@
                     {{ institution ? institution.name : '-' }}
                 </div>
                 <div content>
-                    {{ institution | json }}
+                    <div class="row">
+                        <div class="col-lg-4 d-flex flex-column">
+                            <label>CNPJ: </label>
+                            {{ institution.employerIdentificationNumber }}
+                        </div>
+                        <div class="col-lg-4 d-flex flex-column">
+                            <label>Área: </label>
+                            {{ institution?.field?.name || '-'  }}
+                        </div>
+                        <div class="col-lg-4 d-flex flex-column">
+                            <label>Estado: </label>
+                            {{ institution.stateDescription }}
+                        </div>
+                    </div>
                 </div>
             </app-card-action>
         </div>

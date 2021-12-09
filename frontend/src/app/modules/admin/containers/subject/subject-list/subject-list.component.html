@@ -15,7 +15,16 @@
                     {{ subject ? subject.name : '-' }}
                 </div>
                 <div content>
-                    {{ subject | json }}
+                    <div class="row">
+                        <div class="col-lg-4 d-flex flex-column">
+                            <label>Nível:</label>
+                            {{ subject.levelDescription }}
+                        </div>
+                        <div class="col-lg-8 d-flex flex-column">
+                            <label>Área:</label>
+                            {{ subject.fieldDescription || '-' }}
+                        </div>
+                    </div>
                 </div>
             </app-card-action>
         </div>

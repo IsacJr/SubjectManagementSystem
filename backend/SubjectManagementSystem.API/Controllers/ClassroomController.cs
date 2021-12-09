@@ -23,7 +23,7 @@ namespace SubjectManagementSystem.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Classroom>> GetAll(FilterValue filter)
+        public async Task<IEnumerable<Classroom>> GetAll([FromQuery]FilterValue filter)
         {
             return await _classroomService.getAll(filter);
         }

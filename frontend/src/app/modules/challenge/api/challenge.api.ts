@@ -6,7 +6,7 @@ import { BaseApi } from "src/app/core/services/base.api";
 @Injectable()
 export class ChallengeAPI extends BaseApi<any> {
 
-    private readonly API_BASE = super.baseUrl + '/User';
+    private readonly API_BASE = super.baseUrl + '/Challenge';
 
     constructor(protected override http: HttpClient) {
         super(http);

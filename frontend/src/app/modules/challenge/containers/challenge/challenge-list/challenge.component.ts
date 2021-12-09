@@ -9,12 +9,12 @@ import { ChallengeFacade } from '../../../challenge.facade';
 })
 export class ChallengeComponent implements OnInit {
 
-  challengeList: any;
+  challengeList: any[] = [];
 
   constructor(private challengeFacade: ChallengeFacade) { }
 
   ngOnInit(): void {
-    
+    this.challengeFacade.getAll().subscribe(response => this.challengeList = response);
   }
 
 }

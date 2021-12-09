@@ -1,1 +1,43 @@
-<p>classroom works!</p>
+<div class="title-container">
+    <h2>Lista de Turmas</h2>
+</div>
+<div class="actions-button-container">
+    <div class="new-container">
+        <a class="btn btn-outline-secondary" [routerLink]="['/admin/classroom/new']">Nova Turma</a>
+    </div>
+</div>
+<div class="body-container">
+    <div class="card-list">
+        <div class="card-wraper" *ngFor="let classroom of classroomList">
+            <app-card-action>
+                <div title>
+                    {{ classroom ? classroom.name : '-' }}
+                </div>
+                <div content>
+                    <div class="row mb-3">
+                        <div class="col-lg-12 d-flex flex-column">
+                            <label>Descrição: </label>
+                            {{ classroom.description }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 d-flex flex-column">
+                            <label>Professor: </label>
+                            {{ classroom?.professor?.name || '-'}}
+                        </div>
+                        <div class="col-lg-4 d-flex flex-column">
+                            <label>Data de início: </label>
+                            {{ classroom.startDate }}
+                        </div>
+                        <div class="col-lg-4 d-flex flex-column">
+                            <label>Data de fim: </label>
+                            {{ classroom.endDate }}
+                        </div>
+                    </div>
+                </div>
+            </app-card-action>
+        </div>
+    </div>
+    <div class="card-pagination">
+    </div>
+</div>

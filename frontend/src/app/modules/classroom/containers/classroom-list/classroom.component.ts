@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClassroomFacade } from '../../classroom.facade';
 
 @Component({
   selector: 'app-classroom',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClassroomComponent implements OnInit {
 
-  constructor() { }
+  classroomList: any[] = [];
+
+  constructor(
+    private classroomFacade: ClassroomFacade
+  ) { }
 
   ngOnInit(): void {
+    this.classroomFacade.getAll().subscribe(response => this.classroomList = response);
   }
+
 
 }
