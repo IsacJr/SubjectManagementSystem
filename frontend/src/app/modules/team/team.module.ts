@@ -6,11 +6,13 @@ import { TeamAPI } from './api/team.api';
 import { TeamComponent } from './containers/team-list/team.component';
 import { TeamRoutes } from './team-routing.module';
 import { TeamFacade } from './team.facade';
+import { TeamNewComponent } from './containers/team-new/team-new.component';
 
 
 @NgModule({
   declarations: [
-    TeamComponent
+    TeamComponent,
+    TeamNewComponent
   ],
   imports: [
     CommonModule,
