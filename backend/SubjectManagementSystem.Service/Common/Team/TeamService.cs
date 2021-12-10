@@ -23,13 +23,10 @@ namespace SubjectManagementSystem.Service
             return await teamRepository.Get(id);
         }
 
-        public async Task<Team> Insert(Team team)
+        public async Task<Team> Insert(TeamDto teamDto)
         {
-            team.Mentor = null;
-            team.Members = null;
-            team.ProblemChallenge = null;
             
-            return await teamRepository.Insert(team);
+            return await teamRepository.Insert(teamDto);
         }
 
         public async Task<Team> Update(Team team)

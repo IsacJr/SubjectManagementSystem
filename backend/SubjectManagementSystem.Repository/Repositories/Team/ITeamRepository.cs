@@ -7,5 +7,6 @@ namespace SubjectManagementSystem.Repository
     public interface ITeamRepository : IBaseRepository<Team>
     {
         Task<IEnumerable<Team>> GetAll(FilterValue filter);
+        Task<Team> Insert(TeamDto TeamDto);
     }
 }

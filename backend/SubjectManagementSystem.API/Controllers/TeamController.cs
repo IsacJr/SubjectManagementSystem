@@ -35,9 +35,9 @@ namespace SubjectManagementSystem.API.Controllers
         }
 
         [HttpPost]
-        public async Task<Team> Create(Team team)
+        public async Task<Team> Create(TeamDto teamDto)
         {
-            return await _teamService.Insert(team);
+            return await _teamService.Insert(teamDto);
         }
 
         [HttpPut]

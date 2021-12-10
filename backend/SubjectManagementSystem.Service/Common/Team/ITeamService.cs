@@ -8,7 +8,7 @@ namespace SubjectManagementSystem.Service
     {
         Task<Team> getOne(int id);
         Task<IEnumerable<Team>> getAll(FilterValue filter);
-        Task<Team> Insert(Team team);
+        Task<Team> Insert(TeamDto teamDto);
         Task<Team> Update(Team team);  
         Task<Team> Delete(int id); 
     }
