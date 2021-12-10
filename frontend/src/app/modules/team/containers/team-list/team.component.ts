@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TeamFacade } from '../../team.facade';
 
 @Component({
   selector: 'app-team',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamComponent implements OnInit {
 
-  constructor() { }
+  teamList: any[] = [];
+
+  constructor(
+    private teamFacade: TeamFacade
+  ) { }
 
   ngOnInit(): void {
+    this.teamFacade.getAll().subscribe(response => this.teamList = response);
   }
 
 }

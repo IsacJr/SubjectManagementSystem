@@ -1,1 +1,38 @@
-<p>team works!</p>
+<div class="title-container">
+    <h2>Lista de Equipes</h2>
+</div>
+<div class="actions-button-container">
+    <div class="new-container">
+        <a class="btn btn-outline-secondary" [routerLink]="['/admin/team/new']">Nova Equipe</a>
+    </div>
+</div>
+<div class="body-container">
+    <div class="card-list">
+        <div class="card-wraper" *ngFor="let team of teamList">
+            <app-card-action
+            >
+                <div title>
+                    {{ team ? team.code : '-' }}
+                </div>
+                <div content>
+                    <div class="row mb-3">
+                        <div class="col-lg-12 d-flex flex-column">
+                            <label>Mentor: </label>
+                            {{ team.mentor?.name || '-' }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 d-flex flex-column">
+                            <label>Equipe: </label>
+                            <div class="d-flex">
+                                <span *ngFor="let member of team.members">{{ member.user.name || '-' }},</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </app-card-action>
+        </div>
+    </div>
+    <div class="card-pagination">
+    </div>
+</div>
