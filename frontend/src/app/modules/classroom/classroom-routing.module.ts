@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { ClassroomComponent } from './containers/classroom-list/classroom.component';
+import { ClassroomNewComponent } from './containers/classroom-new/classroom-new.component';
 
 
 export const ClassroomRoutes: Routes = [
@@ -16,6 +17,10 @@ export const ClassroomRoutes: Routes = [
     {
         path: 'list',
         component: ClassroomComponent
+    },
+    {
+        path: 'new',
+        component: ClassroomNewComponent
     }
 ];
 

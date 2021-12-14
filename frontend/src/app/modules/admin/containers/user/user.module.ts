@@ -12,6 +12,10 @@ import { UserNewComponent } from './user-new/user-new.component';
 import { UserRoutes } from './user-routing.module';
 import { InstitutionAPI } from '../institution/api/institution.api';
 import { InstitutionFacade } from '../institution/institution.facade';
+import { EducationLevelFacade } from 'src/app/shared/services/education-level.facade';
+import { EducationLevelAPI } from 'src/app/shared/api/education-level.api';
+import { StateAPI } from 'src/app/shared/api/state.api';
+import { StateFacade } from 'src/app/shared/services/state.facade';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,9 @@ import { InstitutionFacade } from '../institution/institution.facade';
     UserAPI,
     UserFacade,
     InstitutionAPI,
-    InstitutionFacade
+    InstitutionFacade,
+    StateAPI,
+    StateFacade
   ]
 })
 export class UserModule { }

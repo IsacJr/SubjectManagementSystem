@@ -1,0 +1,70 @@
+<div class="title-container">
+    <h2>Nova Turma</h2>
+</div>
+
+<div class="body-container">
+    <form [formGroup]="classroomForm" (ngSubmit)="onSubmit()">
+
+        <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Descrição" aria-label="Descrição" formControlName="description">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Horário" aria-label="Horário" formControlName="schedule">
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Sala" aria-label="Sala" formControlName="room">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <input type="number" class="form-control" placeholder="Ano" aria-label="Ano" formControlName="year">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Semestre" aria-label="Semestre" formControlName="semester">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <input type="number" class="form-control" placeholder="Vagas" aria-label="Vagas" formControlName="spotAvailable">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Plano de Aula" aria-label="Plano de Aula" formControlName="classPlan">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <select class="form-select" aria-label="Professor" formControlName="idProfessor" (change)="changeProfessor($event)">
+                    <option [value]="null" selected disabled >Selecione um tipo</option>
+                    <option *ngFor="let tp of professorList" [value]="tp.id">{{ tp.name }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <input type="date" class="form-control" placeholder="Data de Início" aria-label="Data de Início" formControlName="startDate">
+            </div>
+            <div class="col">
+                <input type="date" class="form-control" placeholder="Data de Encerramento" aria-label="Data de Início" formControlName="endDate">
+            </div>
+        </div>
+
+        <button class="btn btn-outline-success" type="submit">Salvar</button>
+    </form>
+</div>

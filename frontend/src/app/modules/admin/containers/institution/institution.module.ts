@@ -7,6 +7,11 @@ import { InstitutionRoutes } from './institution-routing.module';
 import { InstitutionFacade } from './institution.facade';
 import { InstitutionAPI } from './api/institution.api';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { StateAPI } from 'src/app/shared/api/state.api';
+import { StateFacade } from 'src/app/shared/services/state.facade';
+import { FieldAPI } from '../field/api/field.api';
+import { FieldFacade } from '../field/field.facade';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,11 +23,17 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(InstitutionRoutes)
   ],
   providers: [
     InstitutionAPI,
-    InstitutionFacade
+    InstitutionFacade,
+    StateAPI,
+    StateFacade,
+    FieldAPI,
+    FieldFacade
   ]
 })
 export class InstitutionModule { }

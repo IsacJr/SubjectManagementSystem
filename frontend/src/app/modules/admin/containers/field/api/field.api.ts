@@ -4,37 +4,32 @@ import { Observable } from "rxjs";
 import { BaseApi } from "src/app/core/services/base.api";
 
 @Injectable()
-export class UserAPI extends BaseApi<any> {
+export class FieldAPI extends BaseApi<any> {
 
-    private readonly API_BASE = super.baseUrl + '/User';
+    private readonly API_BASE = super.baseUrl + '/Field';
 
     constructor(protected override http: HttpClient) {
         super(http);
     }
 
-    public getAllUsers(): Observable<any> {
+    public getAllFields(): Observable<any> {
         return super.get(this.API_BASE);
     }
 
-    public getOneUser(id: number): Observable<any> {
+    public getOneField(id: number): Observable<any> {
         return super.getOne(this.API_BASE, id);
     }
 
-    public postUser(payload: any): Observable<any> {
+    public postField(payload: any): Observable<any> {
         return super.post(this.API_BASE, payload);
     }
 
-    public putUser(payload: any): Observable<any> {
+    public putField(payload: any): Observable<any> {
         return super.put(this.API_BASE, payload);
     }
 
-    public deleteUser(id: number): Observable<any> {
+    public deleteField(id: number): Observable<any> {
         return super.delete(this.API_BASE, id);
-    }
-
-    public getAllUserTypes(): Observable<any> {
-        const url = this.API_BASE + '/GetAllUserType';
-        return super.get(url);
     }
 
 }

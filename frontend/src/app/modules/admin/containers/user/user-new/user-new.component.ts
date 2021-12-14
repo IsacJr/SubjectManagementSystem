@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { StateFacade } from 'src/app/shared/services/state.facade';
 import { UserFacade } from '../user.facade';
 
 @Component({
@@ -10,21 +11,12 @@ import { UserFacade } from '../user.facade';
 export class UserNewComponent implements OnInit {
 
   readonly PAGE_TITLE_LABEL = "Novo Usuário";
+  stateList = [] as any[];
+  userTypeList = [] as any[];
+
   userForm: FormGroup;
-
-  stateMock = [
-    { value: 0, name: 'Acre' },
-    { value: 1, name: 'Amapá' },
-    { value: 2, name: 'Bahia' }
-  ]
-
-  typeMock = [
-    { value: 0, name: 'Parceiro' },
-    { value: 1, name: 'Professor' },
-    { value: 2, name: 'Estudante' }
-  ]
   
-  constructor(private formBuilder: FormBuilder, private userFacade: UserFacade) {
+  constructor(private formBuilder: FormBuilder, private userFacade: UserFacade, private stateFacade: StateFacade) {
     this.userForm = this.formBuilder.group({
       name: '',
       type: null,
@@ -32,7 +24,10 @@ export class UserNewComponent implements OnInit {
       birthday: '',
       city: '',
       state: null
-    })
+    });
+
+    stateFacade.getAll().subscribe(response => this.stateList = response);
+    userFacade.getAllUserTypes().subscribe(response => this.userTypeList = response);
   }
 
   ngOnInit(): void {
@@ -40,7 +35,6 @@ export class UserNewComponent implements OnInit {
 
   onSubmit() {
     const payload = this.userForm.value;
-    console.log(payload);
     this.userFacade.post(payload).subscribe(response => console.log(response));
   }
 

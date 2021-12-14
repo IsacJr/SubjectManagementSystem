@@ -3,7 +3,7 @@
 </div>
 <div class="actions-button-container">
     <div class="new-container">
-        <a class="btn btn-outline-secondary" [routerLink]="['/admin/classroom/new']">Nova Turma</a>
+        <a class="btn btn-outline-secondary" [routerLink]="['/classroom/new']">Nova Turma</a>
     </div>
 </div>
 <div class="body-container">
@@ -27,11 +27,11 @@
                         </div>
                         <div class="col-lg-4 d-flex flex-column">
                             <label>Data de início: </label>
-                            {{ classroom.startDate }}
+                            {{ classroom.startDate | date:'shortDate' }}
                         </div>
                         <div class="col-lg-4 d-flex flex-column">
                             <label>Data de fim: </label>
-                            {{ classroom.endDate }}
+                            {{ classroom.endDate | date:'shortDate' }}
                         </div>
                     </div>
                 </div>

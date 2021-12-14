@@ -31,7 +31,7 @@ namespace SubjectManagementSystem.Repository
             return await entities.SingleOrDefaultAsync(s => s.Id == id);
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public virtual async Task<IEnumerable<T>> GetAll()
         {
             return await entities.ToListAsync();
         }

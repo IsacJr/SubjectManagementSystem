@@ -26,4 +26,8 @@ export class UserFacade {
     public delete(id: number): Observable<any> {
         return this.challengeApi.deleteUser(id);
     }
+
+    public getAllUserTypes(): Observable<any> {
+        return this.challengeApi.getAllUserTypes();
+    }
 }

@@ -21,7 +21,7 @@
             <div class="col">
                 <select class="form-select" aria-label="Tipo" formControlName="type" (change)="changeType($event)">
                     <option [value]="null" selected disabled >Selecione um tipo</option>
-                    <option *ngFor="let tp of typeMock" [value]="tp.value">{{ tp.name }}</option>
+                    <option *ngFor="let tp of userTypeList" [value]="tp.value">{{ tp.name }}</option>
                 </select>
             </div>
         </div>
@@ -36,7 +36,7 @@
             <div class="col">
                 <select class="form-select" aria-label="state" formControlName="state" (change)="changeState($event)">
                     <option [value]="null" selected disabled >Selecione Estado</option>
-                    <option  *ngFor="let st of stateMock" [value]="st.value">{{ st.name }}</option>
+                    <option  *ngFor="let st of stateList" [value]="st.value">{{ st.name }}</option>
                 </select>
             </div>
         </div>

@@ -1,1 +1,38 @@
-<p>subject-new works!</p>
+<div class="title-container">
+    <h2>Nova Disciplina</h2>
+</div>
+
+<div class="body-container">
+    <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()">
+
+        <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Nome" aria-label="Nome" formControlName="name">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Ementa" aria-label="Ementa" formControlName="syllabus">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <select class="form-select" aria-label="Nivel" formControlName="level" (change)="changeEducationLevel($event)">
+                    <option [value]="null" selected disabled >Selecione um Nível</option>
+                    <option *ngFor="let tp of educatioLevelList" [value]="tp.value">{{ tp.name }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col mb-3">
+            <select class="form-select" aria-label="field" formControlName="idField" (change)="changeField($event)">
+                <option [value]="null" selected disabled >Selecione uma Área</option>
+                <option  *ngFor="let st of fieldList" [value]="st.id">{{ st.name }}</option>
+            </select>
+        </div>
+
+        <button class="btn btn-outline-success" type="submit">Salvar</button>
+    </form>
+</div>
