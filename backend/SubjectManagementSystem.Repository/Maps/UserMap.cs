@@ -24,7 +24,7 @@ namespace SubjectManagementSystem.Repository
 
 
             //foreign keys from another tables
-            builder.HasOne(x => x.Team).WithOne(x => x.Mentor).HasForeignKey<Team>(x => x.IdMentor);
+            // builder.HasOne(x => x.Team).WithOne(x => x.Mentor).HasForeignKey<Team>(x => x.IdMentor);
             // builder.HasOne(x => x.ChallengeInCharge).WithOne(x => x.InCharge).HasForeignKey<Challenge>(x => x.IdInCharge);
             // builder.HasOne(x => x.ChallengeCreator).WithOne(x => x.Creator).HasForeignKey<Challenge>(x => x.IdCreator);
             
