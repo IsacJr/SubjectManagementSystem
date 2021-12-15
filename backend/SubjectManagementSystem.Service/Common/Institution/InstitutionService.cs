@@ -27,7 +27,6 @@ namespace SubjectManagementSystem.Service
         {
             institution.Field = null;
             institution.User = null;
-            institution.Challenge = null;
             
             return await institutionRepository.Insert(institution);
         }

@@ -25,8 +25,7 @@ namespace SubjectManagementSystem.Service
 
         public async Task<User> Insert(User user)
         {
-            user.ChallengeCreator = null;
-            user.ChallengeInCharge = null;
+
             user.Institution = null;
             user.Fields = null;
             

@@ -18,6 +18,6 @@ namespace SubjectManagementSystem.Domain
 
         //foreign key from another tables
         public virtual User User { get; set; }
-        public virtual Challenge Challenge { get; set; }
+        // public virtual Challenge Challenge { get; set; }
     }
 }
