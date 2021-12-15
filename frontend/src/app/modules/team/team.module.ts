@@ -7,6 +7,9 @@ import { TeamComponent } from './containers/team-list/team.component';
 import { TeamRoutes } from './team-routing.module';
 import { TeamFacade } from './team.facade';
 import { TeamNewComponent } from './containers/team-new/team-new.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserAPI } from '../admin/containers/user/api/user.api';
+import { UserFacade } from '../admin/containers/user/user.facade';
 
 
 @NgModule({
@@ -17,11 +20,15 @@ import { TeamNewComponent } from './containers/team-new/team-new.component';
   imports: [
     CommonModule,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(TeamRoutes)
   ],
   providers: [
     TeamAPI,
-    TeamFacade
+    TeamFacade,
+    UserAPI,
+    UserFacade
   ]
 })
 export class TeamModule { }

@@ -1,1 +1,25 @@
-<p>team-new works!</p>
+<div class="title-container">
+    <h2>Novo Time</h2>
+</div>
+
+<div class="body-container">
+    <form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
+
+        <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Solução" aria-label="Solução" formControlName="solution">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <select class="form-select" aria-label="Mentor" formControlName="idMentor" (change)="changeMentor($event)">
+                    <option [value]="null" selected disabled >Selecione um mentor</option>
+                    <option *ngFor="let tp of mentorList" [value]="tp.id">{{ tp.name }}</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="btn btn-outline-success" type="submit">Salvar</button>
+    </form>
+</div>
