@@ -15,9 +15,6 @@
             <div class="col">
                 <input type="text" class="form-control" placeholder="Horário" aria-label="Horário" formControlName="schedule">
             </div>
-        </div>
-        
-        <div class="row mb-3">
             <div class="col">
                 <input type="text" class="form-control" placeholder="Sala" aria-label="Sala" formControlName="room">
             </div>
@@ -27,9 +24,6 @@
             <div class="col">
                 <input type="number" class="form-control" placeholder="Ano" aria-label="Ano" formControlName="year">
             </div>
-        </div>
-
-        <div class="row mb-3">
             <div class="col">
                 <input type="text" class="form-control" placeholder="Semestre" aria-label="Semestre" formControlName="semester">
             </div>
@@ -50,8 +44,14 @@
         <div class="row mb-3">
             <div class="col">
                 <select class="form-select" aria-label="Professor" formControlName="idProfessor" (change)="changeProfessor($event)">
-                    <option [value]="null" selected disabled >Selecione um tipo</option>
+                    <option [value]="null" selected disabled >Selecione um professor</option>
                     <option *ngFor="let tp of professorList" [value]="tp.id">{{ tp.name }}</option>
+                </select>
+            </div>
+            <div class="col">
+                <select class="form-select" aria-label="Disciplina" formControlName="idSubject" (change)="changeSubject($event)">
+                    <option [value]="null" selected disabled >Selecione uma disciplina</option>
+                    <option *ngFor="let tp of subjectList" [value]="tp.id">{{ tp.name }}</option>
                 </select>
             </div>
         </div>

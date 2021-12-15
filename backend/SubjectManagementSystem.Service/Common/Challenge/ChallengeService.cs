@@ -27,7 +27,7 @@ namespace SubjectManagementSystem.Service
         {
             challenge.Institution = null;
             challenge.Field = null;
-            challenge.Institution = null;
+            challenge.Classroom= null;
             challenge.InCharge = null;
             challenge.Creator = null;
             challenge.Contract = null;

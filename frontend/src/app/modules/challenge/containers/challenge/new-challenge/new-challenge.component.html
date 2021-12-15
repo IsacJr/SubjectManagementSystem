@@ -1,1 +1,77 @@
-<p>new-challenge works!</p>
+<div class="title-container">
+    <h2>Novo Desafio</h2>
+</div>
+
+<div class="body-container">
+    <form [formGroup]="challengeForm" (ngSubmit)="onSubmit()">
+
+        <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Título" aria-label="Título" formControlName="title">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Subtítulo" aria-label="Subtítulo" formControlName="caption">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Descrição" aria-label="Descrição" formControlName="description">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Material" aria-label="Material" formControlName="material">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <select class="form-select" aria-label="Instituição" formControlName="idInstitution" (change)="changeInstitution($event)">
+                    <option [value]="null" selected disabled >Selecione uma instituição</option>
+                    <option *ngFor="let tp of institutionList" [value]="tp.id">{{ tp.name }}</option>
+                </select>
+            </div>
+            <div class="col">
+                <select class="form-select" aria-label="Área" formControlName="idField" (change)="changeField($event)">
+                    <option [value]="null" selected disabled >Selecione uma área</option>
+                    <option *ngFor="let tp of fieldList" [value]="tp.id">{{ tp.name }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <select class="form-select" aria-label="Status" formControlName="status" (change)="changeStatus($event)">
+                    <option [value]="null" selected disabled >Selecione um status</option>
+                    <option *ngFor="let tp of statusList" [value]="tp.value">{{ tp.name }}</option>
+                </select>
+            </div>
+            <div class="col">
+                <select class="form-select" aria-label="Responsável" formControlName="idInCharge" (change)="changeInCharge($event)">
+                    <option [value]="null" selected disabled >Selecione uma responsável</option>
+                    <option *ngFor="let tp of inChargeList" [value]="tp.id">{{ tp.name }}</option>
+                </select>
+            </div>
+            <div class="col">
+                <select class="form-select" aria-label="Turma" formControlName="idClassroom" (change)="changeInClassroom($event)">
+                    <option [value]="null" selected disabled >Selecione uma turma</option>
+                    <option *ngFor="let tp of classroomList" [value]="tp.id">{{ tp.name }}</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="row mb-3">
+            <div class="col">
+              <input type="number" class="form-control" placeholder="Autor" aria-label="Autor" formControlName="idCreator">
+            </div>
+        </div>
+
+        <button class="btn btn-outline-success" type="submit">Salvar</button>
+    </form>
+</div>
