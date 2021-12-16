@@ -20,14 +20,15 @@
             </div>
         </div>
 
-        <div class="row mb-3">
-            <div class="col">
-                <select class="form-select" multiple aria-label="Mentor" formControlName="idMentor" (change)="changeMentor($event)">
-                    <option [value]="null" selected disabled >Selecione um mentor</option>
-                    <option *ngFor="let tp of mentorList" [value]="tp.id">{{ tp.name }}</option>
-                </select>
-            </div>
-        </div>
+        <ng-select class="mb-3"
+            [items]="memberList"
+            bindLabel="name"
+            placeholder="Select item"
+            appendTo="body"
+            [multiple]="true"
+            [(ngModel)]="selectedMemberList"
+            [ngModelOptions]="{standalone: true}">
+        </ng-select>
 
         <button class="btn btn-outline-success" type="submit">Salvar</button>
     </form>

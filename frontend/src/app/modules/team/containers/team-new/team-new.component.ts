@@ -12,8 +12,11 @@ export class TeamNewComponent implements OnInit {
 
   mentorList = [] as any[];
   memberList = [] as any[];
+  selectedMemberList = [] as any[];
 
   teamForm: FormGroup;
+
+  public readonly isMultiple = true;
   
   constructor(
     private formBuilder: FormBuilder,
@@ -37,19 +40,21 @@ export class TeamNewComponent implements OnInit {
   }
 
   onSubmit() {
-    const payload = this.buildPayload();
-    console.log('onSubmit: ', payload);
-    // this.userFacade.post(payload).subscribe(response => console.log(response));
+    const payload = this.buildTeamPayload();
+    this.teamFacade.post(payload).subscribe(response => console.log(response));
   }
 
-  buildPayload() {
+  buildTeamPayload() {
+    const idUserList = this.selectedMemberList.map(user => user.id);
+
     const payload = {
       team: {
         idMentor: this.teamForm.get('idMentor')?.value,
         solution: this.teamForm.get('solution')?.value
       },
-      idUserList: []
+      idUserList
     }
+
     return payload;
   }
 

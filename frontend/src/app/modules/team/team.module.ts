@@ -10,6 +10,7 @@ import { TeamNewComponent } from './containers/team-new/team-new.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserAPI } from '../admin/containers/user/api/user.api';
 import { UserFacade } from '../admin/containers/user/user.facade';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { UserFacade } from '../admin/containers/user/user.facade';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    NgSelectModule,
     RouterModule.forChild(TeamRoutes)
   ],
   providers: [
