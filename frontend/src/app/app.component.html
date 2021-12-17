@@ -1,5 +1,5 @@
-<app-header></app-header>
-<div class="app-container">
+<app-header [IsVisible]="IsPageWithMenu"></app-header>
+<div [ngClass]="{'app-container': IsPageWithMenu}">
     <router-outlet></router-outlet>
 </div>
-<app-footer></app-footer>
+<app-footer [IsVisible]="IsPageWithMenu"></app-footer>

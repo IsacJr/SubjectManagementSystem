@@ -20,6 +20,7 @@ namespace SubjectManagementSystem.Repository
             builder.Property(x => x.State).HasColumnName("state");
             builder.Property(x => x.IdInstitution).HasColumnName("id_institution");
             builder.Property(x => x.ProfilePicture).HasColumnName("profile_picture");
+            builder.Property(x => x.Password).HasColumnName("password");
 
 
 

@@ -17,6 +17,7 @@ namespace SubjectManagementSystem.Domain
         public virtual Institution Institution { get; set; }
         public virtual List<UserField> Fields { get; set; }
         public string ProfilePicture { get; set; }
+        public string Password { get; set; }
         
         
 

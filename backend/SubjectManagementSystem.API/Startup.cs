@@ -17,6 +17,9 @@ using SubjectManagementSystem.Repository;
 using Microsoft.EntityFrameworkCore;
 using SubjectManagementSystem.Service;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace SubjectManagementSystem.API
 {
@@ -85,6 +88,33 @@ namespace SubjectManagementSystem.API
 
             services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
+
+            #region JWT Config
+
+            //aqui vai nossa key secreta, o recomendado é guarda - la no arquivo de configuração
+            var secretKey = "ACAC2D1D19DB7100A720E97CCFABF633B7FB77939B278674CA5BAC422F429908";
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+
+            #endregion
+
+
             // Register the Swagger Generator service. This service is responsible for genrating Swagger Documents.
             // Note: Add this service at the end after AddMvc() or AddMvcCore().
             services.AddSwaggerGen(c =>
@@ -112,12 +142,17 @@ namespace SubjectManagementSystem.API
             app.UseRouting();
 
 
+            app.UseAuthentication();
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+            
+
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();

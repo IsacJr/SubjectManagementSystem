@@ -1,0 +1,31 @@
+<div class="login-left">
+    <div class="login-content">
+        <h1>Desafios</h1>
+        <h1>Parcerias</h1>
+        <h1>Aprendizagem</h1>
+    </div>
+</div>
+<div class="login-right">
+    <div class="login-content">
+        <h3>Bem Vindo</h3>
+        <form class="login-form">
+            <div class="d-flex flex-column">
+                <span>Email</span>
+                <div class="row mb-3">
+                    <div class="col">
+                      <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-column">
+                <span>Senha</span>
+                <div class="row mb-3">
+                    <div class="col">
+                      <input type="password" class="form-control" placeholder="Senha" aria-label="Senha">
+                    </div>
+                </div>
+            </div>
+            <a class="btn btn-secondary" [routerLink]="['/challenge']">Login</a>
+        </form>
+    </div>
+</div>

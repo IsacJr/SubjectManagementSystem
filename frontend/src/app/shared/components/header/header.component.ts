@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Dropdown } from 'bootstrap';
 
 @Component({
@@ -7,11 +7,12 @@ import { Dropdown } from 'bootstrap';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  @Input() IsVisible = false;
+  
   @ViewChild('navbarDropdownMenuLink', {static:true}) private dropdownElement: ElementRef | undefined;
   @ViewChild('ulmenu', {static:true}) private dropdownMenu: ElementRef | undefined;
   private myDropdown: Dropdown | undefined;
 
-  constructor() { }
 
   ngOnInit(): void {
     this.myDropdown = new Dropdown(this.dropdownElement?.nativeElement, {

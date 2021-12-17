@@ -1,0 +1,26 @@
+:host {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.login-left,
+.login-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    min-height: 520px;
+}
+
+.login-left {
+    background-color: rgb(54, 50, 50);
+    color: #FFFFFF;
+}
+
+.login-content,
+.login-form {
+    display: flex;
+    flex-direction: column;
+}

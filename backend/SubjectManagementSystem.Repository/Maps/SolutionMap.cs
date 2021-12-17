@@ -6,7 +6,7 @@ namespace SubjectManagementSystem.Repository
 {
     public class SolutionMap : BaseEntityMap<Solution>
     {
-        public SolutionMap() : base("tb_Solution") { }
+        public SolutionMap() : base("tb_solution") { }
 
         public override void Configure(EntityTypeBuilder<Solution> builder)
         {
