@@ -12,8 +12,9 @@ export class UserAPI extends BaseApi<any> {
         super(http);
     }
 
-    public getAllUsers(): Observable<any> {
-        return super.get(this.API_BASE);
+    public getAllUsers(params?: any): Observable<any> {
+        console.log(params)
+        return super.get(this.API_BASE, params);
     }
 
     public getOneUser(id: number): Observable<any> {

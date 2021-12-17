@@ -7,8 +7,8 @@ export class UserFacade {
 
     constructor(private challengeApi: UserAPI){ }
 
-    public getAll(): Observable<any> {
-        return this.challengeApi.getAllUsers();
+    public getAll(params?: any): Observable<any> {
+        return this.challengeApi.getAllUsers(params);
     }
 
     public getOne(id: number): Observable<any> {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FilterQueryParamsModel } from 'src/app/shared/models/filterQueryParamsModel';
 import { InstitutionFacade } from '../../institution/institution.facade';
 import { UserFacade } from '../user.facade';
 
@@ -14,16 +15,33 @@ export class UserListComponent implements OnInit {
 
   userList: any[] = [];
   institutionList: any[] = [];
-  userType: any[] = [];
+  userTypeList: any[] = [];
+
+  filter: FilterQueryParamsModel | undefined;
 
   constructor(
     private userFacade: UserFacade,
-    private institutionFacade: InstitutionFacade
+    private institutionFacade: InstitutionFacade,
   ) { }
 
   ngOnInit(): void {
     this.userFacade.getAll().subscribe(response => this.userList = response);
     this.institutionFacade.getAll().subscribe(response => this.institutionList = response);
+    this.userFacade.getAllUserTypes().subscribe(response => this.userTypeList = response);
+  }
+
+  handleIntitutionSelect(event: any) {
+    this.filter = { ...this.filter, institution: event }
+    this.doFilter();
+  }
+
+  handleUserType(event: any) {
+    this.filter = { ...this.filter, userType: event }
+    this.doFilter();
+  }
+
+  doFilter(){
+    this.userFacade.getAll(this.filter).subscribe(response => this.userList = response);
   }
 
   handleVisualize() {

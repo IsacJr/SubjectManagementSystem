@@ -13,8 +13,8 @@ export abstract class BaseApi<T> {
         return 'http://localhost:5000/api';
     }
 
-    protected get(url: string): Observable<any> {
-        return this.http.get<T>(url).pipe(map((response: T) => response ));
+    protected get(url: string, params?: any): Observable<any> {
+        return this.http.get<T>(url, { params }).pipe(map((response: T) => response ));
     }
 
     protected getOne(url: string, id: number): Observable<any> {

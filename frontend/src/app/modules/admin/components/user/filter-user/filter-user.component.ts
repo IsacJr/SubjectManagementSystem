@@ -31,12 +31,12 @@ export class FilterUserComponent implements OnInit {
 
   changeInstitution(event: any) {
     this.userFilterForm.get('institution')?.setValue(+event.target.value);
-    console.log(event.target.value);
+    this.selectedInstitution.emit(+event.target.value);
   }
 
   changeType(event: any) {
     this.userFilterForm.get('type')?.setValue(+event.target.value);
-    console.log(event.target.value);
+    this.selectedUserType.emit(+event.target.value);
   }
 
 }
