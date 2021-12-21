@@ -1,1 +1,63 @@
-<p>profile works!</p>
+<div class="title-container">
+    <h2>Meu Perfil</h2>
+</div>
+
+<div class="body-container">
+    <form [formGroup]="userForm">
+        <div class="row">
+            <div class="col">
+                <div class="row mb-3">
+                    <div class="col">
+                    <input type="text" class="form-control" placeholder="Nome" aria-label="Nome" formControlName="name">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <input type="email" class="form-control" placeholder="Email" aria-label="Email" formControlName="email">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <input type="password" class="form-control" placeholder="Senha" aria-label="Senha" formControlName="password">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <select class="form-select" aria-label="Tipo" formControlName="type" (change)="changeType($event)">
+                            <option [value]="null" selected disabled >Selecione um tipo</option>
+                            <option *ngFor="let tp of userTypeList" [value]="tp.value">{{ tp.name }}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <input type="date" class="form-control" placeholder="Data de Nascimento" aria-label="Nome" formControlName="birthday">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Cidade" aria-label="Nome" formControlName="city">
+                    </div>
+                    <div class="col">
+                        <select class="form-select" aria-label="state" formControlName="state" (change)="changeState($event)">
+                            <option [value]="null" selected disabled >Selecione Estado</option>
+                            <option  *ngFor="let st of stateList" [value]="st.value">{{ st.name }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex flex-column">
+                <img class="img-profile mb-3" src="../../../../../assets/profile_picture.jpg" alt="">
+                <div id="upload_button">
+                    <label>
+                      <input type="file" ngf-select ng-model="new_files" ng-change="fs.uploadFiles(new_files)" multiple>
+                      <span class="btn btn-outline-secondary">Upload files</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-outline-success" type="submit">Atualizar</button>
+    </form>
+</div>
