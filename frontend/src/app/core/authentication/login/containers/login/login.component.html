@@ -9,24 +9,26 @@
 <div class="login-right">
     <div class="login-content">
         <h2>Bem-vindo</h2>
-        <form class="login-form">
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
             <div class="login-label d-flex flex-column">
                 <span>Email</span>
                 <div class="row mb-3">
                     <div class="col">
-                      <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+                      <input type="email" class="form-control" placeholder="Email" aria-label="Email" formControlName="email">
                     </div>
                 </div>
             </div>
+
             <div class="login-label d-flex flex-column">
                 <span>Senha</span>
                 <div class="row mb-3">
                     <div class="col">
-                      <input type="password" class="form-control" placeholder="Senha" aria-label="Senha">
+                      <input type="password" class="form-control" placeholder="Senha" aria-label="Senha" formControlName="password">
                     </div>
                 </div>
             </div>
-            <a class="btn btn-secondary" [routerLink]="['/challenge']">Login</a>
+            <button class="btn btn-secondary" type="submit">Login</button>
         </form>
     </div>
 </div>

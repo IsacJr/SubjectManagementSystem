@@ -13,7 +13,6 @@ export class UserAPI extends BaseApi<any> {
     }
 
     public getAllUsers(params?: any): Observable<any> {
-        console.log(params)
         return super.get(this.API_BASE, params);
     }
 

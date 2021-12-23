@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, NavigationStart, Event as NavigationEvent } from '@angular/router';
+import { Router, Event, NavigationStart, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,15 +15,18 @@ export class AppComponent {
   constructor(private router: Router) {
     this.router.events
           .subscribe(
-            (event: NavigationEvent) => {
-              if(event instanceof NavigationStart) {
+            (event: Event) => {
+              if(event instanceof NavigationEnd) {
+                this.currentRoute = event.url;
+              }
+              else if(event instanceof NavigationStart) {
                 this.currentRoute = event.url;
               }
             });
   }
 
   get IsPageWithMenu() {
-    if(this.currentRoute && this.currentRoute === this.loginUrl){
+    if(this.currentRoute && (this.currentRoute === this.loginUrl || this.currentRoute === '/')){
       return false;
     }
     return true;

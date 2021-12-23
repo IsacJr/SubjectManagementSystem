@@ -12,3 +12,12 @@
     width: 45px;
     height: 45px;;
 }
+
+.navbar-nav{
+    display: flex;
+    width: 100%;
+}
+
+.logout-item {
+    align-self: flex-end;
+}

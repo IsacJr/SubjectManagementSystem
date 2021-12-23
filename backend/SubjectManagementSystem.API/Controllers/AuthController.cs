@@ -12,23 +12,23 @@ namespace SubjectManagementSystem.API
     [Route("[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly IUserService _userService;
+        private readonly IAuthenticationService _authService;
 
-        public AuthController(IUserService userService)
+        public AuthController(IAuthenticationService authService)
         {
-            this._userService = userService;
+            this._authService = authService;
         }
 
-        [HttpPost]
+        [HttpPost("Auth")]
         [AllowAnonymous]
-        public async Task<IActionResult> Auth([FromBody]User user)
+        public async Task<IActionResult> Auth([FromBody]AuthDto user)
         {
             try
             {
                 //uma boa prática seria usar DI (Injeção de dependência)
                 //mas não é o foco do artigo
 
-                var userExists = await _userService.GetOne(user.Id);
+                var userExists = await _authService.getByEmail(user.Email);
 
                 if (userExists == null)
                     return BadRequest(new { Message = "Email e/ou senha está(ão) inválido(s)." });
@@ -42,8 +42,7 @@ namespace SubjectManagementSystem.API
 
                 return Ok(new
                 {
-                    Token = token,
-                    Usuario = userExists
+                    Jwt = token
                 });
 
             }

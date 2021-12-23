@@ -35,6 +35,11 @@ namespace SubjectManagementSystem.Repository
             return await query.ToListAsync();
         }
 
+        public async Task<User> GetByEmail(string email)
+        {
+            return await entities.SingleOrDefaultAsync(s => s.Email == email);
+        }
+
 
     }
 }
