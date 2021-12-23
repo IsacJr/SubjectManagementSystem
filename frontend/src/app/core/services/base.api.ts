@@ -19,7 +19,7 @@ export abstract class BaseApi<T> {
 
     protected getOne(url: string, id: number): Observable<any> {
         const urlFull = `${url}/${id}`;
-        return this.http.get<T>(url).pipe(map((response: T) => response));
+        return this.http.get<T>(urlFull).pipe(map((response: T) => response));
     }
 
     protected post(url: string, payload: T): Observable<any> {

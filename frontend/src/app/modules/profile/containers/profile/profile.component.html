@@ -7,25 +7,29 @@
         <div class="row">
             <div class="col">
                 <div class="row mb-3">
-                    <div class="col">
-                    <input type="text" class="form-control" placeholder="Nome" aria-label="Nome" formControlName="name">
+                    <div class="view-label col d-flex flex-column">
+                        <label>Nome</label>
+                        <input type="text" class="form-control" placeholder="Nome" aria-label="Nome" formControlName="name">
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <div class="col">
+                    <div class="view-label col d-flex flex-column">
+                        <label>Email</label>
                         <input type="email" class="form-control" placeholder="Email" aria-label="Email" formControlName="email">
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <div class="col">
+                    <div class="view-label col d-flex flex-column">
+                        <label>Senha</label>
                         <input type="password" class="form-control" placeholder="Senha" aria-label="Senha" formControlName="password">
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <div class="col">
+                    <div class="view-label col d-flex flex-column">
+                        <label>Tipo de Perfil</label>
                         <select class="form-select" aria-label="Tipo" formControlName="type" (change)="changeType($event)">
                             <option [value]="null" selected disabled >Selecione um tipo</option>
                             <option *ngFor="let tp of userTypeList" [value]="tp.value">{{ tp.name }}</option>
@@ -34,13 +38,16 @@
                 </div>
 
                 <div class="row mb-3">
-                    <div class="col">
+                    <div class="view-label col d-flex flex-column">
+                        <label>Data de Nascimento</label>
                         <input type="date" class="form-control" placeholder="Data de Nascimento" aria-label="Nome" formControlName="birthday">
                     </div>
-                    <div class="col">
+                    <div class="view-label col d-flex flex-column">
+                        <label>Cidade</label>
                         <input type="text" class="form-control" placeholder="Cidade" aria-label="Nome" formControlName="city">
                     </div>
-                    <div class="col">
+                    <div class="view-label col d-flex flex-column">
+                        <label>Estado</label>
                         <select class="form-select" aria-label="state" formControlName="state" (change)="changeState($event)">
                             <option [value]="null" selected disabled >Selecione Estado</option>
                             <option  *ngFor="let st of stateList" [value]="st.value">{{ st.name }}</option>
@@ -48,12 +55,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col d-flex flex-column">
+            <div class="view-label col d-flex flex-column">
                 <img class="img-profile mb-3" src="../../../../../assets/profile_picture.jpg" alt="">
                 <div id="upload_button">
                     <label>
                       <input type="file" ngf-select ng-model="new_files" ng-change="fs.uploadFiles(new_files)" multiple>
-                      <span class="btn btn-outline-secondary">Upload files</span>
+                      <span class="btn btn-outline-secondary">Alterar Foto</span>
                     </label>
                 </div>
             </div>

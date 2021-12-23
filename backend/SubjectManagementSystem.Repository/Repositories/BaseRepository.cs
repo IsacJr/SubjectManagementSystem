@@ -26,7 +26,7 @@ namespace SubjectManagementSystem.Repository
             return entity;
         }
 
-        public async Task<T> Get(int id)
+        public virtual async Task<T> Get(int id)
         {
             return await entities.SingleOrDefaultAsync(s => s.Id == id);
         }
