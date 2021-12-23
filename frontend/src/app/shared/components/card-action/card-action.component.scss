@@ -3,13 +3,14 @@
 }
 
 .card-body {
-    display: flex;
-    flex-direction: column;
     margin: 10px;
 }
 
 .card-title {
-    font-size: 1.6rem;
+    width: 30%;
+    .card-title-label {
+        font-size: 1.6rem;
+    }
 }
 
 .card-content {
@@ -20,7 +21,7 @@
 
 .card-action-buttons {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
 
     .card-button-item {
         margin-left: 10px;

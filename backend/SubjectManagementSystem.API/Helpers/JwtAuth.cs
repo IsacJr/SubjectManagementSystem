@@ -21,6 +21,7 @@ namespace SubjectManagementSystem.API
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name, user.Name.ToString()),
+                    new Claim(ClaimTypes.Email, user.Email.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddHours(10),
 

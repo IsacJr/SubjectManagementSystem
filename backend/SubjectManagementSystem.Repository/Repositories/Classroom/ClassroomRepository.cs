@@ -28,5 +28,13 @@ namespace SubjectManagementSystem.Repository
 
             return await query.ToListAsync();
         }
+
+        public override async Task<Classroom> Get(int id)
+        {
+            return await entities
+                            .Include(x => x.Professor)
+                            .Include(x => x.Subject)
+                            .SingleOrDefaultAsync(s => s.Id == id);
+        }
     }
 }

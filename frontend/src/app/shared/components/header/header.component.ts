@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-  get isLogoutButtonVisible() {
+  get isLoggedIn() {
     return this.authService.isLoggedIn();
   }
 
