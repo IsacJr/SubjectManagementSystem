@@ -22,13 +22,15 @@ import { ChallengeFacade } from './challenge.facade';
 import { ChallengeComponent } from './containers/challenge/challenge-list/challenge.component';
 import { NewChallengeComponent } from './containers/challenge/new-challenge/new-challenge.component';
 import { ViewChallengeComponent } from './containers/challenge/view-challenge/view-challenge.component';
+import { ProblemChallengeListComponent } from './containers/problem-challenge/problem-challenge-list/problem-challenge-list.component';
 
 
 @NgModule({
   declarations: [
     ChallengeComponent,
     NewChallengeComponent,
-    ViewChallengeComponent
+    ViewChallengeComponent,
+    ProblemChallengeListComponent
   ],
   imports: [
     CommonModule,

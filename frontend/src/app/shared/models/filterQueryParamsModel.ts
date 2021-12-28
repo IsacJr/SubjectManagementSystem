@@ -4,7 +4,9 @@ export interface FilterQueryParamsModel {
     institution?: number,
     subject?: number,
     professor?: number,
-    userType?: number
+    challenge?: number,
+    userType?: number,
+    page?: number
 }
 
 export interface FilterItem {

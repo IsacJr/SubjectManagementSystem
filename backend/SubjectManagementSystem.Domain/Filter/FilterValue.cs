@@ -7,6 +7,7 @@ namespace SubjectManagementSystem.Domain
         public int? Institution { get; set; }
         public int? Subject { get; set; }
         public int? Professor { get; set; }
+        public int? Challenge { get; set; }
         public int? UserType { get; set; }
         public int? Page { get; set; }
         
