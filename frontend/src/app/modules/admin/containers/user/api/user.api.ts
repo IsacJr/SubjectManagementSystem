@@ -37,4 +37,9 @@ export class UserAPI extends BaseApi<any> {
         return super.get(url);
     }
 
+    public getUserByEmail(payload: any): Observable<any> {
+        const customUrl = this.API_BASE + '/GetByEmail';
+        return super.post(customUrl, payload);
+    }
+
 }

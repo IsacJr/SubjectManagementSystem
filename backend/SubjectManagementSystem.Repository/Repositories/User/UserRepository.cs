@@ -40,6 +40,11 @@ namespace SubjectManagementSystem.Repository
             return await entities.SingleOrDefaultAsync(s => s.Email == email);
         }
 
+        public User GetByEmailInfo(string email)
+        {
+            return entities.FirstOrDefault(s => s.Email == email);
+        }
+
 
     }
 }

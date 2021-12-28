@@ -8,5 +8,6 @@ namespace SubjectManagementSystem.Repository
     {
         Task<IEnumerable<User>> GetAll(FilterValue filter);
         Task<User> GetByEmail(string email);
+        User GetByEmailInfo(string email);
     }
 }

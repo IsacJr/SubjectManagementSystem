@@ -5,29 +5,33 @@ import { UserAPI } from "./api/user.api";
 @Injectable()
 export class UserFacade {
 
-    constructor(private challengeApi: UserAPI){ }
+    constructor(private userApi: UserAPI){ }
 
     public getAll(params?: any): Observable<any> {
-        return this.challengeApi.getAllUsers(params);
+        return this.userApi.getAllUsers(params);
     }
 
     public getOne(id: number): Observable<any> {
-        return this.challengeApi.getOneUser(id);
+        return this.userApi.getOneUser(id);
     }
 
     public post(payload: any): Observable<any> {
-        return this.challengeApi.postUser(payload);
+        return this.userApi.postUser(payload);
     }
 
     public put(payload: any): Observable<any> {
-        return this.challengeApi.putUser(payload);
+        return this.userApi.putUser(payload);
     }
 
     public delete(id: number): Observable<any> {
-        return this.challengeApi.deleteUser(id);
+        return this.userApi.deleteUser(id);
     }
 
     public getAllUserTypes(): Observable<any> {
-        return this.challengeApi.getAllUserTypes();
+        return this.userApi.getAllUserTypes();
+    }
+
+    public getUserByEmail(payload: any): Observable<any> {
+        return this.userApi.getUserByEmail(payload);
     }
 }

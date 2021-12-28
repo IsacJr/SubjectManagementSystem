@@ -11,6 +11,6 @@ namespace SubjectManagementSystem.Service
         Task<User> Insert(User user);
         Task<User> Update(User user);  
         Task<User> Delete(int id);
-        Task<User> GetByEmail(string email);
+        User GetByEmail(string email);
     }
 }

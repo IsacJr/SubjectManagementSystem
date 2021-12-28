@@ -12,6 +12,7 @@ export class AuthService {
 
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
+  private readonly USER_INFO = 'USER_INFO';
   private loggedUser: string | undefined | null;
 
   constructor(private http: HttpClient) {}
@@ -59,11 +60,13 @@ export class AuthService {
   private doLoginUser(email: string, tokens: Tokens) {
     this.loggedUser = email;
     this.storeTokens(tokens);
+    this.storeUserInfo(email);
   }
 
   private doLogoutUser() {
     this.loggedUser = null;
     this.removeTokens();
+    this.removeUserInfo();
   }
 
   private getRefreshToken() {
@@ -82,6 +85,18 @@ export class AuthService {
   private removeTokens() {
     localStorage.removeItem(this.JWT_TOKEN);
     // localStorage.removeItem(this.REFRESH_TOKEN);
+  }
+
+  private storeUserInfo(email: string) {
+    localStorage.setItem(this.USER_INFO, email);
+  }
+
+  getUserInfo() {
+    return localStorage.getItem(this.USER_INFO);
+  }
+
+  private removeUserInfo() {
+    localStorage.removeItem(this.USER_INFO);
   }
 
 }

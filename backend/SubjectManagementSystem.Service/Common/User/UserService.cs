@@ -34,6 +34,8 @@ namespace SubjectManagementSystem.Service
 
         public async Task<User> Update(User user)
         {
+            user.Institution = null;
+            user.Fields = null;
             return await userRepository.Update(user);
         }
 
@@ -42,9 +44,9 @@ namespace SubjectManagementSystem.Service
             return await userRepository.Delete(id);
         }
 
-        public async Task<User> GetByEmail(string email)
+        public User GetByEmail(string email)
         {
-            return await userRepository.GetByEmail(email);
+            return userRepository.GetByEmailInfo(email);
         }
     }
 }
