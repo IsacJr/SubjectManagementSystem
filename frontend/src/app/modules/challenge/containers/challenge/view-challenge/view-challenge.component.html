@@ -59,8 +59,28 @@
 
 
 
+        <div *ngFor="let problemChallenge of problemChallengeList">
+            <hr style="height:2px; width:100%; border-width:0; color:gray; background-color:gray">
+            <div class="row mb-3">
+                <div class="view-label col d-flex flex-column">
+                    <label>Detalhe:</label>
+                    <span>{{ problemChallenge.detail }}</span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="view-label col d-flex flex-column">
+                    <label>Equipe:</label>
+                    <span>{{ temOptionLabel(problemChallenge.team) }}</span>
+                </div>
+            </div>
+        </div>
+    
+
+
+
 
         <div *ngIf="currentChallengeView === challengeViewMode.problem">
+            <hr style="height:2px; width:100%; border-width:0; color:gray; background-color:gray">
             <div class="row mb-3">
                 <div class="view-label col d-flex flex-column">
                     <label>Detalhamento do Problema:</label>

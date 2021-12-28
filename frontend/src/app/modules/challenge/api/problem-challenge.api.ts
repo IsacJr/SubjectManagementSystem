@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { BaseApi } from "src/app/core/services/base.api";
 
 @Injectable()
-export class ProblemProblemAPI extends BaseApi<any> {
+export class ProblemChallengeAPI extends BaseApi<any> {
 
     private readonly API_BASE = super.baseUrl + '/ProblemChallenge';
 
@@ -12,8 +12,8 @@ export class ProblemProblemAPI extends BaseApi<any> {
         super(http);
     }
 
-    public getAllProblems(): Observable<any> {
-        return super.get(this.API_BASE);
+    public getAllProblems(params?: any): Observable<any> {
+        return super.get(this.API_BASE, params);
     }
 
     public getOneProblem(id: number): Observable<any> {

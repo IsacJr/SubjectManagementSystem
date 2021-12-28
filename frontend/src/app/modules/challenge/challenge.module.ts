@@ -19,12 +19,14 @@ import { ClassroomFacade } from '../classroom/classroom.facade';
 import { TeamAPI } from '../team/api/team.api';
 import { TeamFacade } from '../team/team.facade';
 import { ChallengeAPI } from './api/challenge.api';
+import { ProblemChallengeAPI } from './api/problem-challenge.api';
 import { ChallengeRoutes } from './challenge-routing.module';
 import { ChallengeFacade } from './challenge.facade';
 import { ChallengeComponent } from './containers/challenge/challenge-list/challenge.component';
 import { NewChallengeComponent } from './containers/challenge/new-challenge/new-challenge.component';
 import { ViewChallengeComponent } from './containers/challenge/view-challenge/view-challenge.component';
 import { ProblemChallengeListComponent } from './containers/problem-challenge/problem-challenge-list/problem-challenge-list.component';
+import { ProblemChallengeFacade } from './problem-challenge.facade';
 
 
 @NgModule({
@@ -57,6 +59,8 @@ import { ProblemChallengeListComponent } from './containers/problem-challenge/pr
     StatusFacade,
     TeamAPI,
     TeamFacade,
+    ProblemChallengeAPI,
+    ProblemChallengeFacade,
     ContractAPI,
     ContractFacade
   ]

@@ -7,6 +7,8 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { ContractFacade } from 'src/app/shared/services/contract.facade';
 import { ActivatedRoute } from '@angular/router';
 import { StatusEnumModel } from 'src/app/shared/models/StatusEnumModel';
+import { ProblemChallengeFacade } from '../../../problem-challenge.facade';
+import { FilterQueryParamsModel } from 'src/app/shared/models/filterQueryParamsModel';
 
 
 enum ChallengeViewMode {
@@ -25,6 +27,7 @@ export class ViewChallengeComponent implements OnInit {
   challenge:any = { };
   classroomList = [] as any[];
   teamList = [] as any[];
+  problemChallengeList = [] as any[];
 
   challengeForm: FormGroup;
 
@@ -38,7 +41,8 @@ export class ViewChallengeComponent implements OnInit {
     private classroomFacade: ClassroomFacade,
     private teamFacade: TeamFacade,
     private contractFacade: ContractFacade,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private problemChallengeFacade: ProblemChallengeFacade
   ) {
     this.challengeForm = this.formBuilder.group({
       idClassroom: null,
@@ -68,6 +72,9 @@ export class ViewChallengeComponent implements OnInit {
     this.challengeFacade.getOne(this.id).subscribe(response => this.challenge = response);
     this.classroomFacade.getAll().subscribe(response => this.classroomList = response);
     this.teamFacade.getAll().subscribe(response => this.teamList = response);
+    
+    const problemFilter = { challenge: this.id } as FilterQueryParamsModel;
+    this.problemChallengeFacade.getAll(problemFilter).subscribe(response => this.problemChallengeList = response);
   }
 
   changeInClassroom(event: any) {
@@ -79,23 +86,34 @@ export class ViewChallengeComponent implements OnInit {
   }
 
   temOptionLabel(team: any) {
-    if(team){
+    if(team?.members){
       return team.members.map(( member: any ) => { return member.user.name; }).join(', ');
     }
-    return '';
+    return '-';
   }
 
   onSubmit(){
     if(this.currentChallengeView === ChallengeViewMode.proposing){
       this.proposePartnership();
+    }else if(this.currentChallengeView === ChallengeViewMode.problem){
+      this.createProblemChallenge();
     }
   }
 
   proposePartnership(){
-    const IdClassroom = this.challengeForm.get('idClassroom')?.value;
-    const IdChallenge = this.challenge?.id;
-    const payload = { IdChallenge, IdClassroom };
+    const idClassroom = this.challengeForm.get('idClassroom')?.value;
+    const idChallenge = this.challenge?.id;
+    const payload = { idChallenge, idClassroom };
     this.contractFacade.proposePartnership(payload).subscribe(response => response);
+  }
+
+  createProblemChallenge(){
+    const detail = this.challengeForm.get('description')?.value;
+    const idTeam = this.challengeForm.get('idTeam')?.value;
+    const idChallenge = this.challenge?.id;
+    const payload = { detail, idTeam, idChallenge };
+    console.log('payload problem challenge: ', payload);
+    this.problemChallengeFacade.post(payload).subscribe(response => response);
   }
 
 }

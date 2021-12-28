@@ -7,7 +7,7 @@ namespace SubjectManagementSystem.Service
     public interface IProblemChallengeService
     {
         Task<ProblemChallenge> GetOne(int id);
-        Task<IEnumerable<ProblemChallenge>> GetAll();
+        Task<IEnumerable<ProblemChallenge>> GetAll(FilterValue filter);
         Task<ProblemChallenge> Insert(ProblemChallenge problemChallenge);
         Task<ProblemChallenge> Update(ProblemChallenge problemChallenge);  
         Task<ProblemChallenge> Delete(int id); 
