@@ -40,5 +40,12 @@ namespace SubjectManagementSystem.Service
         {
             return await contractRepository.Delete(id);
         }
+
+        public async Task<Contract> ProposePartnership(Contract contract)
+        {
+            contract.Challenge = null;
+            contract.Classroom = null;
+            return await contractRepository.ProposePartnership(contract);
+        }
     }
 }

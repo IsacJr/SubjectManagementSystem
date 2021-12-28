@@ -4,6 +4,7 @@ import { ClassroomFacade } from 'src/app/modules/classroom/classroom.facade';
 import { TeamFacade } from 'src/app/modules/team/team.facade';
 import { ChallengeFacade } from '../../../challenge.facade';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { ContractFacade } from 'src/app/shared/services/contract.facade';
 
 @Component({
   selector: 'app-view-challenge',
@@ -24,7 +25,8 @@ export class ViewChallengeComponent implements OnInit {
     private formBuilder: FormBuilder,
     private challengeFacade: ChallengeFacade,
     private classroomFacade: ClassroomFacade,
-    private teamFacade: TeamFacade
+    private teamFacade: TeamFacade,
+    private contractFacade: ContractFacade
   ) {
     this.challengeForm = this.formBuilder.group({
       idClassroom: null,
@@ -50,6 +52,16 @@ export class ViewChallengeComponent implements OnInit {
       return team.members.map(( member: any ) => { return member.user.name; }).join(', ');
     }
     return '';
+  }
+
+  onSubmit(){
+    console.log('submitted view challenge')
+  }
+
+  proposePartnership(){
+    const idClassroom = this.challengeForm.get('idClassroom')?.value;
+    const idChallenge = this.challenge.Id;
+    this.contractFacade.proposePartnership({idClassroom, idChallenge});
   }
 
 }

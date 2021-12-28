@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ContractAPI } from 'src/app/shared/api/contract.api';
 import { StatusAPI } from 'src/app/shared/api/status.api';
+import { ContractFacade } from 'src/app/shared/services/contract.facade';
 import { StatusFacade } from 'src/app/shared/services/status.facade';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FieldAPI } from '../admin/containers/field/api/field.api';
@@ -54,7 +56,9 @@ import { ProblemChallengeListComponent } from './containers/problem-challenge/pr
     StatusAPI,
     StatusFacade,
     TeamAPI,
-    TeamFacade
+    TeamFacade,
+    ContractAPI,
+    ContractFacade
   ]
 })
 export class ChallengeModule { }

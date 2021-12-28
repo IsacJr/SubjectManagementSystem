@@ -51,5 +51,12 @@ namespace SubjectManagementSystem.API.Controllers
         {
             return await _contractService.Delete(id);
         }
+
+        [HttpPost("ProposePartnership")]
+        public async Task<Contract> ProposePartnership(Contract contract)
+        {
+            
+            return await _contractService.ProposePartnership(contract);
+        }
     }
 }

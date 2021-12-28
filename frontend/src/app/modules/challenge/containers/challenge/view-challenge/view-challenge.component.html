@@ -3,89 +3,91 @@
 </div>
 
 <div class="body-container">
-    <div class="row mb-3">
-        <div class="view-label col d-flex flex-column">
-            <label>Título:</label>
-            <span>{{ challenge.title }}</span>
+    <form [formGroup]="challengeForm" (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+            <div class="view-label col d-flex flex-column">
+                <label>Título:</label>
+                <span>{{ challenge.title }}</span>
+            </div>
         </div>
-    </div>
 
-    <div class="row mb-3">
-        <div class="view-label col d-flex flex-column">
-            <label>Subtítulo:</label>
-            <span>{{ challenge.caption }}</span>
+        <div class="row mb-3">
+            <div class="view-label col d-flex flex-column">
+                <label>Subtítulo:</label>
+                <span>{{ challenge.caption }}</span>
+            </div>
         </div>
-    </div>
 
-    <div class="row mb-3">
-        <div class="view-label col d-flex flex-column">
-            <label>Descrição:</label>
-            <span>{{ challenge.description }}</span>
+        <div class="row mb-3">
+            <div class="view-label col d-flex flex-column">
+                <label>Descrição:</label>
+                <span>{{ challenge.description }}</span>
+            </div>
         </div>
-    </div>
 
-    <div class="row mb-3">
-        <div class="view-label col d-flex flex-column">
-            <label>Instituição:</label>
-            <span>{{ challenge.institution.name }}</span>
+        <div class="row mb-3">
+            <div class="view-label col d-flex flex-column">
+                <label>Instituição:</label>
+                <span>{{ challenge.institution?.name }}</span>
+            </div>
+            <div class="view-label col d-flex flex-column">
+                <label>Área:</label>
+                <span>{{ challenge.field?.name }}</span>
+            </div>
         </div>
-        <div class="view-label col d-flex flex-column">
-            <label>Área:</label>
-            <span>{{ challenge.field.name }}</span>
+
+        <div class="row mb-3">
+            <div class="view-label col d-flex flex-column">
+                <label>Status:</label>
+                <span>{{ challenge.statusDescription }}</span>
+            </div>
+            <div class="view-label col d-flex flex-column">
+                <label>Responsável:</label>
+                <span>{{ challenge.inCharge?.name }}</span>
+            </div>
         </div>
-    </div>
 
-    <div class="row mb-3">
-        <div class="view-label col d-flex flex-column">
-            <label>Status:</label>
-            <span>{{ challenge.statusDescription }}</span>
+        <div class="row mb-3">
+            <div class="view-label col d-flex flex-column">
+                <label>Turma:</label>
+                <select class="form-select" aria-label="Turma" formControlName="idClassroom" (change)="changeInClassroom($event)">
+                    <option [value]="null" selected disabled >Selecione uma turma</option>
+                    <option *ngFor="let tp of classroomList" [value]="tp.id">{{ tp.subject.name }} - {{ tp.room }}</option>
+                </select>
+            </div>
         </div>
-        <div class="view-label col d-flex flex-column">
-            <label>Responsável:</label>
-            <span>{{ challenge.inCharge.name }}</span>
+
+
+
+
+
+        <!-- <div class="row mb-3">
+            <div class="view-label col d-flex flex-column">
+                <label>Detalhamento do Problema:</label>
+                <textarea class="form-control" rows="4"></textarea>
+            </div>
         </div>
-    </div>
 
-    <div class="row mb-3">
-        <div class="view-label col d-flex flex-column">
-            <label>Turma:</label>
-            <select class="form-select" aria-label="Turma" formControlName="idClassroom" (change)="changeInClassroom($event)">
-                <option [value]="null" selected disabled >Selecione uma turma</option>
-                <option *ngFor="let tp of classroomList" [value]="tp.id">{{ tp.subject.name }} - {{ tp.room }}</option>
-            </select>
-        </div>
-    </div>
-
-
-
-
-
-    <!-- <div class="row mb-3">
-        <div class="view-label col d-flex flex-column">
-            <label>Detalhamento do Problema:</label>
-            <textarea class="form-control" rows="4"></textarea>
-        </div>
-    </div>
-
-    <div class="row mb-3">
-        <div class="view-label col mb-3 d-flex flex-column">
-            <label>Equipe:</label>
-            <select class="form-select" aria-label="Equipe" formControlName="idTeam" (change)="changeInClassroom($event)">
-                <option [value]="null" selected disabled >Selecione uma turma</option>
-                <option *ngFor="let tp of teamList" [value]="tp.id">{{ temOptionLabel(tp) }}</option>
-            </select>
-        </div>
-    </div> -->
+        <div class="row mb-3">
+            <div class="view-label col mb-3 d-flex flex-column">
+                <label>Equipe:</label>
+                <select class="form-select" aria-label="Equipe" formControlName="idTeam" (change)="changeInClassroom($event)">
+                    <option [value]="null" selected disabled >Selecione uma turma</option>
+                    <option *ngFor="let tp of teamList" [value]="tp.id">{{ temOptionLabel(tp) }}</option>
+                </select>
+            </div>
+        </div> -->
+        
     
+        <div class="d-flex flex-column">
+            <!-- <button class="btn btn-outline-success button-plus mb-3">
+                <fa-icon [icon]="faPlus"></fa-icon>
+            </button> -->
+            
+            <button class="btn btn-outline-success button-save" type="submit">Propor Parceria</button>
+        </div>
 
-
-    
+    </form>
 </div>
 
-<div class="d-flex flex-column">
-    <!-- <button class="btn btn-outline-success button-plus mb-3">
-        <fa-icon [icon]="faPlus"></fa-icon>
-    </button> -->
-    
-    <button class="btn btn-outline-success button-save" type="submit">Propor Parceria</button>
-</div>
+

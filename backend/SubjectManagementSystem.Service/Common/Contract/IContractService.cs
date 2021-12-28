@@ -10,6 +10,7 @@ namespace SubjectManagementSystem.Service
         Task<IEnumerable<Contract>> GetAll();
         Task<Contract> Insert(Contract contract);
         Task<Contract> Update(Contract contract);  
-        Task<Contract> Delete(int id); 
+        Task<Contract> Delete(int id);
+        Task<Contract> ProposePartnership(Contract contract);
     }
 }
