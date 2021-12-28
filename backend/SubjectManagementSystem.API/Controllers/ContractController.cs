@@ -55,7 +55,6 @@ namespace SubjectManagementSystem.API.Controllers
         [HttpPost("ProposePartnership")]
         public async Task<Contract> ProposePartnership(Contract contract)
         {
-            
             return await _contractService.ProposePartnership(contract);
         }
     }

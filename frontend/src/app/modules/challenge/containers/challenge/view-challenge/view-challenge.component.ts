@@ -6,7 +6,14 @@ import { ChallengeFacade } from '../../../challenge.facade';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { ContractFacade } from 'src/app/shared/services/contract.facade';
 import { ActivatedRoute } from '@angular/router';
+import { StatusEnumModel } from 'src/app/shared/models/StatusEnumModel';
 
+
+enum ChallengeViewMode {
+  standard,
+  proposing,
+  problem
+}
 @Component({
   selector: 'app-view-challenge',
   templateUrl: './view-challenge.component.html',
@@ -22,6 +29,8 @@ export class ViewChallengeComponent implements OnInit {
   challengeForm: FormGroup;
 
   faPlus = faPlus;
+
+  challengeViewMode = ChallengeViewMode;
   
   constructor(
     private formBuilder: FormBuilder,
@@ -33,6 +42,8 @@ export class ViewChallengeComponent implements OnInit {
   ) {
     this.challengeForm = this.formBuilder.group({
       idClassroom: null,
+      description: '',
+      idTeam: null
     });
     
   }
@@ -42,6 +53,15 @@ export class ViewChallengeComponent implements OnInit {
       this.id = +params['id'];
       this.loadInformation();
     });
+  }
+
+  get currentChallengeView(): ChallengeViewMode {
+    if(this.challenge?.status === StatusEnumModel.notStarted)
+      return ChallengeViewMode.proposing;
+    else if(this.challenge?.status === StatusEnumModel.onProgress)
+      return ChallengeViewMode.problem;
+    
+    return ChallengeViewMode.standard;
   }
 
   loadInformation(){
@@ -66,13 +86,16 @@ export class ViewChallengeComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('submitted view challenge')
+    if(this.currentChallengeView === ChallengeViewMode.proposing){
+      this.proposePartnership();
+    }
   }
 
   proposePartnership(){
-    const idClassroom = this.challengeForm.get('idClassroom')?.value;
-    const idChallenge = this.challenge.Id;
-    this.contractFacade.proposePartnership({idClassroom, idChallenge});
+    const IdClassroom = this.challengeForm.get('idClassroom')?.value;
+    const IdChallenge = this.challenge?.id;
+    const payload = { IdChallenge, IdClassroom };
+    this.contractFacade.proposePartnership(payload).subscribe(response => response);
   }
 
 }

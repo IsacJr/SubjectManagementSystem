@@ -5,9 +5,9 @@ import { ContractAPI } from "../api/contract.api";
 @Injectable()
 export class ContractFacade {
 
-    constructor(private stateApi: ContractAPI){ }
+    constructor(private contractApi: ContractAPI){ }
 
     public proposePartnership(payload: any): Observable<any> {
-        return this.stateApi.postProposePartnership(payload);
+        return this.contractApi.postProposePartnership(payload);
     }
 }
