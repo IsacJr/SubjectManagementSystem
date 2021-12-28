@@ -58,10 +58,10 @@ namespace SubjectManagementSystem.API.Controllers
             return EnumExtensions.GetValues<UserTypeEnum>();
         }
 
-        [HttpGet("GetByEmail")]
-        public async Task<User>  GetAllUserType(UserByEmailDto user)
+        [HttpPost("GetByEmail")]
+        public User  GetByEmail(UserByEmailDto user)
         {
-            return await _userService.GetByEmail(user.Email);
+            return _userService.GetByEmail(user.Email);
         }
     }
 }
