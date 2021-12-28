@@ -41,5 +41,10 @@ namespace SubjectManagementSystem.Service
         {
             return await userRepository.Delete(id);
         }
+
+        public async Task<User> GetByEmail(string email)
+        {
+            return await userRepository.GetByEmail(email);
+        }
     }
 }
