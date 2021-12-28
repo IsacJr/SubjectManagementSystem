@@ -18,8 +18,9 @@ export class ChallengeComponent implements OnInit {
     this.challengeFacade.getAll().subscribe(response => this.challengeList = response);
   }
 
-  handleVisualize() {
-    this.router.navigate(['/challenge/view']);
+  handleVisualize(evt: any) {
+    const { id } = evt;
+    this.router.navigate([`/challenge/view/${id}`]);
     console.log('visualize event');
   }
 

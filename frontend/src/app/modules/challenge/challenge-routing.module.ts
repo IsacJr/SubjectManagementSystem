@@ -23,7 +23,7 @@ export const ChallengeRoutes: Routes = [
         component: NewChallengeComponent
     },
     {
-        path: 'view',
+        path: 'view/:id',
         component: ViewChallengeComponent
     }
 ];

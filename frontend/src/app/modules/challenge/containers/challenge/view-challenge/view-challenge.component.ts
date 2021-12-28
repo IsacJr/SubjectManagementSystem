@@ -5,6 +5,7 @@ import { TeamFacade } from 'src/app/modules/team/team.facade';
 import { ChallengeFacade } from '../../../challenge.facade';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { ContractFacade } from 'src/app/shared/services/contract.facade';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-view-challenge',
@@ -13,6 +14,7 @@ import { ContractFacade } from 'src/app/shared/services/contract.facade';
 })
 export class ViewChallengeComponent implements OnInit {
 
+  id = 0;
   challenge:any = { };
   classroomList = [] as any[];
   teamList = [] as any[];
@@ -26,17 +28,26 @@ export class ViewChallengeComponent implements OnInit {
     private challengeFacade: ChallengeFacade,
     private classroomFacade: ClassroomFacade,
     private teamFacade: TeamFacade,
-    private contractFacade: ContractFacade
+    private contractFacade: ContractFacade,
+    private activateRoute: ActivatedRoute
   ) {
     this.challengeForm = this.formBuilder.group({
       idClassroom: null,
     });
-    challengeFacade.getOne(13).subscribe(response => this.challenge = response);
-    classroomFacade.getAll().subscribe(response => this.classroomList = response);
-    teamFacade.getAll().subscribe(response => this.teamList = response);
+    
   }
 
   ngOnInit(): void {
+    this.activateRoute.params.subscribe(params => {
+      this.id = +params['id'];
+      this.loadInformation();
+    });
+  }
+
+  loadInformation(){
+    this.challengeFacade.getOne(this.id).subscribe(response => this.challenge = response);
+    this.classroomFacade.getAll().subscribe(response => this.classroomList = response);
+    this.teamFacade.getAll().subscribe(response => this.teamList = response);
   }
 
   changeInClassroom(event: any) {

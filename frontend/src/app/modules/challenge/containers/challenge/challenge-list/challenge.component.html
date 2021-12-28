@@ -8,28 +8,29 @@
 </div>
 <div class="body-container">
     <div class="card-list">
-        <div class="card-wraper" *ngFor="let desafio of challengeList">
+        <div class="card-wraper" *ngFor="let challenge of challengeList">
             <app-card-action
-                (visualizeEvent)="handleVisualize()"
+                [id] = "challenge.id"
+                (visualizeEvent)="handleVisualize($event)"
                 (editEvent)="handleEdit()"
                 (deleteEvent)="handleDelete()"
             >
                 <div title>
-                    {{ desafio ? desafio.title : '-' }}
+                    {{ challenge ? challenge.title : '-' }}
                 </div>
                 <div content>
                     <div class="row">
                         <div class="col-lg-4 d-flex flex-column">
                             <label>Instituição: </label>
-                            {{ desafio?.institution?.name || '-' }}
+                            {{ challenge?.institution?.name || '-' }}
                         </div>
                         <div class="col-lg-4 d-flex flex-column">
                             <label>Área: </label>
-                            {{ desafio?.field?.name || '-' }}
+                            {{ challenge?.field?.name || '-' }}
                         </div>
                         <div class="col-lg-4 d-flex flex-column">
                             <label>Status: </label>
-                            {{ desafio?.statusDescription || '-' }}
+                            {{ challenge?.statusDescription || '-' }}
                         </div>
                     </div>
                 </div>

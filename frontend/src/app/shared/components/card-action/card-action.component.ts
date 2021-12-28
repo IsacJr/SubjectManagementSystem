@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { faEye, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Subject } from 'rxjs';
 
@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 })
 export class CardActionComponent implements OnInit {
 
+  @Input() id = 0;
   @Output() visualizeEvent = new EventEmitter<any>();
   @Output() editEvent = new EventEmitter<any>();
   @Output() deleteEvent = new EventEmitter<any>();
@@ -25,11 +26,11 @@ export class CardActionComponent implements OnInit {
   }
 
   onVisualizeClick() {
-    this.visualizeEvent.emit({});
+    this.visualizeEvent.emit({id: this.id});
   }
 
   onEditClick() {
-    this.editEvent.emit({});
+    this.editEvent.emit({id: this.id});
   }
 
   onDeleteClick() {
