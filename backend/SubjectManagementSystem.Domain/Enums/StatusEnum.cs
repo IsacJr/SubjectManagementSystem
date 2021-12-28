@@ -6,6 +6,8 @@ namespace SubjectManagementSystem.Domain
     {
         [Description("Não Iniciado")]
         NotStarted,
+        [Description("Aguardando Aprovação")]
+        OnHolding,
         [Description("Em Progresso")]
         OnProgress,
         [Description("Em Pausa")]

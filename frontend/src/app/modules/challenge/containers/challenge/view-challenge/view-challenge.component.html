@@ -20,29 +20,29 @@
     <div class="row mb-3">
         <div class="view-label col d-flex flex-column">
             <label>Descrição:</label>
-            <span>-</span>
+            <span>{{ challenge.description }}</span>
         </div>
     </div>
 
     <div class="row mb-3">
         <div class="view-label col d-flex flex-column">
             <label>Instituição:</label>
-            <span>Secretaria de Defesa</span>
+            <span>{{ challenge.institution.name }}</span>
         </div>
         <div class="view-label col d-flex flex-column">
             <label>Área:</label>
-            <span>IA</span>
+            <span>{{ challenge.field.name }}</span>
         </div>
     </div>
 
     <div class="row mb-3">
         <div class="view-label col d-flex flex-column">
             <label>Status:</label>
-            <span>Não Iniciado</span>
+            <span>{{ challenge.statusDescription }}</span>
         </div>
         <div class="view-label col d-flex flex-column">
             <label>Responsável:</label>
-            <span>José Ribeiro</span>
+            <span>{{ challenge.inCharge.name }}</span>
         </div>
     </div>
 
