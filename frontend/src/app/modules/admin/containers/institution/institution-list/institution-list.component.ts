@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { SubscriptionsContainer } from 'src/app/shared/utils/subscriptions-container';
 import { InstitutionFacade } from '../institution.facade';
 
 @Component({
@@ -6,16 +7,22 @@ import { InstitutionFacade } from '../institution.facade';
   templateUrl: './institution-list.component.html',
   styleUrls: ['./institution-list.component.scss']
 })
-export class InstitutionListComponent implements OnInit {
+export class InstitutionListComponent implements OnInit, OnDestroy {
 
   institutionList: any[] = [];
+
+  subscriptions = new SubscriptionsContainer();
 
   constructor(
     private institutionFacade: InstitutionFacade
   ) { }
 
   ngOnInit(): void {
-    this.institutionFacade.getAll().subscribe(response => this.institutionList = response);
+    this.subscriptions.add = this.institutionFacade.getAll().subscribe(response => this.institutionList = response);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.dispose();
   }
 
 }

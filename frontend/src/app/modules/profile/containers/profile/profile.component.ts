@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UserFacade } from 'src/app/modules/admin/containers/user/user.facade';
 import { StateFacade } from 'src/app/shared/services/state.facade';
@@ -9,13 +10,15 @@ import { StateFacade } from 'src/app/shared/services/state.facade';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
 
   stateList = [] as any[];
   userTypeList = [] as any[];
   currentUser = {} as any;
 
   userForm: FormGroup;
+
+  unsub$ = new Subject();
   
   constructor(private formBuilder: FormBuilder, private userFacade: UserFacade, private stateFacade: StateFacade, private authService: AuthService) {
     this.userForm = this.formBuilder.group({
@@ -28,8 +31,8 @@ export class ProfileComponent implements OnInit {
       password: ''
     });
 
-    stateFacade.getAll().subscribe(response => this.stateList = response);
-    userFacade.getAllUserTypes().subscribe(response => this.userTypeList = response);
+    stateFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.stateList = response);
+    userFacade.getAllUserTypes().pipe(takeUntil(this.unsub$)).subscribe(response => this.userTypeList = response);
     this.loadInfoToForm();
     
   }
@@ -47,7 +50,7 @@ export class ProfileComponent implements OnInit {
 
   loadInfoToForm() {
     const userEmail = this.authService.getUserInfo();
-    this.userFacade.getUserByEmail({email: userEmail}).subscribe(response => {
+    this.userFacade.getUserByEmail({email: userEmail}).pipe(takeUntil(this.unsub$)).subscribe(response => {
       this.currentUser = response;
 
       this.userForm.get('name')?.setValue(this.currentUser.name);
@@ -75,7 +78,12 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     const payload = this.buildPayload();
-    this.userFacade.put(payload).subscribe(response => response);
+    this.userFacade.put(payload).pipe(takeUntil(this.unsub$)).subscribe(response => response);
+  }
+
+  ngOnDestroy(): void {
+      this.unsub$.next({});
+      this.unsub$.complete();
   }
 
 }

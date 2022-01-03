@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { ClassroomFacade } from '../../classroom.facade';
 
 @Component({
@@ -6,9 +7,11 @@ import { ClassroomFacade } from '../../classroom.facade';
   templateUrl: './classroom.component.html',
   styleUrls: ['./classroom.component.scss']
 })
-export class ClassroomComponent implements OnInit {
+export class ClassroomComponent implements OnInit, OnDestroy {
 
   classroomList: any[] = [];
+
+  unsub$ = new Subject();
 
   constructor(
     private classroomFacade: ClassroomFacade
@@ -17,6 +20,10 @@ export class ClassroomComponent implements OnInit {
   ngOnInit(): void {
     this.classroomFacade.getAll().subscribe(response => this.classroomList = response);
   }
-
+  
+  ngOnDestroy(): void {
+      this.unsub$.next({});
+      this.unsub$.complete();
+  }
 
 }

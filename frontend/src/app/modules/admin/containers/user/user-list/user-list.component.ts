@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FilterQueryParamsModel } from 'src/app/shared/models/filterQueryParamsModel';
+import { SubscriptionsContainer } from 'src/app/shared/utils/subscriptions-container';
 import { InstitutionFacade } from '../../institution/institution.facade';
 import { UserFacade } from '../user.facade';
 
@@ -8,7 +9,7 @@ import { UserFacade } from '../user.facade';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent implements OnInit, OnDestroy {
 
   readonly PAGE_TITLE_LABEL = "Lista de Usuários";
   readonly NEW_ENTITY_BUTTON_LABEL = "Novo Usuário"
@@ -19,15 +20,17 @@ export class UserListComponent implements OnInit {
 
   filter: FilterQueryParamsModel | undefined;
 
+  subscriptions = new SubscriptionsContainer();
+
   constructor(
     private userFacade: UserFacade,
     private institutionFacade: InstitutionFacade,
   ) { }
 
   ngOnInit(): void {
-    this.userFacade.getAll().subscribe(response => this.userList = response);
-    this.institutionFacade.getAll().subscribe(response => this.institutionList = response);
-    this.userFacade.getAllUserTypes().subscribe(response => this.userTypeList = response);
+    this.subscriptions.add = this.userFacade.getAll().subscribe(response => this.userList = response);
+    this.subscriptions.add = this.institutionFacade.getAll().subscribe(response => this.institutionList = response);
+    this.subscriptions.add = this.userFacade.getAllUserTypes().subscribe(response => this.userTypeList = response);
   }
 
   handleIntitutionSelect(event: any) {
@@ -41,7 +44,7 @@ export class UserListComponent implements OnInit {
   }
 
   doFilter(){
-    this.userFacade.getAll(this.filter).subscribe(response => this.userList = response);
+    this.subscriptions.add = this.userFacade.getAll(this.filter).subscribe(response => this.userList = response);
   }
 
   handleVisualize() {
@@ -54,6 +57,10 @@ export class UserListComponent implements OnInit {
 
   handleDelete() {
     console.log('delete event');
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.dispose();
   }
 
 }

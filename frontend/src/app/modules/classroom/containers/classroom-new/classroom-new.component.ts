@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 import { SubjectFacade } from 'src/app/modules/admin/containers/subject/subject.facade';
 import { UserFacade } from 'src/app/modules/admin/containers/user/user.facade';
 import { ClassroomFacade } from '../../classroom.facade';
@@ -9,13 +10,15 @@ import { ClassroomFacade } from '../../classroom.facade';
   templateUrl: './classroom-new.component.html',
   styleUrls: ['./classroom-new.component.scss']
 })
-export class ClassroomNewComponent implements OnInit {
+export class ClassroomNewComponent implements OnInit, OnDestroy {
 
   classroomList = [] as any[];
   professorList = [] as any[];
   subjectList = [] as any[];
 
   classroomForm: FormGroup;
+
+  unsub$ = new Subject();
   
   constructor(
     private formBuilder: FormBuilder,
@@ -37,9 +40,9 @@ export class ClassroomNewComponent implements OnInit {
         idSubject: null
       });
 
-      classroomFacade.getAll().subscribe(response => this.classroomList = response);
-      professorFacade.getAll().subscribe(response => this.professorList = response);
-      subjectFacade.getAll().subscribe(response => this.subjectList = response);
+      classroomFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.classroomList = response);
+      professorFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.professorList = response);
+      subjectFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.subjectList = response);
   }
 
   ngOnInit(): void {
@@ -56,6 +59,11 @@ export class ClassroomNewComponent implements OnInit {
 
   changeSubject(event: any) {
     this.classroomForm.get('idSubject')?.setValue(+event.target.value);
+  }
+
+  ngOnDestroy(): void {
+      this.unsub$.next({});
+      this.unsub$.complete();
   }
 
 }

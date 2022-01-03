@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { StateFacade } from 'src/app/shared/services/state.facade';
+import { SubscriptionsContainer } from 'src/app/shared/utils/subscriptions-container';
 import { FieldFacade } from '../../field/field.facade';
 import { InstitutionFacade } from '../institution.facade';
 
@@ -16,6 +17,8 @@ export class InstitutionNewComponent implements OnInit {
   fieldList = [] as any[];
 
   institutionForm: FormGroup;
+
+  subscriptions = new SubscriptionsContainer();
 
   constructor(
       private formBuilder: FormBuilder,
@@ -33,9 +36,9 @@ export class InstitutionNewComponent implements OnInit {
         idField: null
       });
 
-      institutionFacade.getAll().subscribe(response => this.institutionList = response);
-      stateFacade.getAll().subscribe(response => this.stateList = response);
-      fieldFacade.getAll().subscribe(response => this.fieldList = response);
+      this.subscriptions.add = institutionFacade.getAll().subscribe(response => this.institutionList = response);
+      this.subscriptions.add = stateFacade.getAll().subscribe(response => this.stateList = response);
+      this.subscriptions.add = fieldFacade.getAll().subscribe(response => this.fieldList = response);
     }
 
   ngOnInit(): void {
@@ -43,7 +46,7 @@ export class InstitutionNewComponent implements OnInit {
 
   onSubmit() {
     const payload = this.institutionForm.value;
-    this.institutionFacade.post(payload).subscribe(response => console.log(response));
+    this.subscriptions.add = this.institutionFacade.post(payload).subscribe(response => console.log(response));
   }
 
   changeState(event: any) {
@@ -52,6 +55,10 @@ export class InstitutionNewComponent implements OnInit {
 
   changeField(event: any) {
     this.institutionForm.get('idField')?.setValue(+event.target.value);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.dispose();
   }
 
 }

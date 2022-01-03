@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 import { FieldFacade } from 'src/app/modules/admin/containers/field/field.facade';
 import { InstitutionFacade } from 'src/app/modules/admin/containers/institution/institution.facade';
 import { UserFacade } from 'src/app/modules/admin/containers/user/user.facade';
@@ -12,7 +13,7 @@ import { ChallengeFacade } from '../../../challenge.facade';
   templateUrl: './new-challenge.component.html',
   styleUrls: ['./new-challenge.component.scss']
 })
-export class NewChallengeComponent implements OnInit {
+export class NewChallengeComponent implements OnInit, OnDestroy {
 
   institutionList = [] as any[];
   statusList = [] as any[];
@@ -21,6 +22,8 @@ export class NewChallengeComponent implements OnInit {
   classroomList = [] as any[];
 
   challengeForm: FormGroup;
+
+  unsub$ = new Subject();
   
   constructor(
     private formBuilder: FormBuilder,
@@ -45,11 +48,11 @@ export class NewChallengeComponent implements OnInit {
       idCreator: 0
     })
 
-    institutionFacade.getAll().subscribe(response => this.institutionList = response);
-    statusFacade.getAll().subscribe(response => this.statusList = response);;
-    fieldFacade.getAll().subscribe(response => this.fieldList = response);
-    userFacade.getAll().subscribe(response => this.inChargeList = response);
-    classroomFacade.getAll().subscribe(response => this.classroomList = response);
+    institutionFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.institutionList = response);
+    statusFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.statusList = response);;
+    fieldFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.fieldList = response);
+    userFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.inChargeList = response);
+    classroomFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.classroomList = response);
   }
 
   ngOnInit(): void {
@@ -57,7 +60,7 @@ export class NewChallengeComponent implements OnInit {
 
   onSubmit() {
     const payload = this.challengeForm.value;
-    this.challengeFacade.post(payload).subscribe(response => console.log(response));
+    this.challengeFacade.post(payload).pipe(takeUntil(this.unsub$)).subscribe(response => console.log(response));
   }
 
   changeInstitution(event: any) {
@@ -78,6 +81,11 @@ export class NewChallengeComponent implements OnInit {
 
   changeInClassroom(event: any) {
     this.challengeForm.get('idClassroom')?.setValue(+event.target.value);
+  }
+
+  ngOnDestroy(): void {
+      this.unsub$.next({});
+      this.unsub$.complete();
   }
 
 }

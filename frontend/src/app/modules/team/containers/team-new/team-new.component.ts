@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 import { UserFacade } from 'src/app/modules/admin/containers/user/user.facade';
 import { TeamFacade } from '../../team.facade';
 
@@ -8,13 +9,15 @@ import { TeamFacade } from '../../team.facade';
   templateUrl: './team-new.component.html',
   styleUrls: ['./team-new.component.scss']
 })
-export class TeamNewComponent implements OnInit {
+export class TeamNewComponent implements OnInit, OnDestroy {
 
   mentorList = [] as any[];
   memberList = [] as any[];
   selectedMemberList = [] as any[];
 
   teamForm: FormGroup;
+
+  unsub$ = new Subject();
 
   public readonly isMultiple = true;
   
@@ -29,7 +32,7 @@ export class TeamNewComponent implements OnInit {
       idUserList: null
     });
 
-    this.userFacade.getAll().subscribe(response => {
+    this.userFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => {
       this.mentorList = response;
       this.memberList = response;
     });
@@ -41,7 +44,7 @@ export class TeamNewComponent implements OnInit {
 
   onSubmit() {
     const payload = this.buildTeamPayload();
-    this.teamFacade.post(payload).subscribe(response => console.log(response));
+    this.teamFacade.post(payload).pipe(takeUntil(this.unsub$)).subscribe(response => console.log(response));
   }
 
   buildTeamPayload() {
@@ -60,6 +63,11 @@ export class TeamNewComponent implements OnInit {
 
   changeMentor(event: any) {
     this.teamForm.get('idMentor')?.setValue(+event.target.value);
+  }
+
+  ngOnDestroy(): void {
+      this.unsub$.next({});
+      this.unsub$.complete();
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ClassroomFacade } from 'src/app/modules/classroom/classroom.facade';
 import { TeamFacade } from 'src/app/modules/team/team.facade';
@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { StatusEnumModel } from 'src/app/shared/models/StatusEnumModel';
 import { ProblemChallengeFacade } from '../../../problem-challenge.facade';
 import { FilterQueryParamsModel } from 'src/app/shared/models/filterQueryParamsModel';
+import { Subject, takeUntil } from 'rxjs';
 
 
 enum ChallengeViewMode {
@@ -21,7 +22,7 @@ enum ChallengeViewMode {
   templateUrl: './view-challenge.component.html',
   styleUrls: ['./view-challenge.component.scss']
 })
-export class ViewChallengeComponent implements OnInit {
+export class ViewChallengeComponent implements OnInit, OnDestroy {
 
   id = 0;
   challenge:any = { };
@@ -34,6 +35,8 @@ export class ViewChallengeComponent implements OnInit {
   faPlus = faPlus;
 
   challengeViewMode = ChallengeViewMode;
+
+  unsub$ = new Subject();
   
   constructor(
     private formBuilder: FormBuilder,
@@ -69,12 +72,12 @@ export class ViewChallengeComponent implements OnInit {
   }
 
   loadInformation(){
-    this.challengeFacade.getOne(this.id).subscribe(response => this.challenge = response);
-    this.classroomFacade.getAll().subscribe(response => this.classroomList = response);
-    this.teamFacade.getAll().subscribe(response => this.teamList = response);
+    this.challengeFacade.getOne(this.id).pipe(takeUntil(this.unsub$)).subscribe(response => this.challenge = response);
+    this.classroomFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.classroomList = response);
+    this.teamFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.teamList = response);
     
     const problemFilter = { challenge: this.id } as FilterQueryParamsModel;
-    this.problemChallengeFacade.getAll(problemFilter).subscribe(response => this.problemChallengeList = response);
+    this.problemChallengeFacade.getAll(problemFilter).pipe(takeUntil(this.unsub$)).subscribe(response => this.problemChallengeList = response);
   }
 
   changeInClassroom(event: any) {
@@ -104,7 +107,7 @@ export class ViewChallengeComponent implements OnInit {
     const idClassroom = this.challengeForm.get('idClassroom')?.value;
     const idChallenge = this.challenge?.id;
     const payload = { idChallenge, idClassroom };
-    this.contractFacade.proposePartnership(payload).subscribe(response => response);
+    this.contractFacade.proposePartnership(payload).pipe(takeUntil(this.unsub$)).subscribe(response => response);
   }
 
   createProblemChallenge(){
@@ -113,7 +116,12 @@ export class ViewChallengeComponent implements OnInit {
     const idChallenge = this.challenge?.id;
     const payload = { detail, idTeam, idChallenge };
     console.log('payload problem challenge: ', payload);
-    this.problemChallengeFacade.post(payload).subscribe(response => response);
+    this.problemChallengeFacade.post(payload).pipe(takeUntil(this.unsub$)).subscribe(response => response);
+  }
+
+  ngOnDestroy(): void {
+      this.unsub$.next({});
+      this.unsub$.complete();
   }
 
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 import { EducationLevelFacade } from 'src/app/shared/services/education-level.facade';
 import { FieldFacade } from '../../field/field.facade';
 import { SubjectFacade } from '../subject.facade';
@@ -9,13 +10,15 @@ import { SubjectFacade } from '../subject.facade';
   templateUrl: './subject-new.component.html',
   styleUrls: ['./subject-new.component.scss']
 })
-export class SubjectNewComponent implements OnInit {
+export class SubjectNewComponent implements OnInit, OnDestroy {
 
   subjectList = [] as any[];
   educatioLevelList = [] as any[];
   fieldList = [] as any[];
 
   subjectForm: FormGroup;
+
+  unsub$ = new Subject();
   
   constructor(
     private formBuilder: FormBuilder,
@@ -30,9 +33,9 @@ export class SubjectNewComponent implements OnInit {
         idField: null
       });
       
-      subjectFacade.getAll().subscribe(response => this.subjectList = response);
-      educationLevelFacade.getAll().subscribe(response => this.educatioLevelList = response);
-      fieldFacade.getAll().subscribe(response => this.fieldList = response);
+      subjectFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.subjectList = response);
+      educationLevelFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.educatioLevelList = response);
+      fieldFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.fieldList = response);
   }
 
   ngOnInit(): void {
@@ -40,7 +43,7 @@ export class SubjectNewComponent implements OnInit {
 
   onSubmit() {
     const payload = this.subjectForm.value;
-    this.subjectFacade.post(payload).subscribe(response => console.log(response));
+    this.subjectFacade.post(payload).pipe(takeUntil(this.unsub$)).subscribe(response => console.log(response));
   }
 
   changeEducationLevel(event: any) {
@@ -49,6 +52,11 @@ export class SubjectNewComponent implements OnInit {
 
   changeField(event: any) {
     this.subjectForm.get('idField')?.setValue(+event.target.value);
+  }
+
+  ngOnDestroy(): void {
+      this.unsub$.next({});
+      this.unsub$.complete();
   }
 
 }

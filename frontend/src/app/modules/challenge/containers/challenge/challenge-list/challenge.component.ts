@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 import { ChallengeFacade } from '../../../challenge.facade';
 
 
@@ -8,14 +9,15 @@ import { ChallengeFacade } from '../../../challenge.facade';
   templateUrl: './challenge.component.html',
   styleUrls: ['./challenge.component.scss']
 })
-export class ChallengeComponent implements OnInit {
+export class ChallengeComponent implements OnInit, OnDestroy {
 
   challengeList: any[] = [];
+  unsub$ = new Subject();
 
   constructor(private challengeFacade: ChallengeFacade, private router: Router) { }
 
   ngOnInit(): void {
-    this.challengeFacade.getAll().subscribe(response => this.challengeList = response);
+    this.challengeFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.challengeList = response);
   }
 
   handleVisualize(evt: any) {
@@ -30,6 +32,11 @@ export class ChallengeComponent implements OnInit {
 
   handleDelete() {
     console.log('delete event');
+  }
+
+  ngOnDestroy(): void {
+      this.unsub$.next({});
+      this.unsub$.complete();
   }
 
 }
