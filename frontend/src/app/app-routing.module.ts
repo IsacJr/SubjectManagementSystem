@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
+import { LoginGuard } from './core/guards/login.guard';
 
 
 const routes: Routes = [
@@ -11,28 +12,33 @@ const routes: Routes = [
   },
   {
     path: 'challenge',
-    loadChildren: () => import('./modules/challenge/challenge.module').then(m => m.ChallengeModule)
+    loadChildren: () => import('./modules/challenge/challenge.module').then(m => m.ChallengeModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'classroom',
-    loadChildren: () => import('./modules/classroom/classroom.module').then(m => m.ClassroomModule)
+    loadChildren: () => import('./modules/classroom/classroom.module').then(m => m.ClassroomModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'team',
-    loadChildren: () => import('./modules/team/team.module').then(m => m.TeamModule)
+    loadChildren: () => import('./modules/team/team.module').then(m => m.TeamModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'profile',
-    loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule)
+    loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin',
-    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
     loadChildren: () => import('./core/authentication/login/login.module').then(m => m.LoginModule),
-    canActivate: [AuthGuard]
+    canActivate: [LoginGuard]
   }
 ];
 

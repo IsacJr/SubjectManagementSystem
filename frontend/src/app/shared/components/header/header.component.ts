@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Dropdown } from 'bootstrap';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('ulmenu', {static:true}) private dropdownMenu: ElementRef | undefined;
   private myDropdown: Dropdown | undefined;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.myDropdown = new Dropdown(this.dropdownElement?.nativeElement, {
@@ -33,6 +34,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+    this.router.navigate(['']);
   }
 
 }
