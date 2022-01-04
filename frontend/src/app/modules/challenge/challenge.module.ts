@@ -27,6 +27,11 @@ import { NewChallengeComponent } from './containers/challenge/new-challenge/new-
 import { ViewChallengeComponent } from './containers/challenge/view-challenge/view-challenge.component';
 import { ProblemChallengeListComponent } from './containers/problem-challenge/problem-challenge-list/problem-challenge-list.component';
 import { ProblemChallengeFacade } from './problem-challenge.facade';
+import { SolutionViewComponent } from './containers/solution/solution-view/solution-view.component';
+import { SolutionAPI } from './api/solution.api';
+import { SolutionFacade } from './solution.facade';
+import { StageAPI } from './api/stage.api';
+import { StageFacade } from './stage.facade';
 
 
 @NgModule({
@@ -34,7 +39,8 @@ import { ProblemChallengeFacade } from './problem-challenge.facade';
     ChallengeComponent,
     NewChallengeComponent,
     ViewChallengeComponent,
-    ProblemChallengeListComponent
+    ProblemChallengeListComponent,
+    SolutionViewComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +68,11 @@ import { ProblemChallengeFacade } from './problem-challenge.facade';
     ProblemChallengeAPI,
     ProblemChallengeFacade,
     ContractAPI,
-    ContractFacade
+    ContractFacade,
+    SolutionAPI,
+    SolutionFacade,
+    StageAPI,
+    StageFacade
   ]
 })
 export class ChallengeModule { }

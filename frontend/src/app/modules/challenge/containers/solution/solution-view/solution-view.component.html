@@ -1,0 +1,60 @@
+<div class="title-container">
+    <h2>Lista de Soluções</h2>
+</div>
+
+<div class="solution-main-content">
+    <div class="solution-left">
+        <h3 class="mb-3">Problema</h3>
+        <div class="row mb-3">
+            <div class="view-label col d-flex flex-column">
+                <label>Detalhe:</label>
+                <span>----</span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="view-label col d-flex flex-column">
+                <label>Equipe:</label>
+                <ul>
+                    <li>Isac</li>
+                    <li>João</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="vertical"></div>
+
+    <div class="solution-right">
+        <h3 class="mb-4">Etapas de Solução:</h3>
+        <div class="card-wraper" *ngFor="let stage of stageList">
+            <app-card-regular [isTitleVisible]="false">
+                <div content>
+                    <div class="row mb-3">
+                        <div class="col-2">
+                            <label class="col-form-label">Descrição</label>
+                        </div>
+                        <div class="col-10">
+                          <textarea type="text" class="form-control" placeholder="" aria-label="Descrição"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-2">
+                            <label class="col-form-label">Solução</label>
+                        </div>
+                        <div class="col-10">
+                          <input type="text" class="form-control" placeholder="" aria-label="Solução">
+                        </div>
+                    </div>
+                    <div class="w-100 d-flex justify-content-end">
+                        <button class="btn btn-outline-success">
+                            Entregar
+                        </button>
+                    </div>
+                </div>
+            </app-card-regular>
+        </div>
+        <button class="btn btn-outline-success button-plus mb-3">
+            <fa-icon [icon]="faPlus"></fa-icon>
+        </button>
+    </div>
+</div>

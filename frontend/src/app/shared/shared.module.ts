@@ -8,6 +8,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DeleteDialogComponent } from './components/dialogs/delete-dialog/delete-dialog.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { CardRegularComponent } from './components/card-regular/card-regular.component';
 
 
 
@@ -18,7 +19,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     CardActionComponent,
     FilterComponent,
     DeleteDialogComponent,
-    PaginationComponent
+    PaginationComponent,
+    CardRegularComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     CardActionComponent,
     FilterComponent,
     DeleteDialogComponent,
-    PaginationComponent
+    PaginationComponent,
+    CardRegularComponent
   ]
 })
 export class SharedModule { }

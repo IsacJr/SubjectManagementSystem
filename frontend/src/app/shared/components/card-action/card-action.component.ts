@@ -10,6 +10,7 @@ import { Subject } from 'rxjs';
 export class CardActionComponent implements OnInit {
 
   @Input() id = 0;
+  @Input() isTitleVisible = true;
   @Output() visualizeEvent = new EventEmitter<any>();
   @Output() editEvent = new EventEmitter<any>();
   @Output() deleteEvent = new EventEmitter<any>();

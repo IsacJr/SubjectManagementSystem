@@ -1,0 +1,19 @@
+:host {
+    width: 100%;
+}
+
+.card-body {
+    margin: 10px;
+}
+
+.card-title {
+    width: 30%;
+    .card-title-label {
+        font-size: 1.6rem;
+    }
+}
+
+.card-content {
+    flex-grow: 1;
+    font-size: 1.3rem;
+}

@@ -1,0 +1,31 @@
+<div class="title-container">
+    <h2>Lista de Dificuldades</h2>
+</div>
+<div class="body-container">
+    <div class="card-list">
+        <div class="card-wraper" *ngFor="let report of reportList">
+            {{ report | json }}
+            <app-card-action>
+                <div title>
+                    {{ report ? report?.id  : '-' }}
+                </div>
+                <div content>
+                    <div class="row">
+                        <div class="col-lg-4 d-flex flex-column">
+                            <label>Descrição: </label>
+                            {{ report?.description || '-'}}
+                        </div>
+                        <div class="col-lg-4 d-flex flex-column">
+                            <label>Desafio: </label>
+                            {{ report?.idChallenge || '-'}}
+                        </div>
+                        <div class="col-lg-4 d-flex flex-column">
+                            <label>Autor: </label>
+                            {{ report?.idAutor || '-'}}
+                        </div>
+                    </div>
+                </div>
+            </app-card-action>
+        </div>
+    </div>
+</div>
