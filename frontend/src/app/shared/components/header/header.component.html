@@ -15,7 +15,7 @@
                 <a class="nav-link" href="#">Parceiros</a>
             </li> -->
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/classroom']">Disciplinas</a>
+                <a class="nav-link" [routerLink]="['/classroom']">Turmas</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/team']">Equipes</a>
@@ -26,7 +26,7 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/report']">Dificuldades</a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" *ngIf="false">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" #navbarDropdownMenuLink role="button" data-bs-toggle="dropdown" aria-expanded="false" (click)="trigger()">
                   Admin
                 </a>

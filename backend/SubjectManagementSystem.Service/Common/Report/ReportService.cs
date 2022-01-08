@@ -13,9 +13,9 @@ namespace SubjectManagementSystem.Service
             this.reportRepository = reportRepository;
         }
 
-        public async Task<IEnumerable<Report>> GetAll()
+        public async Task<IEnumerable<Report>> GetAll(FilterValue filter)
         {
-            return await reportRepository.GetAll();
+            return await reportRepository.GetAll(filter);
         }
 
         public async Task<Report> GetOne(int id)

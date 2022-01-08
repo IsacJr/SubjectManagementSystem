@@ -14,7 +14,7 @@ export class SolutionViewComponent implements OnInit {
   faPlus = faPlus;
   
   constructor() {
-    this.stageList = [{}, {}]
+    this.stageList = [{}]
   }
 
   ngOnInit(): void {
