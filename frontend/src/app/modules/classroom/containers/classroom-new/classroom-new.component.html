@@ -7,48 +7,57 @@
 
         <div class="row mb-3">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Descrição" aria-label="Descrição" formControlName="description">
+                <label class="form-label">Descrição</label>
+              <textarea class="form-control" rows="4" placeholder="Descrição" aria-label="Descrição" formControlName="description"></textarea>
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col">
+                <label class="form-label">Horário</label>
                 <input type="text" class="form-control" placeholder="Horário" aria-label="Horário" formControlName="schedule">
             </div>
             <div class="col">
+                <label class="form-label">Sala</label>
                 <input type="text" class="form-control" placeholder="Sala" aria-label="Sala" formControlName="room">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col">
+                <label class="form-label">Ano</label>
                 <input type="number" class="form-control" placeholder="Ano" aria-label="Ano" formControlName="year">
             </div>
             <div class="col">
+                <label class="form-label">Semestre</label>
                 <input type="text" class="form-control" placeholder="Semestre" aria-label="Semestre" formControlName="semester">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col">
+                <label class="form-label">Vagas</label>
                 <input type="number" class="form-control" placeholder="Vagas" aria-label="Vagas" formControlName="spotAvailable">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col">
+                <label class="form-label">Plano de Aula</label>
                 <input type="text" class="form-control" placeholder="Plano de Aula" aria-label="Plano de Aula" formControlName="classPlan">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col">
+                <label class="form-label">Professor</label>
                 <select class="form-select" aria-label="Professor" formControlName="idProfessor" (change)="changeProfessor($event)">
                     <option [value]="null" selected disabled >Selecione um professor</option>
                     <option *ngFor="let tp of professorList" [value]="tp.id">{{ tp.name }}</option>
                 </select>
             </div>
             <div class="col">
+                <label class="form-label">Disciplina</label>
                 <select class="form-select" aria-label="Disciplina" formControlName="idSubject" (change)="changeSubject($event)">
                     <option [value]="null" selected disabled >Selecione uma disciplina</option>
                     <option *ngFor="let tp of subjectList" [value]="tp.id">{{ tp.name }}</option>
@@ -58,9 +67,11 @@
 
         <div class="row mb-3">
             <div class="col">
+                <label class="form-label">Data de Início</label>
                 <input type="date" class="form-control" placeholder="Data de Início" aria-label="Data de Início" formControlName="startDate">
             </div>
             <div class="col">
+                <label class="form-label">Data de Encerramento</label>
                 <input type="date" class="form-control" placeholder="Data de Encerramento" aria-label="Data de Início" formControlName="endDate">
             </div>
         </div>

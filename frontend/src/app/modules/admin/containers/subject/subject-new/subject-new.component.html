@@ -7,30 +7,33 @@
 
         <div class="row mb-3">
             <div class="col">
+                <label class="form-label">Nome</label>
               <input type="text" class="form-control" placeholder="Nome" aria-label="Nome" formControlName="name">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col">
-                <input type="text" class="form-control" placeholder="Ementa" aria-label="Ementa" formControlName="syllabus">
+                <label class="form-label">Ementa</label>
+                <textarea class="form-control" rows="4" placeholder="Ementa" aria-label="Ementa" formControlName="syllabus"></textarea>
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col">
+                <label class="form-label">Nível</label>
                 <select class="form-select" aria-label="Nivel" formControlName="level" (change)="changeEducationLevel($event)">
                     <option [value]="null" selected disabled >Selecione um Nível</option>
                     <option *ngFor="let tp of educatioLevelList" [value]="tp.value">{{ tp.name }}</option>
                 </select>
             </div>
-        </div>
-
-        <div class="col mb-3">
-            <select class="form-select" aria-label="field" formControlName="idField" (change)="changeField($event)">
-                <option [value]="null" selected disabled >Selecione uma Área</option>
-                <option  *ngFor="let st of fieldList" [value]="st.id">{{ st.name }}</option>
-            </select>
+            <div class="col">
+                <label class="form-label">Área</label>
+                <select class="form-select" aria-label="field" formControlName="idField" (change)="changeField($event)">
+                    <option [value]="null" selected disabled >Selecione uma Área</option>
+                    <option  *ngFor="let st of fieldList" [value]="st.id">{{ st.name }}</option>
+                </select>
+            </div>
         </div>
 
         <button class="btn btn-outline-success" type="submit">Salvar</button>

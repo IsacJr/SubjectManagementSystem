@@ -7,15 +7,18 @@
 
         <div class="row mb-3">
             <div class="col">
+                <label class="form-label">Nome</label>
               <input type="text" class="form-control" placeholder="Nome" aria-label="Nome" formControlName="name">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col">
+                <label class="form-label">CNPJ</label>
                 <input type="text" class="form-control" placeholder="CNPJ" aria-label="CNPJ" formControlName="employerIdentificationNumber">
             </div>
             <div class="col">
+                <label class="form-label">Área</label>
                 <select class="form-select" aria-label="field" formControlName="idField" (change)="changeField($event)">
                     <option [value]="null" selected disabled >Selecione uma Área</option>
                     <option  *ngFor="let st of fieldList" [value]="st.id">{{ st.name }}</option>
@@ -25,17 +28,21 @@
 
         <div class="row mb-3">
             <div class="col">
+                <label class="form-label">CEP</label>
                 <input type="text" class="form-control" placeholder="CEP" aria-label="CEP" formControlName="zipCode">
             </div>
             <div class="col">
+                <label class="form-label">Rua</label>
                 <input type="text" class="form-control" placeholder="Rua" aria-label="Rua" formControlName="street">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
+                <label class="form-label">Cidade</label>
                 <input type="text" class="form-control" placeholder="Cidade" aria-label="Cidade" formControlName="city">
             </div>
             <div class="col">
+                <label class="form-label">Estado</label>
                 <select class="form-select" aria-label="Estado" formControlName="state" (change)="changeState($event)">
                     <option [value]="null" selected disabled >Selecione um Estado</option>
                     <option *ngFor="let tp of stateList" [value]="tp.value">{{ tp.name }}</option>

@@ -7,20 +7,23 @@
 
         <div class="row mb-3">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Nome" aria-label="Nome" formControlName="name">
+                <label class="form-label">Nome</label>
+                <input type="text" class="form-control" placeholder="Nome" aria-label="Nome" formControlName="name">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col">
+                <label class="form-label">Email</label>
                 <input type="email" class="form-control" placeholder="Email" aria-label="Email" formControlName="email">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col">
+                <label class="form-label">Tipo de usuário</label>
                 <select class="form-select" aria-label="Tipo" formControlName="type" (change)="changeType($event)">
-                    <option [value]="null" selected disabled >Selecione um tipo</option>
+                    <option [value]="null" selected disabled>Selecione um tipo</option>
                     <option *ngFor="let tp of userTypeList" [value]="tp.value">{{ tp.name }}</option>
                 </select>
             </div>
@@ -28,15 +31,19 @@
 
         <div class="row mb-3">
             <div class="col">
-                <input type="date" class="form-control" placeholder="Data de Nascimento" aria-label="Nome" formControlName="birthday">
+                <label class="form-label">Data de Nascimento</label>
+                <input type="date" class="form-control" placeholder="Data de Nascimento" aria-label="Nome"
+                    formControlName="birthday">
             </div>
             <div class="col">
+                <label class="form-label">Cidade</label>
                 <input type="text" class="form-control" placeholder="Cidade" aria-label="Nome" formControlName="city">
             </div>
             <div class="col">
+                <label class="form-label">Estado</label>
                 <select class="form-select" aria-label="state" formControlName="state" (change)="changeState($event)">
-                    <option [value]="null" selected disabled >Selecione Estado</option>
-                    <option  *ngFor="let st of stateList" [value]="st.value">{{ st.name }}</option>
+                    <option [value]="null" selected disabled>Selecione Estado</option>
+                    <option *ngFor="let st of stateList" [value]="st.value">{{ st.name }}</option>
                 </select>
             </div>
         </div>
