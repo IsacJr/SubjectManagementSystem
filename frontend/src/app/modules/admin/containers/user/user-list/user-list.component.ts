@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FilterQueryParamsModel } from 'src/app/shared/models/filterQueryParamsModel';
 import { SubscriptionsContainer } from 'src/app/shared/utils/subscriptions-container';
 import { InstitutionFacade } from '../../institution/institution.facade';
@@ -25,6 +26,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   constructor(
     private userFacade: UserFacade,
     private institutionFacade: InstitutionFacade,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -51,8 +53,8 @@ export class UserListComponent implements OnInit, OnDestroy {
     console.log('visualize event');
   }
 
-  handleEdit() {
-    console.log('edit event');
+  handleEdit(id: number) {
+    this.router.navigate([`/admin/user/edit/${id}`]);
   }
 
   handleDelete() {

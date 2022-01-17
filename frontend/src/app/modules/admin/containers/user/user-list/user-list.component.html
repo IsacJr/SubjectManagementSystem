@@ -22,7 +22,7 @@
         <div class="card-wraper" *ngFor="let user of userList">
             <app-card-action
                 (visualizeEvent)="handleVisualize()"
-                (editEvent)="handleEdit()"
+                (editEvent)="handleEdit(user.id)"
                 (deleteEvent)="handleDelete()"
             >
                 <div title>

@@ -1,5 +1,5 @@
 <div class="title-container">
-    <h2>{{ PAGE_TITLE_LABEL }}</h2>
+    <h2>{{ userPageLabel }}</h2>
 </div>
 
 <div class="body-container">
@@ -48,6 +48,7 @@
             </div>
         </div>
 
-        <button class="btn btn-outline-success" type="submit">Salvar</button>
+        <button *ngIf="currentPageMode === pageModeEnum.new" class="btn btn-outline-success" type="submit">Salvar</button>
+        <button *ngIf="currentPageMode === pageModeEnum.edit" class="btn btn-outline-success" type="submit">Atualizar</button>
     </form>
 </div>
