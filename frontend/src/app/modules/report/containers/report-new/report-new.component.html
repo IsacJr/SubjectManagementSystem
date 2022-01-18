@@ -1,1 +1,34 @@
-<p>report-new works!</p>
+<div class="title-container">
+    <h2>Nova Dificuldade</h2>
+</div>
+
+<div class="body-container">
+    <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+
+        <div class="row mb-3">
+            <div class="col">
+                <label class="form-label">Descrição</label>
+              <textarea class="form-control" rows="4" placeholder="Descrição" aria-label="Descrição" formControlName="description"></textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label class="form-label">Desafio</label>
+                <select class="form-select" aria-label="Desafio" formControlName="idChallenge" (change)="changeChallenge($event)">
+                    <option [value]="null" selected disabled >Selecione um desafio</option>
+                    <option *ngFor="let tp of challengeList" [value]="tp.id">{{ tp.title }}</option>
+                </select>
+            </div>
+            <div class="col">
+                <label class="form-label">Autor</label>
+                <select class="form-select" aria-label="Autor" formControlName="idAuthor" (change)="changeAuthor($event)">
+                    <option [value]="null" selected disabled >Selecione uma autor</option>
+                    <option *ngFor="let tp of userList" [value]="tp.id">{{ tp.name }}</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="btn btn-outline-success" type="submit">Salvar</button>
+    </form>
+</div>
