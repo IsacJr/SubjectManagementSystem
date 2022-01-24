@@ -32,7 +32,7 @@ export class UserNewComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private userFacade: UserFacade,
     private stateFacade: StateFacade,
-    router: Router,
+    private router: Router,
     private activateRoute: ActivatedRoute
   ) {
     this.userForm = this.formBuilder.group({
