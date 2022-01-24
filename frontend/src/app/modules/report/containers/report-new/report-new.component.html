@@ -21,6 +21,13 @@
                 </select>
             </div>
             <div class="col">
+                <label class="form-label">Problemas do Desafio</label>
+                <select class="form-select" aria-label="Desafio" formControlName="idProblemChallenge" (change)="problemChangeChallenge($event)">
+                    <option [value]="null" selected disabled >Selecione um problema</option>
+                    <option *ngFor="let tp of problemChallengeList" [value]="tp.id">{{ tp.detail }}</option>
+                </select>
+            </div>
+            <div class="col">
                 <label class="form-label">Autor</label>
                 <select class="form-select" aria-label="Autor" formControlName="idAuthor" (change)="changeAuthor($event)">
                     <option [value]="null" selected disabled >Selecione uma autor</option>

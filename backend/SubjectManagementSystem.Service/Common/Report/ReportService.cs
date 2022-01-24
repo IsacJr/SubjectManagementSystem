@@ -26,7 +26,7 @@ namespace SubjectManagementSystem.Service
         public async Task<Report> Insert(Report report)
         {
             report.Author = null;
-            report.Challenge = null;
+            report.ProblemChallenge = null;
             
             return await reportRepository.Insert(report);
         }

@@ -12,6 +12,8 @@ import { ChallengeAPI } from '../challenge/api/challenge.api';
 import { ChallengeFacade } from '../challenge/challenge.facade';
 import { UserAPI } from '../admin/containers/user/api/user.api';
 import { UserFacade } from '../admin/containers/user/user.facade';
+import { ProblemChallengeAPI } from '../challenge/api/problem-challenge.api';
+import { ProblemChallengeFacade } from '../challenge/problem-challenge.facade';
 
 
 
@@ -33,7 +35,9 @@ import { UserFacade } from '../admin/containers/user/user.facade';
     ChallengeAPI,
     ChallengeFacade,
     UserAPI,
-    UserFacade
+    UserFacade,
+    ProblemChallengeAPI,
+    ProblemChallengeFacade
   ]
 })
 export class ReportModule { }
