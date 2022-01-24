@@ -60,9 +60,6 @@ export class ReportNewComponent implements OnInit, OnDestroy {
     this.reportForm.get('idAuthor')?.setValue(+event.target.value);
   }
 
-
-
-
   ngOnDestroy(): void {
       this.subscriptions.dispose();
   }
