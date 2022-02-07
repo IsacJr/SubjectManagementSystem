@@ -123,12 +123,15 @@ export class ViewChallengeComponent implements OnInit, OnDestroy {
   }
 
   createSolution(currentProblem: any){
-    const payload = { idProblem: currentProblem.id, IdTeam: currentProblem.IdTeam }
+    console.log('view-challenge');
+    const payload = { idProblem: currentProblem.id, IdTeam: currentProblem.idTeam }
+    console.log('currentProblem: ', currentProblem);
+    console.log('payload: ', payload);
     this.solutionFacade.post(payload).subscribe(response => console.log(response));
   }
 
   viewSolution(currentProblem: any){
-    this.router.navigate([`challenge/solution/${currentProblem.id}`]);
+    this.router.navigate([`challenge/solution/${currentProblem.solution.id}`]);
   }
 
   ngOnDestroy(): void {
