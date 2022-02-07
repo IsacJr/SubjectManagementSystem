@@ -51,6 +51,12 @@ export class SolutionViewComponent implements OnInit, OnDestroy {
   }
 
   createStage(){
+    const { description } = this.stageForm.value;
+    const stagePayload = { description, idSolution: this.currentId, link: '' };
+    this.stageFacade.post(stagePayload).subscribe(response => console.log(response));
+  }
+
+  updateStage(){
 
   }
 
