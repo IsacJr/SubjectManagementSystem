@@ -76,7 +76,8 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-outline-secondary d-flex align-self-center" style="height: 40px;">Visualizar Solução</button>
+                <button *ngIf="problemChallenge.solution === null" class="btn btn-outline-secondary d-flex align-self-center problem-button" (click)="createSolution(problemChallenge)">Disponibilizar Solução</button>
+                <button *ngIf="problemChallenge.solution" class="btn btn-outline-secondary d-flex align-self-center problem-button" (click)="viewSolution(problemChallenge)">Visualizar Solução</button>
             </div>
         </div>
     

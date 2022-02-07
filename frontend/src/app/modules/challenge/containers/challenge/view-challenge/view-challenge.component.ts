@@ -5,11 +5,12 @@ import { TeamFacade } from 'src/app/modules/team/team.facade';
 import { ChallengeFacade } from '../../../challenge.facade';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { ContractFacade } from 'src/app/shared/services/contract.facade';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StatusEnumModel } from 'src/app/shared/models/StatusEnumModel';
 import { ProblemChallengeFacade } from '../../../problem-challenge.facade';
 import { FilterQueryParamsModel } from 'src/app/shared/models/filterQueryParamsModel';
 import { Subject, takeUntil } from 'rxjs';
+import { SolutionFacade } from '../../../solution.facade';
 
 
 enum ChallengeViewMode {
@@ -45,7 +46,9 @@ export class ViewChallengeComponent implements OnInit, OnDestroy {
     private teamFacade: TeamFacade,
     private contractFacade: ContractFacade,
     private activateRoute: ActivatedRoute,
-    private problemChallengeFacade: ProblemChallengeFacade
+    private problemChallengeFacade: ProblemChallengeFacade,
+    private solutionFacade: SolutionFacade,
+    private router: Router
   ) {
     this.challengeForm = this.formBuilder.group({
       idClassroom: null,
@@ -117,6 +120,15 @@ export class ViewChallengeComponent implements OnInit, OnDestroy {
     const payload = { detail, idTeam, idChallenge };
     console.log('payload problem challenge: ', payload);
     this.problemChallengeFacade.post(payload).pipe(takeUntil(this.unsub$)).subscribe(response => response);
+  }
+
+  createSolution(currentProblem: any){
+    const payload = { idProblem: currentProblem.id, IdTeam: currentProblem.IdTeam }
+    this.solutionFacade.post(payload).subscribe(response => console.log(response));
+  }
+
+  viewSolution(currentProblem: any){
+    this.router.navigate([`challenge/solution/${currentProblem.id}`]);
   }
 
   ngOnDestroy(): void {

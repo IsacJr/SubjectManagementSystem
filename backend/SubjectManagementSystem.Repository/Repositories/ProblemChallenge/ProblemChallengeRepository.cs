@@ -26,7 +26,8 @@ namespace SubjectManagementSystem.Repository
                             .ThenInclude(y => y.Members)
                                 .ThenInclude(z => z.User)
                         .Include(x => x.Team)
-                            .ThenInclude(y => y.Mentor);
+                            .ThenInclude(y => y.Mentor)
+                        .Include(x => x.Solution);
             
 
             return await query.ToListAsync();
