@@ -55,27 +55,29 @@
         <div class="card-wraper">
             <app-card-regular [isTitleVisible]="false">
                 <div content>
-                    <div class="row mb-3">
-                        <div class="col-2">
-                            <label class="col-form-label">Descrição</label>
+                    <form [formGroup]="stageForm">
+                        <div class="row mb-3">
+                            <div class="col-2">
+                                <label class="col-form-label">Descrição</label>
+                            </div>
+                            <div class="col-10">
+                                <textarea type="text" class="form-control" placeholder="" aria-label="Descrição" formControlName="description"></textarea>
+                            </div>
                         </div>
-                        <div class="col-10">
-                          <textarea type="text" class="form-control" placeholder="" aria-label="Descrição"></textarea>
+                        <div class="row mb-3">
+                            <div class="col-2">
+                                <label class="col-form-label">Solução</label>
+                            </div>
+                            <div class="col-10">
+                                <input [disabled]="true" type="text" class="form-control" placeholder="" aria-label="Solução" formControlName="link">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-2">
-                            <label class="col-form-label">Solução</label>
+                        <div class="w-100 d-flex justify-content-end">
+                            <button class="btn btn-outline-secundary" disabled>
+                                Entregar
+                            </button>
                         </div>
-                        <div class="col-10">
-                          <input disabled type="text" class="form-control" placeholder="" aria-label="Solução">
-                        </div>
-                    </div>
-                    <div class="w-100 d-flex justify-content-end">
-                        <button class="btn btn-outline-secundary" disabled>
-                            Entregar
-                        </button>
-                    </div>
+                    </form>
                 </div>
             </app-card-regular>
         </div>

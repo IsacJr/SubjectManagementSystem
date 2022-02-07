@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { SubscriptionsContainer } from 'src/app/shared/utils/subscriptions-container';
@@ -10,30 +11,51 @@ import { StageFacade } from '../../../stage.facade';
   templateUrl: './solution-view.component.html',
   styleUrls: ['./solution-view.component.scss']
 })
-export class SolutionViewComponent implements OnInit {
+export class SolutionViewComponent implements OnInit, OnDestroy {
 
   solution = {} as any;
   stageList = [] as any[];
   currentId = 0;
+
+  stageForm: FormGroup;
   
   subscriptions = new SubscriptionsContainer();
 
   faPlus = faPlus;
   
   constructor(
+    private formBuilder: FormBuilder,
     private solutionFacade: SolutionFacade,
     private stageFacade: StageFacade,
     private router: Router,
     private activateRoute: ActivatedRoute
   ) {
-    this.subscriptions.add = this.activateRoute.params.subscribe(params => {
-      this.currentId = +params['id'];
-      this.subscriptions.add = this.solutionFacade.getOne(this.currentId).subscribe(response => this.solution = response);
-      this.subscriptions.add = this.stageFacade.getAll().subscribe(response => this.stageList = response);
+    this.stageForm = this.formBuilder.group({
+      description: '',
+      link: ''
     })
+    this.loadInfo();
   }
 
   ngOnInit(): void {
+  }
+
+  private loadInfo(){
+    this.subscriptions.add = this.activateRoute.params.subscribe(params => {
+      this.currentId = +params['id'];
+      this.subscriptions.add = this.solutionFacade.getOne(this.currentId).subscribe(response => {
+        this.solution = response;
+        this.stageList = response.stages
+      });
+    })
+  }
+
+  createStage(){
+
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.dispose();
   }
 
 }

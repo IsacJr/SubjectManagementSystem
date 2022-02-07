@@ -16,6 +16,7 @@ namespace SubjectManagementSystem.Repository
                             .Include(x => x.Team)
                                 .ThenInclude(y => y.Members)
                                     .ThenInclude(z => z.User)
+                            .Include(x => x.Stages)
                             .SingleOrDefaultAsync(s => s.Id == id);
         }
 
