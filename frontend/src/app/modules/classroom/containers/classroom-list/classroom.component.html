@@ -9,7 +9,11 @@
 <div class="body-container">
     <div class="card-list">
         <div class="card-wraper" *ngFor="let classroom of classroomList">
-            <app-card-action>
+            <app-card-action
+                (visualizeEvent)="handleVisualize()"
+                (editEvent)="handleEdit(classroom.id)"
+                (deleteEvent)="handleDelete()"
+            >
                 <div title>
                     {{ classroom ? classroom?.subject.name +  " - " + classroom?.room : '-' }}
                 </div>

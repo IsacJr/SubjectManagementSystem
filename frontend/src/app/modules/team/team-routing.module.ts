@@ -21,6 +21,10 @@ export const TeamRoutes: Routes = [
     {
         path: 'new',
         component: TeamNewComponent
+    },
+    {
+        path: 'edit/:id',
+        component: TeamNewComponent
     }
 ];
 

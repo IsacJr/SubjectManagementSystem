@@ -10,6 +10,9 @@
     <div class="card-list">
         <div class="card-wraper" *ngFor="let institution of institutionList">
             <app-card-action
+                (visualizeEvent)="handleVisualize()"
+                (editEvent)="handleEdit(institution.id)"
+                (deleteEvent)="handleDelete()"
             >
                 <div title>
                     {{ institution ? institution.name : '-' }}

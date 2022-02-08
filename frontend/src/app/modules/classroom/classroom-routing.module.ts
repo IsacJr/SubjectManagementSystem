@@ -21,6 +21,10 @@ export const ClassroomRoutes: Routes = [
     {
         path: 'new',
         component: ClassroomNewComponent
+    },
+    {
+        path: 'edit/:id',
+        component: ClassroomNewComponent
     }
 ];
 

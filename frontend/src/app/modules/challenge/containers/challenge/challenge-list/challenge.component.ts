@@ -14,7 +14,10 @@ export class ChallengeComponent implements OnInit, OnDestroy {
   challengeList: any[] = [];
   unsub$ = new Subject();
 
-  constructor(private challengeFacade: ChallengeFacade, private router: Router) { }
+  constructor(
+    private challengeFacade: ChallengeFacade,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.challengeFacade.getAll().pipe(takeUntil(this.unsub$)).subscribe(response => this.challengeList = response);
@@ -26,8 +29,8 @@ export class ChallengeComponent implements OnInit, OnDestroy {
     console.log('visualize event');
   }
 
-  handleEdit() {
-    console.log('edit event');
+  handleEdit(id: number) {
+    this.router.navigate([`/challenge/edit/${id}`]);
   }
 
   handleDelete() {

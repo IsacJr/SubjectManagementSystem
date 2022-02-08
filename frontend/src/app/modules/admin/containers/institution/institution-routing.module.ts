@@ -16,6 +16,10 @@ export const InstitutionRoutes: Routes = [
     {
         path: 'new',
         component: InstitutionNewComponent
+    },
+    {
+        path: 'edit/:id',
+        component: InstitutionNewComponent
     }
 ];
 

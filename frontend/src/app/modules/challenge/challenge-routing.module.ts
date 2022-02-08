@@ -28,6 +28,10 @@ export const ChallengeRoutes: Routes = [
         component: ViewChallengeComponent
     },
     {
+        path: 'edit/:id',
+        component: NewChallengeComponent
+    },
+    {
         path: 'solution/:id',
         component: SolutionViewComponent
     }

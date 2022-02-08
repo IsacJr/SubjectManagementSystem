@@ -12,7 +12,7 @@
             <app-card-action
                 [id] = "challenge.id"
                 (visualizeEvent)="handleVisualize($event)"
-                (editEvent)="handleEdit()"
+                (editEvent)="handleEdit(challenge.id)"
                 (deleteEvent)="handleDelete()"
             >
                 <div title>
