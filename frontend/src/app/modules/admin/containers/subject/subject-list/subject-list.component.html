@@ -10,6 +10,9 @@
     <div class="card-list">
         <div class="card-wraper" *ngFor="let subject of subjectList">
             <app-card-action
+                (visualizeEvent)="handleVisualize()"
+                (editEvent)="handleEdit(subject.id)"
+                (deleteEvent)="handleDelete()"
             >
                 <div title>
                     {{ subject ? subject.name : '-' }}

@@ -16,6 +16,10 @@ export const SubjectRoutes: Routes = [
     {
         path: 'new',
         component: SubjectNewComponent
+    },
+    {
+        path: 'edit/:id',
+        component: SubjectNewComponent
     }
 ];
 
