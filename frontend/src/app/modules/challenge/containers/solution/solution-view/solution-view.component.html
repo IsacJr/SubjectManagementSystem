@@ -26,31 +26,7 @@
     <div class="solution-right">
         <h3 class="mb-4">Etapas de Solução:</h3>
         <div class="card-wraper" *ngFor="let stage of stageList">
-            <app-card-regular [isTitleVisible]="false">
-                <div content>
-                    <div class="row mb-3">
-                        <div class="col-2">
-                            <label class="col-form-label">Descrição</label>
-                        </div>
-                        <div class="col-10">
-                          <textarea disabled class="form-control" placeholder="" aria-label="Descrição" [value]="stage.description"></textarea>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-2">
-                            <label class="col-form-label">Solução</label>
-                        </div>
-                        <div class="col-10">
-                          <input disabled type="text" class="form-control" placeholder="" aria-label="Solução">
-                        </div>
-                    </div>
-                    <div class="w-100 d-flex justify-content-end">
-                        <button class="btn btn-outline-secundary" disabled>
-                            Entregar
-                        </button>
-                    </div>
-                </div>
-            </app-card-regular>
+            <app-solution-stage-update-card [stage]="stage"></app-solution-stage-update-card>
         </div>
         <div class="card-wraper">
             <app-card-regular [isTitleVisible]="false">

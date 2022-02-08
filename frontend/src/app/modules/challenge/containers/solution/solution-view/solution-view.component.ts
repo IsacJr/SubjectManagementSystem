@@ -15,11 +15,11 @@ export class SolutionViewComponent implements OnInit, OnDestroy {
 
   solution = {} as any;
   stageList = [] as any[];
-  currentId = 0;
+  private currentId = 0;
 
   stageForm: FormGroup;
   
-  subscriptions = new SubscriptionsContainer();
+  private subscriptions = new SubscriptionsContainer();
 
   faPlus = faPlus;
   
@@ -33,7 +33,7 @@ export class SolutionViewComponent implements OnInit, OnDestroy {
     this.stageForm = this.formBuilder.group({
       description: '',
       link: ''
-    })
+    });
     this.loadInfo();
   }
 

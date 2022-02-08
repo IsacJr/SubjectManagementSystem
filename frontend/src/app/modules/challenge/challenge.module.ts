@@ -32,6 +32,7 @@ import { SolutionAPI } from './api/solution.api';
 import { SolutionFacade } from './solution.facade';
 import { StageAPI } from './api/stage.api';
 import { StageFacade } from './stage.facade';
+import { SolutionStageUpdateCardComponent } from './components/solution-stage-update-card/solution-stage-update-card.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { StageFacade } from './stage.facade';
     NewChallengeComponent,
     ViewChallengeComponent,
     ProblemChallengeListComponent,
-    SolutionViewComponent
+    SolutionViewComponent,
+    SolutionStageUpdateCardComponent
   ],
   imports: [
     CommonModule,
