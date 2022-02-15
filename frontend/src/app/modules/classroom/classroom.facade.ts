@@ -7,8 +7,8 @@ export class ClassroomFacade {
 
     constructor(private classroomApi: ClassroomAPI){ }
 
-    public getAll(): Observable<any> {
-        return this.classroomApi.getAllClassrooms();
+    public getAll(params?: any): Observable<any> {
+        return this.classroomApi.getAllClassrooms(params);
     }
 
     public getOne(id: number): Observable<any> {

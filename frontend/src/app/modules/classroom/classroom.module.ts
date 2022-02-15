@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FieldAPI } from '../admin/containers/field/api/field.api';
+import { FieldFacade } from '../admin/containers/field/field.facade';
 import { SubjectAPI } from '../admin/containers/subject/api/subject.api';
 import { SubjectFacade } from '../admin/containers/subject/subject.facade';
 import { UserAPI } from '../admin/containers/user/api/user.api';
@@ -32,7 +34,9 @@ import { ClassroomNewComponent } from './containers/classroom-new/classroom-new.
     UserAPI,
     UserFacade,
     SubjectAPI,
-    SubjectFacade
+    SubjectFacade,
+    FieldAPI,
+    FieldFacade
   ]
 })
 export class ClassroomModule { }

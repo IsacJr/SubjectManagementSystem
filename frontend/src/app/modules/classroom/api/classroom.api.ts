@@ -12,8 +12,8 @@ export class ClassroomAPI extends BaseApi<any> {
         super(http);
     }
 
-    public getAllClassrooms(): Observable<any> {
-        return super.get(this.API_BASE);
+    public getAllClassrooms(params?: any): Observable<any> {
+        return super.get(this.API_BASE, params);
     }
 
     public getOneClassroom(id: number): Observable<any> {

@@ -13,17 +13,22 @@ namespace SubjectManagementSystem.Repository
         public async Task<IEnumerable<Classroom>> GetAll(FilterValue filter)
         {
             IQueryable<Classroom> query = entities;
+            
+            query = query
+                        .Include(x => x.Professor)
+                        .Include(x => x.Subject);
+
             if (filter != null)
             {
-                
+                if (filter.Field != null)
+                {
+                    query = query.Where<Classroom>(x => x.Subject.IdField == filter.Field);
+                }
                 if(filter.Professor != null)
                 {
                     query = query.Where<Classroom>(x => x.IdProfessor == filter.Professor);
                 }
             }
-            query = query
-                        .Include(x => x.Professor)
-                        .Include(x => x.Subject);
             
 
             return await query.ToListAsync();

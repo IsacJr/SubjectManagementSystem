@@ -19,11 +19,11 @@ namespace SubjectManagementSystem.Repository
                 {
                     query = query.Where<Challenge>(x => x.IdInstitution == filter.Institution);
                 }
-                else if(filter.Status != null)
+                if(filter.Status != null)
                 {
                     query = query.Where<Challenge>(x => (int?)x.Status == filter.Status);
                 }
-                else if(filter.Field != null)
+                if(filter.Field != null)
                 {
                     query = query.Where<Challenge>(x => x.IdField == filter.Field);
                 }

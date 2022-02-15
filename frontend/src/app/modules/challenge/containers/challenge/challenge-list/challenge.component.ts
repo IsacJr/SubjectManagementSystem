@@ -42,7 +42,6 @@ export class ChallengeComponent implements OnInit, OnDestroy {
   }
 
   handleFilterEmitted(evt: FilterQueryParamsModel | null) {
-    console.log('filter received: ', evt);
     this.filter = evt;
     this.doFilter();
   }
