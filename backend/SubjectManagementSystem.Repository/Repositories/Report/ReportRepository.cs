@@ -13,8 +13,10 @@ namespace SubjectManagementSystem.Repository
         public async Task<IEnumerable<Report>> GetAll(FilterValue filter)
         {
             IQueryable<Report> query = entities;
-            query = query.Include(x => x.ProblemChallenge);
-            query = query.Include(x => x.Author);
+            query = query
+                        .Include(x => x.ProblemChallenge)
+                            .ThenInclude(y => y.Challenge)
+                        .Include(x => x.Author);
 
             return await query.ToListAsync();
         }

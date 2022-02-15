@@ -1,0 +1,30 @@
+<form [formGroup]="challengeFilterForm">
+    <div class="filter-container">
+        <div class="filter-item">
+            <label class="form-label">Instituição</label>
+            <select class="form-select" aria-label="Tipo" formControlName="institution" (change)="changeInstitution($event)">
+                <option [value]="null" selected disabled>Selecione um item</option>
+                <option *ngFor="let institution of institutionInput" [value]="institution.id">{{ institution.name }}</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <label class="form-label">Status</label>
+            <select class="form-select" aria-label="Status" formControlName="status" (change)="changeStatus($event)">
+                <option [value]="null" selected disabled>Selecione um item</option>
+                <option *ngFor="let status of statusInput" [value]="status.value">{{ status.name }}</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <label class="form-label">Área</label>
+            <select class="form-select" aria-label="Área" formControlName="field" (change)="changeField($event)">
+                <option [value]="null" selected disabled>Selecione um item</option>
+                <option *ngFor="let field of fieldInput" [value]="field.id">{{ field.name }}</option>
+            </select>
+        </div>
+        <div class="filter-item d-flex align-items-end">
+            <button type="button" class="btn btn-outline-secondary" (click)="onCleanFilter()">
+                <fa-icon [icon]="faMinus"></fa-icon>
+            </button>
+        </div>
+    </div>
+</form>

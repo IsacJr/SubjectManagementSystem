@@ -7,8 +7,8 @@ export class ChallengeFacade {
 
     constructor(private challengeApi: ChallengeAPI){ }
 
-    public getAll(): Observable<any> {
-        return this.challengeApi.getAllChallenges();
+    public getAll(params?: any): Observable<any> {
+        return this.challengeApi.getAllChallenges(params);
     }
 
     public getOne(id: number): Observable<any> {

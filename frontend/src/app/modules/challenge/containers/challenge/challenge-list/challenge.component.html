@@ -5,6 +5,15 @@
     <div class="new-container">
         <a class="btn btn-outline-secondary" [routerLink]="['/challenge/new']">Novo Desafio</a>
     </div>
+    <div class="filter-button-container">
+        <app-filter-challenge
+            [institutionInput]="institutionList"
+            [statusInput]="statusList"
+            [fieldInput]="fieldList"
+            (emitFilter)="handleFilterEmitted($event)"
+        >
+        </app-filter-challenge>
+    </div>
 </div>
 <div class="body-container">
     <div class="card-list">

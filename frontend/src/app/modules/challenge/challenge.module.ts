@@ -33,6 +33,7 @@ import { SolutionFacade } from './solution.facade';
 import { StageAPI } from './api/stage.api';
 import { StageFacade } from './stage.facade';
 import { SolutionStageUpdateCardComponent } from './components/solution-stage-update-card/solution-stage-update-card.component';
+import { FilterChallengeComponent } from './components/filter-challenge/filter-challenge.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { SolutionStageUpdateCardComponent } from './components/solution-stage-up
     ViewChallengeComponent,
     ProblemChallengeListComponent,
     SolutionViewComponent,
-    SolutionStageUpdateCardComponent
+    SolutionStageUpdateCardComponent,
+    FilterChallengeComponent
   ],
   imports: [
     CommonModule,

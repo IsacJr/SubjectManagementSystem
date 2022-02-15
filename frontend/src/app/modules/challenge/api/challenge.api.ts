@@ -12,8 +12,8 @@ export class ChallengeAPI extends BaseApi<any> {
         super(http);
     }
 
-    public getAllChallenges(): Observable<any> {
-        return super.get(this.API_BASE);
+    public getAllChallenges(params?: any): Observable<any> {
+        return super.get(this.API_BASE, params);
     }
 
     public getOneChallenge(id: number): Observable<any> {
