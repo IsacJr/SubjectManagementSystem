@@ -12,8 +12,8 @@ export class ReportAPI extends BaseApi<any> {
         super(http);
     }
 
-    public getAllReports(): Observable<any> {
-        return super.get(this.API_BASE);
+    public getAllReports(params?: any): Observable<any> {
+        return super.get(this.API_BASE, params);
     }
 
     public getOneReport(id: number): Observable<any> {

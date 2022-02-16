@@ -55,7 +55,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
       this.userForm.get('name')?.setValue(this.currentUser.name);
       this.userForm.get('email')?.setValue(this.currentUser.email);
-      this.userForm.get('birthday')?.setValue(this.currentUser.birthday);
+      this.userForm.get('birthday')?.setValue(this.currentUser.birthday.substring(0, 10));
       this.userForm.get('city')?.setValue(this.currentUser.city);
       this.userForm.get('password')?.setValue(this.currentUser.password);
       this.userForm.get('state')?.setValue(this.currentUser.state);

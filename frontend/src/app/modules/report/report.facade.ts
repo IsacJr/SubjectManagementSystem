@@ -8,8 +8,8 @@ export class ReportFacade {
 
     constructor(private reportApi: ReportAPI){ }
 
-    public getAll(): Observable<any> {
-        return this.reportApi.getAllReports();
+    public getAll(params?: any): Observable<any> {
+        return this.reportApi.getAllReports(params);
     }
 
     public getOne(id: number): Observable<any> {

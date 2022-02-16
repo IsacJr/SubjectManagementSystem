@@ -18,6 +18,18 @@ namespace SubjectManagementSystem.Repository
                             .ThenInclude(y => y.Challenge)
                         .Include(x => x.Author);
 
+            if (filter != null)
+            {
+                if (filter.Field != null)
+                {
+                    query = query.Where<Report>(x => x.ProblemChallenge.Challenge.IdField == filter.Field);
+                }
+                if(filter.Institution != null)
+                {
+                    query = query.Where<Report>(x => x.ProblemChallenge.Challenge.IdInstitution == filter.Institution);
+                }
+            }
+
             return await query.ToListAsync();
         }
 

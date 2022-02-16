@@ -17,6 +17,7 @@ import { ChallengeFacade } from '../../../challenge.facade';
 export class ChallengeComponent implements OnInit, OnDestroy {
 
   challengeList: any[] = [];
+  
   institutionList: any[] = [];
   statusList: any[] = [];
   fieldList: any[] = [];
