@@ -19,7 +19,21 @@ namespace SubjectManagementSystem.Repository
                         .Include(x => x.Members)
                             .ThenInclude(y => y.User)
                         .Include(x => x.Members)
-                            .ThenInclude(y => y.Team);
+                            .ThenInclude(y => y.Team)
+                        .Include(x => x.ProblemChallenge)
+                            .ThenInclude(y => y.Challenge);
+
+            if (filter != null)
+            {
+                if (filter.Field != null)
+                {
+                    query = query.Where<Team>(x => x.ProblemChallenge.Challenge.IdField == filter.Field);
+                }
+                if(filter.Institution != null)
+                {
+                    query = query.Where<Team>(x => x.ProblemChallenge.Challenge.IdInstitution == filter.Institution);
+                }
+            }
             
 
             return await query.ToListAsync();

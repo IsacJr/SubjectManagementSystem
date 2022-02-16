@@ -5,6 +5,12 @@
     <div class="new-container">
         <a class="btn btn-outline-secondary" [routerLink]="['/team/new']">Nova Equipe</a>
     </div>
+    <app-filter
+            [institutionInput]="institutionList"
+            [fieldInput]="fieldList"
+            (emitFilter)="handleFilterEmitted($event)"
+    >
+    </app-filter>
 </div>
 <div class="body-container">
     <div class="card-list">

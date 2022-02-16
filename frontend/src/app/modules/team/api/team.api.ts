@@ -12,8 +12,8 @@ export class TeamAPI extends BaseApi<any> {
         super(http);
     }
 
-    public getAllTeams(): Observable<any> {
-        return super.get(this.API_BASE);
+    public getAllTeams(params?: any): Observable<any> {
+        return super.get(this.API_BASE, params);
     }
 
     public getOneTeam(id: number): Observable<any> {

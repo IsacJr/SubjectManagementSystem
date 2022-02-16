@@ -7,8 +7,8 @@ export class TeamFacade {
 
     constructor(private teamApi: TeamAPI){ }
 
-    public getAll(): Observable<any> {
-        return this.teamApi.getAllTeams();
+    public getAll(params?: any): Observable<any> {
+        return this.teamApi.getAllTeams(params);
     }
 
     public getOne(id: number): Observable<any> {

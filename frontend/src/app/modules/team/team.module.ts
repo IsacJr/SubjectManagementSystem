@@ -11,6 +11,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserAPI } from '../admin/containers/user/api/user.api';
 import { UserFacade } from '../admin/containers/user/user.facade';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { InstitutionFacade } from '../admin/containers/institution/institution.facade';
+import { InstitutionAPI } from '../admin/containers/institution/api/institution.api';
+import { FieldAPI } from '../admin/containers/field/api/field.api';
+import { FieldFacade } from '../admin/containers/field/field.facade';
 
 
 @NgModule({
@@ -30,7 +34,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
     TeamAPI,
     TeamFacade,
     UserAPI,
-    UserFacade
+    UserFacade,
+    InstitutionAPI,
+    InstitutionFacade,
+    FieldAPI,
+    FieldFacade
   ]
 })
 export class TeamModule { }
