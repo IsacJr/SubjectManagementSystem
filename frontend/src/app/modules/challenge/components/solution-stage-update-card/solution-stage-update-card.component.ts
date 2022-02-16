@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { SubscriptionsContainer } from 'src/app/shared/utils/subscriptions-container';
 import { StageFacade } from '../../stage.facade';
 
@@ -19,6 +20,7 @@ export class SolutionStageUpdateCardComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private stageFacade: StageFacade,
+    private authService: AuthService
   )
   {
     this.stageForm = this.formBuilder.group({
@@ -46,6 +48,20 @@ export class SolutionStageUpdateCardComponent implements OnInit, OnDestroy {
     const stagePayload = { id, description, link, idSolution };
 
     this.subscription.add = this.stageFacade.put(stagePayload).subscribe(response => console.log(response));
+  }
+
+  get isCreatedButtonDisabled() {
+    const { type } = this.authService.getUserInfo();
+    if(type === 2)
+      return false;
+    return true;
+  }
+
+  get isSolutionFieldDisabled() {
+    const { type } = this.authService.getUserInfo();
+    if(type === 2)
+      return false;
+    return true;
   }
 
   ngOnDestroy(): void {

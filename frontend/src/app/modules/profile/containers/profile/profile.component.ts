@@ -49,8 +49,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   loadInfoToForm() {
-    const userEmail = this.authService.getUserInfo();
-    this.userFacade.getUserByEmail({email: userEmail}).pipe(takeUntil(this.unsub$)).subscribe(response => {
+    const { email } = this.authService.getUserInfo();
+    this.userFacade.getUserByEmail({email: email}).pipe(takeUntil(this.unsub$)).subscribe(response => {
       this.currentUser = response;
 
       this.userForm.get('name')?.setValue(this.currentUser.name);

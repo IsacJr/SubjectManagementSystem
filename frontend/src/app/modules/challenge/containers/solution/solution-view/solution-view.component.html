@@ -32,24 +32,24 @@
             <app-card-regular [isTitleVisible]="false">
                 <div content>
                     <form [formGroup]="stageForm">
-                        <div class="row mb-3">
+                        <fieldset class="row mb-3">
                             <div class="col-2">
                                 <label class="col-form-label">Descrição</label>
                             </div>
                             <div class="col-10">
-                                <textarea type="text" class="form-control" placeholder="" aria-label="Descrição" formControlName="description"></textarea>
+                                <textarea type="text" class="form-control" placeholder="" aria-label="Descrição" formControlName="description" [disabled]="isDescriptionFieldDisabled"></textarea>
                             </div>
-                        </div>
-                        <div class="row mb-3">
+                        </fieldset>
+                        <fieldset [disabled]="true" class="row mb-3">
                             <div class="col-2">
                                 <label class="col-form-label">Solução</label>
                             </div>
                             <div class="col-10">
-                                <input [disabled]="true" type="text" class="form-control" placeholder="" aria-label="Solução" formControlName="link">
+                                <input type="text" class="form-control" placeholder="" aria-label="Solução" formControlName="link" [disabled]="isSolutionFieldDisabled">
                             </div>
-                        </div>
+                        </fieldset>
                         <div class="w-100 d-flex justify-content-end">
-                            <button class="btn btn-outline-secundary" disabled>
+                            <button class="btn btn-outline-secundary" [disabled]="isCreatedButtonDisabled">
                                 Entregar
                             </button>
                         </div>

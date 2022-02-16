@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { SubscriptionsContainer } from 'src/app/shared/utils/subscriptions-container';
 import { SolutionFacade } from '../../../solution.facade';
 import { StageFacade } from '../../../stage.facade';
@@ -27,6 +28,7 @@ export class SolutionViewComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private solutionFacade: SolutionFacade,
     private stageFacade: StageFacade,
+    private authService: AuthService,
     private router: Router,
     private activateRoute: ActivatedRoute
   ) {
@@ -48,6 +50,27 @@ export class SolutionViewComponent implements OnInit, OnDestroy {
         this.stageList = response.stages
       });
     })
+  }
+
+  get isCreatedButtonDisabled() {
+    const { type } = this.authService.getUserInfo();
+    if(type === 0)
+      return false;
+    return true;
+  }
+
+  get isDescriptionFieldDisabled() {
+    const { type } = this.authService.getUserInfo();
+    if(type === 0)
+      return false;
+    return true;
+  }
+
+  get isSolutionFieldDisabled() {
+    const { type } = this.authService.getUserInfo();
+    if(type === 2)
+      return false;
+    return true;
   }
 
   createStage(){

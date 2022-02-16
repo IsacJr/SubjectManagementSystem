@@ -13,6 +13,7 @@ export class AuthService {
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
   private readonly USER_INFO = 'USER_INFO';
+  private readonly USER_PROFILE = 'USER_PROFILE';
   private loggedUser: string | undefined | null;
 
   constructor(private http: HttpClient) {}
@@ -29,15 +30,6 @@ export class AuthService {
   }
 
   logout() {
-    // return this.http.post<any>(`${this.baseUrl}/logout`, {
-    //   'refreshToken': this.getRefreshToken()
-    // }).pipe(
-    //   tap(() => this.doLogoutUser()),
-    //   mapTo(true),
-    //   catchError(error => {
-    //     alert(error.error);
-    //     return of(false);
-    //   }));
     this.doLogoutUser();
   }
 
@@ -57,10 +49,12 @@ export class AuthService {
     return localStorage.getItem(this.JWT_TOKEN);
   }
 
-  private doLoginUser(email: string, tokens: Tokens) {
+  private async doLoginUser(email: string, tokens: Tokens) {
+    const profileType = await this.doUserProfile(email);
+    
     this.loggedUser = email;
     this.storeTokens(tokens);
-    this.storeUserInfo(email);
+    this.storeUserInfo(email, profileType);
   }
 
   private doLogoutUser() {
@@ -87,16 +81,21 @@ export class AuthService {
     // localStorage.removeItem(this.REFRESH_TOKEN);
   }
 
-  private storeUserInfo(email: string) {
-    localStorage.setItem(this.USER_INFO, email);
+  private storeUserInfo(email: string, profileType: number) {
+    localStorage.setItem(this.USER_INFO, JSON.stringify({ email, type: profileType }));
   }
 
   getUserInfo() {
-    return localStorage.getItem(this.USER_INFO);
+    return JSON.parse(localStorage.getItem(this.USER_INFO)!);
   }
 
   private removeUserInfo() {
     localStorage.removeItem(this.USER_INFO);
+  }
+
+  private async doUserProfile(email: string) {
+    const { type } = await this.http.post<any>(`http://localhost:5000/User/GetbyEmail`, { email }).toPromise();
+    return type;
   }
 
 }
