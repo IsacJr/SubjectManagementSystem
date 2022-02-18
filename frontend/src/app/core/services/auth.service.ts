@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, mapTo, Observable, of, tap } from 'rxjs';
+import { catchError, firstValueFrom, mapTo, Observable, of, tap } from 'rxjs';
 import { Tokens } from '../models/tokens';
 
 @Injectable({
@@ -19,20 +19,11 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   async login(user: { email: string, password: string }) {
-    const tokens = await this.http.post<any>(`${this.baseUrl}/Auth`, user)
-            .toPromise();
+    const tokens = await firstValueFrom(this.http.post<any>(`${this.baseUrl}/Auth`, user));
 
     await this.doLoginUser(user.email, tokens);
 
     return;
-        
-      // .pipe(
-      //   tap(async (tokens) => await this.doLoginUser(user.email, tokens)),
-      //   mapTo(true),
-      //   catchError(error => {
-      //     alert(error.error);
-      //     return of(false);
-      //   }));
   }
 
   logout() {
@@ -92,7 +83,7 @@ export class AuthService {
   }
 
   private async doUserProfile(email: string) {
-    const { type } = await this.http.post<any>(`http://localhost:5000/User/GetbyEmail`, { email }).toPromise();
+    const { type } = await firstValueFrom(this.http.post<any>(`http://localhost:5000/User/GetbyEmail`, { email }));
     return type;
   }
 

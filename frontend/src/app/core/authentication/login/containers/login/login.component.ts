@@ -28,14 +28,14 @@ export class LoginComponent implements OnInit {
 
   async login() {
     try{
-    await this.authService.login(
-      {
-        email: this.loginForm.get('email')?.value,
-        password: this.loginForm.get('password')?.value
-      }
-    )
+      await this.authService.login(
+        {
+          email: this.loginForm.get('email')?.value,
+          password: this.loginForm.get('password')?.value
+        }
+      );
+    this.router.navigate(['/challenge']);
 
-    this.router.navigate(['/challenge'])
     }catch(e: any) {
       console.error('problem on login')
     }
