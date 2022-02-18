@@ -18,15 +18,21 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(user: { email: string, password: string }): Observable<boolean> {
-    return this.http.post<any>(`${this.baseUrl}/Auth`, user)
-      .pipe(
-        tap(tokens => this.doLoginUser(user.email, tokens)),
-        mapTo(true),
-        catchError(error => {
-          alert(error.error);
-          return of(false);
-        }));
+  async login(user: { email: string, password: string }) {
+    const tokens = await this.http.post<any>(`${this.baseUrl}/Auth`, user)
+            .toPromise();
+
+    await this.doLoginUser(user.email, tokens);
+
+    return;
+        
+      // .pipe(
+      //   tap(async (tokens) => await this.doLoginUser(user.email, tokens)),
+      //   mapTo(true),
+      //   catchError(error => {
+      //     alert(error.error);
+      //     return of(false);
+      //   }));
   }
 
   logout() {
@@ -36,14 +42,6 @@ export class AuthService {
   isLoggedIn() {
     return !!this.getJwtToken();
   }
-
-  // refreshToken() {
-  //   return this.http.post<any>(`${this.baseUrl}/refresh`, {
-  //     'refreshToken': this.getRefreshToken()
-  //   }).pipe(tap((tokens: Tokens) => {
-  //     this.storeJwtToken(tokens.jwt);
-  //   }));
-  // }
 
   getJwtToken() {
     return localStorage.getItem(this.JWT_TOKEN);

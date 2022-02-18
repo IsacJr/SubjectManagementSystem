@@ -26,18 +26,19 @@ export class LoginComponent implements OnInit {
     this.login();
   }
 
-  login() {
-    this.authService.login(
+  async login() {
+    try{
+    await this.authService.login(
       {
         email: this.loginForm.get('email')?.value,
         password: this.loginForm.get('password')?.value
       }
     )
-    .subscribe(success => {
-      if (success) {
-        this.router.navigate(['/challenge']);
-      }
-    });
+
+    this.router.navigate(['/challenge'])
+    }catch(e: any) {
+      console.error('problem on login')
+    }
   }
 
 }
