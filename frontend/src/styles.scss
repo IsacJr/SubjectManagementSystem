@@ -9,38 +9,38 @@
 */
 
 .title-container {
-    margin-bottom: 30px;
-    h2 {
-        margin: 0px;
-    }
+  margin-bottom: 30px;
+  h2 {
+    margin: 0px;
+  }
 }
 
 .actions-button-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 30px;
 }
 
 .filter-button-container {
-    display: flex;
+  display: flex;
 
-    .filter-button-item {
-        margin-left: 20px;
-    }
+  .filter-button-item {
+    margin-left: 20px;
+  }
 }
 
 .body-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-wraper {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .view-label {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 /*
