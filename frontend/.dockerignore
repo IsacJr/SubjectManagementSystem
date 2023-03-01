@@ -1,0 +1,3 @@
+# docker ignore directories
+
+node_modules

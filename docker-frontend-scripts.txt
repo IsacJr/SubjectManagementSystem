@@ -1,0 +1,5 @@
+// build
+sudo docker build --rm -t isacjr/angular-tcc:latest .  
+
+// run
+sudo docker run --rm -p 8888:80 --network bridge isacjr/angular-tcc:latest

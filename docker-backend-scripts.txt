@@ -1,0 +1,6 @@
+// docker build image
+sudo docker build --rm -t isacjr/dotnet-tcc:latest .
+
+
+// dockuer run container
+sudo docker run --rm -p 5000:5000 -p 5001:5001 -e ASPNETCORE_HTTPS_PORT=https://+:5001 -e ASPNETCORE_URLS=http://+:5000 isacjr/dotnet-tcc:latest

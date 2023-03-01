@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  backend:
+    build: "./backend"
+    container_name: dotnet-tcc-container
+    environment:
+      ASPNETCORE_HTTPS_PORT: https://+:5001
+      ASPNETCORE_URLS: http://+:5000
+    restart: always
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+  frontend:
+    build: "./frontend"
+    container_name: angular-tcc-container
+    restart: always
+    ports:
+      - "8888:80"
