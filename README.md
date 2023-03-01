@@ -13,6 +13,8 @@ As orientações a seguir permitirão a montagem de um ambiente necessário para
 - [Angular 13](https://angular.io/cli)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Git](https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Instalando-o-Git)
+- [Docker](https://www.docker.com)
+- [Docker Compose](https://docs.docker.com/compose/)
 
 ### Clonando o Repositório
 
@@ -30,35 +32,19 @@ Para a criação do banco de dados é necessário seguir os seguintes passos aba
 
 1.  Criação de um banco de dados chamado "SubjectManagementSystem".
     > **Dica:** Pode ser utilizado uma ferramenta visual para auxiliar como o PGAdmin ou o DBeaver.
-2.  Executar dentro da pasta "backend" do projeto o seguinte comando abaixo para a criação das tabelas:
+2.  Atualizar os valores de acesso ao banco de dados (User Id e Password) pelos valores utilizados no seu banco de dados Postgres. O arquivo esta localizado em SubjectManagementSystem/backend/SubjectManagementSystem.API/appsettings.json
+3.  Executar dentro da pasta "backend" do projeto o seguinte comando abaixo para a criação das tabelas:
     `dotnet ef database update --project SubjectManagementSystem.Repository --startup-project SubjectManagementSystem.API --context ApplicationDbContext`
-    3.Após a criação do banco de dados é só popular as principais entidades do sistema como "tb_user".
+    4.Após a criação do banco de dados é só popular as principais entidades do sistema como "tb_user".
 
-#### Backend
+#### Executando
 
-Para baixar as dependências do backend utilize os seguintes comandos:
-
-```
-dotnet restore
-dotnet build
-```
-
-Após isso, entre na subpasta do backend chamada "SubjectManagementSystem.API" e execute o comando abaixo:
+O projeto esta configurado para rodar em containers docker, e orquestrado pelo docker compose. Portando certifique-se de possuir tanto o docker quanto o docker compose no seu ambiente e execute o seguinte comando na pasta raíz do projeto:
 
 ```
-dotnet run
-```
-
-#### Frontend
-
-Para baixar as dependências do frontend web e executa-lo, utilize os seguintes comandos:
-
-```
-cd frontend
-npm install
-npm run start
+docker-compose up
 ```
 
 ## Conclusão
 
-Se todos os passos foram seguidos com sucesso agora é possível acessar o sistema em modo de desenvolvimento através do endereço: http://localhost:4200
+Se todos os passos foram seguidos com sucesso agora é possível acessar o sistema em modo de desenvolvimento através do endereço: http://localhost:8888
